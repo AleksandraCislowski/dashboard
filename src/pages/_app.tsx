@@ -1,4 +1,4 @@
-import "@/styles/globals.css";
+import { CssBaseline } from "@mui/material";
 import { SessionProvider } from "next-auth/react";
 
 export default function App({
@@ -7,6 +7,7 @@ export default function App({
 }) {
   return (
     <SessionProvider session={session}>
+      <CssBaseline />
       <Component {...pageProps} />
     </SessionProvider>
   );
