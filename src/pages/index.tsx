@@ -1,23 +1,23 @@
 import Head from "next/head";
 import Dashboard from "./dashboard/Dashboard";
-import Header from "../components/Header";
 import SideMenu from "../components/SideMenu/SideMenu";
 import { useSession } from "next-auth/react";
 import { Fragment } from "react";
 import Login from "@/components/Login";
+import classes from "@/styles/Home.module.scss";
+import React from "react";
 
-export default function Home() {
+const Home: React.FC = () => {
   const { data: session } = useSession();
   return (
     <>
       <Head>
-        <title>Dashboard</title>
+        <title>DataSoft - Dashboard</title>
         <meta name='description' content='Data dashboard' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <main>
-        <Header />
+      <main className={classes.main}>
         {session && (
           <Fragment>
             <SideMenu />
@@ -28,4 +28,6 @@ export default function Home() {
       </main>
     </>
   );
-}
+};
+
+export default Home;
