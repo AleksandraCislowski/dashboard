@@ -17,6 +17,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import SettingsIcon from "@mui/icons-material/Settings";
 import LogoutIcon from "@mui/icons-material/Logout";
 import Link from "next/link";
+import { signOut } from "next-auth/react";
 
 const drawerWidth = 240;
 
@@ -57,6 +58,11 @@ const SideMenu = () => {
 
   const handleDrawerToggle = () => {
     setOpen(!open);
+  };
+
+  const handleListItemButtonClick = (text: string) => {
+    text === "Sign Out" ? signOut() : null;
+    setOpen(false);
   };
 
   return (
@@ -102,7 +108,7 @@ const SideMenu = () => {
               href={`/dashboard/${menuRouteList[index]}`}
             >
               <ListItemButton
-                onClick={() => setOpen(false)}
+                onClick={() => handleListItemButtonClick(text)}
                 sx={{
                   minHeight: 48,
                   justifyContent: open ? "initial" : "center",
