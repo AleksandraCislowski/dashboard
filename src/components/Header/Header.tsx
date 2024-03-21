@@ -1,5 +1,5 @@
 import React from "react";
-import { Avatar } from "@mui/material";
+import { Avatar, useMediaQuery } from "@mui/material";
 import { signIn, signOut, useSession } from "next-auth/react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -46,6 +46,8 @@ const Header = (props: HeaderProps) => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const tabletCheck = useMediaQuery("(min-width: 768px)");
 
   return (
     <AppBar position='static'>
@@ -136,11 +138,11 @@ const Header = (props: HeaderProps) => {
               </Button>
             ))}
           </Box>
-          <Box sx={{ paddingRight: 5 }}>
-            <Typography>
-              Signed in as {session?.user?.email} <br />
-            </Typography>
-          </Box>
+          {tabletCheck && (
+            <Box sx={{ paddingRight: 5 }}>
+              <Typography>Signed in as {session?.user?.name}</Typography>
+            </Box>
+          )}
           <ThemeToggleButton ColorModeContext={ColorModeContext} />
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title='Open profile settings'>
