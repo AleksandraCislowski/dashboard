@@ -4,7 +4,7 @@ import darkTheme from "@/styles/theme/darkTheme";
 import lightTheme from "@/styles/theme/lightTheme";
 import React from "react";
 import Header from "@/components/Header";
-import Layout from "@/components/Lauout/Layout";
+import Layout from "@/components/Layout/Layout";
 
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
