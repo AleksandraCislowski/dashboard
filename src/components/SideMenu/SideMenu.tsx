@@ -16,6 +16,7 @@ import EqualizerIcon from "@mui/icons-material/Equalizer";
 import PersonIcon from "@mui/icons-material/Person";
 import SettingsIcon from "@mui/icons-material/Settings";
 import LogoutIcon from "@mui/icons-material/Logout";
+import HomeIcon from "@mui/icons-material/Home";
 import Link from "next/link";
 import { signOut } from "next-auth/react";
 
@@ -42,9 +43,16 @@ const closedMixin = (theme: Theme): CSSObject => ({
   },
 });
 
-const menuRouteList = ["analytics", "profile", "settings", ""];
-const menuListTranslations = ["Analytics", "Profile", "Settings", "Sign Out"];
+const menuRouteList = ["", "analytics", "profile", "settings", ""];
+const menuListTranslations = [
+  "Home",
+  "Analytics",
+  "Profile",
+  "Settings",
+  "Sign Out",
+];
 const menuListIcons = [
+  <HomeIcon />,
   <EqualizerIcon />,
   <PersonIcon />,
   <SettingsIcon />,
