@@ -3,7 +3,6 @@ import { useSession, signIn, signOut } from "next-auth/react";
 
 const Login = () => {
   const { data: session } = useSession();
-  const userProfileImg = session?.user?.image as string;
 
   if (session) {
     return (
@@ -16,7 +15,6 @@ const Login = () => {
   }
   return (
     <>
-      <h2>Please log in</h2> <br />
       <Button variant='contained' color='success' onClick={() => signIn()}>
         Sign In
       </Button>
