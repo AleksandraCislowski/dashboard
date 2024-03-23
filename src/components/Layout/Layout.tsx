@@ -3,6 +3,7 @@ import SideMenu from "../SideMenu/SideMenu";
 import classes from "@/styles/Layout.module.scss";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
+import Footer from "../Footer";
 
 const Layout = (props: any) => {
   const { data: session } = useSession();
@@ -21,6 +22,7 @@ const Layout = (props: any) => {
       >
         {session && <SideMenu />}
         {props.children}
+        <Footer />
       </main>
     </>
   );
