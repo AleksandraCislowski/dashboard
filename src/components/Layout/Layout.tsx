@@ -4,9 +4,11 @@ import classes from "@/styles/Layout.module.scss";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
 import Footer from "../Footer";
+import { useMediaQuery } from "@mui/material";
 
 const Layout = (props: any) => {
   const { data: session } = useSession();
+  const tabletCheck = useMediaQuery("(min-width: 768px)");
 
   return (
     <>
@@ -22,7 +24,7 @@ const Layout = (props: any) => {
       >
         {session && <SideMenu />}
         {props.children}
-        <Footer />
+        {tabletCheck && <Footer />}
       </main>
     </>
   );
