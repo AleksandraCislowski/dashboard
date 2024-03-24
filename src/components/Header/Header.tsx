@@ -10,7 +10,7 @@ import Menu from "@mui/material/Menu";
 import Container from "@mui/material/Container";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
+import QueryStatsIcon from "@mui/icons-material/QueryStats";
 import ThemeToggleButton from "../ThemeToggleButton";
 import { useTheme } from "@emotion/react";
 import Link from "next/link";
@@ -43,12 +43,12 @@ const Header = (props: HeaderProps) => {
     <AppBar position='sticky' sx={{ marginBottom: "40px" }}>
       <Container maxWidth='xl'>
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          <QueryStatsIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
           <Typography
             variant='h6'
             noWrap
             component='a'
-            href='#app-bar-with-responsive-menu'
+            href='/home'
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -61,7 +61,7 @@ const Header = (props: HeaderProps) => {
           >
             DataSoft
           </Typography>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+          <QueryStatsIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
           <Typography
             variant='h5'
             noWrap
