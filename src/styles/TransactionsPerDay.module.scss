@@ -1,4 +1,4 @@
-$breakPoint: 1000px;
+$breakPoint: 900px;
 
 .wrapper {
   display: flex;
@@ -39,7 +39,7 @@ $breakPoint: 1000px;
 
 .card {
   text-align: center;
-  padding: 1rem;
+  padding: 0.5rem;
   border-radius: 8px;
   width: 100%;
 
@@ -50,8 +50,16 @@ $breakPoint: 1000px;
 
 .cardTitle p {
   font-size: 1.8rem;
+
+  @media screen and (max-width: $breakPoint) {
+    font-size: 0.8rem;
+  }
 }
 
 .cardValue p {
   font-size: 1.2rem;
+
+  @media screen and (max-width: $breakPoint) {
+    font-size: 0.8rem;
+  }
 }

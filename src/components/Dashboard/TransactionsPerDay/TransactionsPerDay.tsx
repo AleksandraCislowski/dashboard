@@ -29,9 +29,7 @@ const TransactionsPerDay = () => {
             </div>
             <div className={classes.cardValue}>
               <Typography>1.275</Typography>
-              <Typography color={theme.palette.success.main} fontSize={14}>
-                428.7%
-              </Typography>
+              <Typography color={theme.palette.success.main}>428.7%</Typography>
             </div>
           </Card>
           <Card className={classes.card} variant={"outlined"}>
@@ -40,9 +38,7 @@ const TransactionsPerDay = () => {
             </div>
             <div className={classes.cardValue}>
               <Typography>4.40%</Typography>
-              <Typography color={theme.palette.success.main} fontSize={14}>
-                899.4%
-              </Typography>
+              <Typography color={theme.palette.success.main}>899.4%</Typography>
             </div>
           </Card>
           <Card className={classes.card} variant={"outlined"}>
@@ -51,9 +47,7 @@ const TransactionsPerDay = () => {
             </div>
             <div className={classes.cardValue}>
               <Typography>0</Typography>
-              <Typography color={theme.palette.success.main} fontSize={14}>
-                0
-              </Typography>
+              <Typography color={theme.palette.success.main}>0</Typography>
             </div>
           </Card>
         </div>
