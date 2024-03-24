@@ -20,6 +20,30 @@ const Analytics = () => {
       </p>
       <div style={{ height: "900px", width: "100%" }}>
         <DataGrid
+          sx={{
+            maxWidth: 1400,
+            width: "90%",
+            "& .MuiDataGrid-row:hover": {
+              backgroundColor: "#dfd",
+            },
+            "& .MuiDataGrid-columnHeader": {
+              backgroundColor: "#004D64",
+              position: "sticky",
+              color: "white",
+            },
+            "& .MuiButtonBase-root.MuiIconButton-root": {
+              color: "white",
+            },
+            "& .MuiDataGrid-menuIcon": {
+              display: "none",
+            },
+            "& .MuiDataGrid-row:nth-of-type(even)": {
+              backgroundColor: "#F9FAFB",
+              "&:hover": {
+                backgroundColor: "#dfd",
+              },
+            },
+          }}
           slots={{
             loadingOverlay: LinearProgress,
           }}

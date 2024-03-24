@@ -4,7 +4,7 @@ import classes from "@/styles/Layout.module.scss";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
 import Footer from "../Footer";
-import { useMediaQuery } from "@mui/material";
+import { Box, useMediaQuery } from "@mui/material";
 
 const Layout = (props: any) => {
   const { data: session } = useSession();
@@ -24,6 +24,7 @@ const Layout = (props: any) => {
       >
         {session && <SideMenu />}
         {props.children}
+        <Box sx={{ height: "70px" }} />
         {tabletCheck && <Footer />}
       </main>
     </>
