@@ -11,7 +11,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Drawer from "@mui/material/Drawer";
 import classes from "@/styles/SideMenu.module.scss";
-import { Box, useMediaQuery } from "@mui/material";
+import { Box, Tooltip, useMediaQuery } from "@mui/material";
 import EqualizerIcon from "@mui/icons-material/Equalizer";
 import PersonIcon from "@mui/icons-material/Person";
 import SettingsIcon from "@mui/icons-material/Settings";
@@ -119,15 +119,17 @@ const SideMenu = () => {
                   px: 2.5,
                 }}
               >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : "auto",
-                    justifyContent: "center",
-                  }}
-                >
-                  {menuListIcons[index]}
-                </ListItemIcon>
+                <Tooltip title={menuListTranslations[index]}>
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      mr: open ? 3 : "auto",
+                      justifyContent: "center",
+                    }}
+                  >
+                    {menuListIcons[index]}
+                  </ListItemIcon>
+                </Tooltip>
                 <ListItemText
                   primary={text}
                   sx={{
