@@ -2,6 +2,7 @@ import React from "react";
 import Login from "@/components/Login";
 import { useSession } from "next-auth/react";
 import Box from "@mui/material/Box";
+import Dashboard from "@/pages/dashboard";
 
 const SignIn = () => {
   const { data: session } = useSession();
@@ -15,7 +16,7 @@ const SignIn = () => {
         alignItems: "center",
       }}
     >
-      <h2>{session ? "Thank you for logging in" : "Please log in"}</h2>
+      <h2>{session ? <Dashboard /> : "Welcome page when unlogged"}</h2>
       <Login />
     </Box>
   );

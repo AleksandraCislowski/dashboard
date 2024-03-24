@@ -1,7 +1,7 @@
 import React from "react";
 
 const Error = () => {
-  return <h1>Authentication Error</h1>;
+  return <h2>Authentication Error</h2>;
 };
 
 export default Error;
