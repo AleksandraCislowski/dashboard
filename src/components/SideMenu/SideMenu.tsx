@@ -99,11 +99,7 @@ const SideMenu = () => {
     >
       <Box className={classes.drawerHeader}>
         <IconButton onClick={handleDrawerToggle}>
-          {theme.direction === "rtl" ? (
-            <ChevronLeftIcon />
-          ) : (
-            <ChevronRightIcon />
-          )}
+          {open ? <ChevronLeftIcon /> : <ChevronRightIcon />}
         </IconButton>
       </Box>
       <Divider />
