@@ -18,11 +18,8 @@ const Layout = (props: any) => {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <main
-        className={classes.layout}
-        style={{ padding: session ? "0 24px 0 80px" : 0 }}
-      >
-        {session && <SideMenu />}
+      <main className={classes.layout} style={{ padding: "0 24px 0 80px" }}>
+        <SideMenu />
         {props.children}
         <Box sx={{ height: "70px" }} />
         {tabletCheck && <Footer />}

@@ -44,7 +44,7 @@ const Header = (props: HeaderProps) => {
       <Container maxWidth='xl'>
         <Toolbar disableGutters>
           <Link
-            href='/home'
+            href='/dashboard'
             style={{
               color: "inherit",
               textDecoration: "none",
@@ -69,7 +69,7 @@ const Header = (props: HeaderProps) => {
             </Typography>
           </Link>
           <Link
-            href='/home'
+            href='/dashboard'
             style={{
               color: "inherit",
               textDecoration: "none",
@@ -136,7 +136,9 @@ const Header = (props: HeaderProps) => {
                     textDecoration: "none",
                   }}
                 >
-                  <Typography textAlign='center'>Profile</Typography>
+                  {session && (
+                    <Typography textAlign='center'>Profile</Typography>
+                  )}
                 </Link>
               </MenuItem>
               <MenuItem onClick={() => (session ? signOut() : signIn())}>

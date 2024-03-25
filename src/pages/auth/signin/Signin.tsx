@@ -1,8 +1,7 @@
 import React from "react";
 import { useSession } from "next-auth/react";
 import Box from "@mui/material/Box";
-import Dashboard from "@/pages/dashboard";
-import Welcome from "@/components/Welcome";
+import Profile from "@/pages/dashboard/profile/Profile";
 
 const SignIn = () => {
   const { data: session } = useSession();
@@ -16,7 +15,7 @@ const SignIn = () => {
         alignItems: "center",
       }}
     >
-      <h2>{session ? <Dashboard /> : <Welcome />}</h2>
+      {session && <Profile />}
     </Box>
   );
 };

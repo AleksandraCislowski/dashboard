@@ -22,9 +22,6 @@ const Footer = () => {
       >
         <ul role='menu'>
           <li>
-            <FooterLink href={"/home"}>Home</FooterLink>
-          </li>
-          <li>
             <FooterLink href={"/dashboard"}>Dashboard</FooterLink>
           </li>
           <li>
