@@ -8,7 +8,7 @@ const darkTheme: ThemeOptions = {
       light: "#94229a",
     },
     secondary: {
-      main: "#a82ad2",
+      main: "#9217ba",
       light: "#76308e",
     },
     divider: "#ffffff2d",

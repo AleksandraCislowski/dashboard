@@ -43,50 +43,65 @@ const Header = (props: HeaderProps) => {
     <AppBar position='sticky' sx={{ marginBottom: "40px" }}>
       <Container maxWidth='xl'>
         <Toolbar disableGutters>
-          <QueryStatsIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
-          <Typography
-            variant='h6'
-            noWrap
-            component='a'
+          <Link
             href='/home'
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
+            style={{
               color: "inherit",
               textDecoration: "none",
+              display: "flex",
             }}
           >
-            DataSoft
-          </Typography>
-          <QueryStatsIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-          <Typography
-            variant='h5'
-            noWrap
-            component='a'
+            <QueryStatsIcon
+              sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
+            />
+            <Typography
+              variant='h6'
+              noWrap
+              sx={{
+                mr: 2,
+                display: { xs: "none", md: "flex" },
+                fontFamily: "monospace",
+                fontWeight: 700,
+                letterSpacing: ".3rem",
+              }}
+            >
+              DataSoft
+            </Typography>
+          </Link>
+          <Link
             href='/home'
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
+            style={{
               color: "inherit",
               textDecoration: "none",
+              display: "flex",
             }}
           >
-            DataSoft
-          </Typography>
-          {tabletCheck && (
-            <Box sx={{ paddingRight: 5, marginLeft: "auto" }}>
+            <QueryStatsIcon
+              sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
+            />
+            <Typography
+              variant='h5'
+              noWrap
+              sx={{
+                mr: 2,
+                display: { xs: "flex", md: "none" },
+                flexGrow: 1,
+                fontFamily: "monospace",
+                fontWeight: 700,
+                letterSpacing: ".3rem",
+              }}
+            >
+              DataSoft
+            </Typography>
+          </Link>
+          <Box sx={{ paddingRight: 5, marginLeft: "auto" }}>
+            {tabletCheck && (
               <Typography>
                 {session && `Signed in as ${session?.user?.name}`}
               </Typography>
-            </Box>
-          )}
+            )}
+          </Box>
+
           <ThemeToggleButton ColorModeContext={ColorModeContext} />
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title='Open profile settings'>
