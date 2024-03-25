@@ -42,6 +42,7 @@ $breakPoint: 900px;
   padding: 0.5rem;
   border-radius: 8px;
   width: 100%;
+  margin: 0.2rem;
 
   @media screen and (min-width: $breakPoint) {
     padding: 0.5rem;
@@ -49,7 +50,7 @@ $breakPoint: 900px;
 }
 
 .cardTitle p {
-  font-size: 1.8rem;
+  font-size: 1.2rem;
 
   @media screen and (max-width: $breakPoint) {
     font-size: 0.8rem;
