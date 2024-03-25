@@ -5,13 +5,16 @@ const lightTheme: ThemeOptions = {
     mode: "light",
     primary: {
       main: "#00377e",
+      light: "#3068b0",
     },
     secondary: {
-      main: "#0051ff",
+      main: "#2fadf1",
+      light: "#a1ddfbff",
     },
     background: {
       default: "#dddddd",
     },
+    divider: "#00000050",
   },
 };
 

@@ -16,7 +16,10 @@ const Footer = () => {
 
   return (
     <footer className={classes.footer}>
-      <Paper sx={{ width: "100%" }} color={"#262626"}>
+      <Paper
+        sx={{ width: "100%", backgroundColor: "default" }}
+        color={"#262626"}
+      >
         <ul role='menu'>
           <li>
             <FooterLink href={"/home"}>Home</FooterLink>
