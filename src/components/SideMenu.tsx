@@ -16,9 +16,10 @@ import EqualizerIcon from "@mui/icons-material/Equalizer";
 import PersonIcon from "@mui/icons-material/Person";
 import SettingsIcon from "@mui/icons-material/Settings";
 import LogoutIcon from "@mui/icons-material/Logout";
+import LoginIcon from "@mui/icons-material/Login";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import Link from "next/link";
-import { signOut } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 const drawerWidth = 240;
 
@@ -43,24 +44,18 @@ const closedMixin = (theme: Theme): CSSObject => ({
   },
 });
 
-const menuRouteList = ["", "analytics", "profile", "settings", ""];
-const menuListTranslations = [
-  "Dashboard",
-  "Analytics",
-  "Profile",
-  "Settings",
-  "Sign Out",
-];
+const menuRouteList = ["", "analytics", "profile", "settings"];
+const menuListTranslations = ["Dashboard", "Analytics", "Profile", "Settings"];
 const menuListIcons = [
   <DashboardIcon />,
   <EqualizerIcon />,
   <PersonIcon />,
   <SettingsIcon />,
-  <LogoutIcon />,
 ];
 
 const SideMenu = () => {
   const theme = useTheme();
+  const { data: session } = useSession();
   const [open, setOpen] = React.useState(false);
   const mobileCheck = useMediaQuery("(min-width: 600px)");
 
@@ -68,8 +63,7 @@ const SideMenu = () => {
     setOpen(!open);
   };
 
-  const handleListItemButtonClick = (text: string) => {
-    text === "Sign Out" ? signOut() : null;
+  const handleListItemButtonClick = () => {
     setOpen(false);
   };
 
@@ -112,7 +106,7 @@ const SideMenu = () => {
               href={`/dashboard/${menuRouteList[index]}`}
             >
               <ListItemButton
-                onClick={() => handleListItemButtonClick(text)}
+                onClick={handleListItemButtonClick}
                 sx={{
                   minHeight: 48,
                   justifyContent: open ? "initial" : "center",
@@ -141,6 +135,47 @@ const SideMenu = () => {
             </Link>
           </ListItem>
         ))}
+        <ListItem disablePadding sx={{ display: "block" }}>
+          <ListItemButton
+            onClick={handleListItemButtonClick}
+            sx={{
+              minHeight: 48,
+              justifyContent: open ? "initial" : "center",
+              px: 2.5,
+            }}
+          >
+            <Tooltip title={session ? "Logout" : "Login"}>
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: open ? 3 : "auto",
+                  justifyContent: "center",
+                }}
+              >
+                {session ? (
+                  <LogoutIcon onClick={() => signOut()} />
+                ) : (
+                  <LoginIcon onClick={() => signIn()} />
+                )}
+              </ListItemIcon>
+            </Tooltip>
+            <ListItemText
+              onClick={() => {
+                if (session) {
+                  return signOut();
+                } else {
+                  return signIn();
+                }
+              }}
+              sx={{
+                color: theme.palette.text.primary,
+                opacity: open ? 1 : 0,
+              }}
+            >
+              {session ? "Logout" : "Login"}
+            </ListItemText>
+          </ListItemButton>
+        </ListItem>
       </List>
     </Drawer>
   );
