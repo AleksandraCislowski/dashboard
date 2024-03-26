@@ -1,7 +1,7 @@
 import React from "react";
 import { useSession } from "next-auth/react";
 import Box from "@mui/material/Box";
-import Profile from "@/pages/dashboard/profile/Profile";
+import Profile from "@/pages/dashboard/profile/index";
 
 const SignIn = () => {
   const { data: session } = useSession();
