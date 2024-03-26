@@ -9,7 +9,7 @@ const Analytics = () => {
   const { data } = useDemoData({
     dataSet: "Commodity",
     rowLength: 500,
-    maxColumns: 15,
+    maxColumns: 12,
   });
 
   return (
@@ -23,7 +23,7 @@ const Analytics = () => {
       <div style={{ height: "900px", width: "100%" }}>
         <DataGrid
           sx={{
-            maxWidth: 1400,
+            maxWidth: 1500,
             width: "100%",
             border: `1px solid ${theme.palette.divider}`,
             "& .MuiDataGrid-row:hover": {
