@@ -11,7 +11,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import Login from "@/components/Login";
+import Login from "@/components/Login/Login";
 
 const Profile = () => {
   const { data: session } = useSession();

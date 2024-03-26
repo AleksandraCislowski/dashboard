@@ -2,7 +2,7 @@ import React from "react";
 import SideMenu from "../SideMenu/SideMenu";
 import classes from "@/styles/Layout.module.scss";
 import Head from "next/head";
-import Footer from "../Footer";
+import Footer from "../Footer/Footer";
 import { Box, useMediaQuery } from "@mui/material";
 
 const Layout = (props: any) => {

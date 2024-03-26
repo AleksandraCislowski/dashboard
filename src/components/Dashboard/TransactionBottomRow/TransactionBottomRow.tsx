@@ -1,6 +1,6 @@
 import Grid from "@mui/material/Grid";
 import React from "react";
-import DataChart from "@/components/DataChart";
+import DataChart from "@/components/DataChart/DataChart";
 import Paper from "@mui/material/Paper";
 import {
   doughnutChartData1,
