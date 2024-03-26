@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { Chart, registerables } from "chart.js";
 import { darkOptions, lightOptions } from "@/components/DataChart/Themes";
-import { months } from "@/helper/Util";
+import { months } from "@/helpers/Util";
 import { ChartConfiguration } from "chart.js";
 import { useTheme } from "@emotion/react";
 

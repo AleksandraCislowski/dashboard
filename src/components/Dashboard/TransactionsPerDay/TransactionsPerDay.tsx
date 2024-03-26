@@ -4,7 +4,7 @@ import { Card, Grid, Paper } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import { useTheme } from "@mui/system";
 import DataChart from "@/components/DataChart/DataChart";
-import { lineChartData } from "@/components/mockData";
+import { lineChartData } from "@/helpers/mockData";
 
 export type TransactionCardType = {
   title: string;

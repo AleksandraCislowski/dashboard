@@ -7,7 +7,7 @@ import {
   doughnutChartData2,
   doughnutChartData3,
   doughnutChartData4,
-} from "@/components/mockData";
+} from "@/helpers/mockData";
 import classes from "@/styles/TransactionBottomRow.module.scss";
 
 const TransactionBottomRow = () => {
