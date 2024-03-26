@@ -12,7 +12,7 @@ export type TransactionCardType = {
   changeValue: string;
 };
 
-const TransactionsPerDay = () => {
+const TransactionsPerMonth = () => {
   const theme = useTheme();
 
   return (
@@ -56,4 +56,4 @@ const TransactionsPerDay = () => {
   );
 };
 
-export default TransactionsPerDay;
+export default TransactionsPerMonth;
