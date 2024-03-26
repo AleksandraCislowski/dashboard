@@ -1,4 +1,4 @@
-import Dashboard from "./dashboard/Dashboard";
+import Dashboard from "../pages/dashboard/index";
 import classes from "@/styles/Home.module.scss";
 import React from "react";
 

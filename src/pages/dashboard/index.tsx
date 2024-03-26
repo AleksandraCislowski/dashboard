@@ -1,8 +1,8 @@
 import { Box, Grid } from "@mui/material";
 import React from "react";
-import DataRibbon from "@/components/Dashboard/DataRibbon/DataRibbon";
-import TransactionsPerDay from "@/components/Dashboard/TransactionsPerDay/TransactionsPerDay";
-import TransactionBottomRow from "@/components/Dashboard/TransactionBottomRow/TransactionBottomRow";
+import DataRibbon from "@/components/Dashboard/DataRibbon";
+import TransactionsPerDay from "@/components/Dashboard/TransactionsPerDay";
+import TransactionBottomRow from "@/components/Dashboard/TransactionBottomRow";
 
 const Dashboard = () => {
   return (

@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid } from "@mui/material";
-import DataCard from "@/components/Dashboard/DataCard/DataCard";
+import DataCard from "@/components/Dashboard/DataCard";
 import classes from "@/styles/DataRibbon.module.scss";
 
 const DataRibbon = () => {
