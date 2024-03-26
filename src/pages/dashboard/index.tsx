@@ -17,11 +17,11 @@ const Dashboard = () => {
         </Grid>
         <TransactionBottomRow />
       </Box>
-      <Box sx={{ display: "flex" }}>
+      <Box>
         <Radar />
         <PolarArea />
-        <BarData />
       </Box>
+      <BarData />
     </>
   );
 };

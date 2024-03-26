@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "@/styles/TransactionsPerDay.module.scss";
+import classes from "@/styles/TransactionsPerMonth.module.scss";
 import { Card, Grid, Paper } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import { useTheme } from "@mui/system";
