@@ -1,13 +1,11 @@
 import React from "react";
 import SideMenu from "../SideMenu/SideMenu";
 import classes from "@/styles/Layout.module.scss";
-import { useSession } from "next-auth/react";
 import Head from "next/head";
 import Footer from "../Footer";
 import { Box, useMediaQuery } from "@mui/material";
 
 const Layout = (props: any) => {
-  const { data: session } = useSession();
   const tabletCheck = useMediaQuery("(min-width: 768px)");
 
   return (

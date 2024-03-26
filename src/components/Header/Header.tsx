@@ -11,7 +11,7 @@ import Container from "@mui/material/Container";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import QueryStatsIcon from "@mui/icons-material/QueryStats";
-import ThemeToggleButton from "../ThemeToggleButton";
+import ThemeToggleButton from "../ThemeToggleButton/ThemeToggleButton";
 import { useTheme } from "@emotion/react";
 import Link from "next/link";
 
