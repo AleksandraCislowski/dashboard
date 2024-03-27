@@ -51,3 +51,49 @@ export const darkOptions: ChartConfiguration["options"] = {
     },
   },
 };
+
+export const lightOptionsDoughnut: ChartConfiguration["options"] = {
+  scales: {
+    x: {
+      ticks: {
+        display: false,
+      },
+    },
+
+    y: {
+      ticks: {
+        display: false,
+      },
+    },
+  },
+  plugins: {
+    legend: {
+      labels: {
+        color: "#4f4f4f",
+      },
+    },
+  },
+};
+
+export const darkOptionsDoughnut: ChartConfiguration["options"] = {
+  scales: {
+    x: {
+      ticks: {
+        display: false,
+      },
+    },
+
+    y: {
+      ticks: {
+        display: false,
+      },
+    },
+  },
+  plugins: {
+    legend: {
+      labels: {
+        color: "#ffffff",
+      },
+    },
+  },
+};
