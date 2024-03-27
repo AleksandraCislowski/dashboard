@@ -17,13 +17,37 @@ const DataChart = (props: ChartConfiguration) => {
 
   const labels = months({ count: 7 });
   const assignedOptions = () => {
-    if (theme.palette.mode === "dark" && props.type === "doughnut")
+    if (
+      theme.palette.mode === "dark" &&
+      (props.type === "doughnut" ||
+        props.type === "radar" ||
+        props.type === "polarArea")
+    )
       return { ...darkOptionsDoughnut };
-    if (theme.palette.mode === "light" && props.type === "doughnut")
+    if (
+      theme.palette.mode === "light" &&
+      (props.type === "doughnut" ||
+        props.type === "radar" ||
+        props.type === "polarArea")
+    )
       return { ...lightOptionsDoughnut };
-    if (theme.palette.mode === "dark" && props.type !== "doughnut")
+    if (
+      theme.palette.mode === "dark" &&
+      !(
+        props.type === "doughnut" ||
+        props.type === "radar" ||
+        props.type === "polarArea"
+      )
+    )
       return { ...darkOptions };
-    if (theme.palette.mode === "light" && props.type !== "doughnut")
+    if (
+      theme.palette.mode === "light" &&
+      !(
+        props.type === "doughnut" ||
+        props.type === "radar" ||
+        props.type === "polarArea"
+      )
+    )
       return { ...lightOptions };
   };
   useEffect(() => {
