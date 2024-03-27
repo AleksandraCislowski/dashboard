@@ -1,9 +1,13 @@
 .wrapper {
   flex: 1;
-  height: 600px;
+  max-height: 700px;
   padding: 10px;
   position: relative;
   margin: auto;
+
+  p {
+    text-align: center;
+  }
 }
 
 .double_wrapper {

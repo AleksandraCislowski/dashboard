@@ -19,7 +19,7 @@ const Layout = (props: any) => {
       <main className={classes.layout} style={{ padding: "0 24px 0 80px" }}>
         <SideMenu />
         {props.children}
-        <Box sx={{ height: "70px" }} />
+        <Box sx={{ height: "140px" }} />
         {tabletCheck && <Footer />}
       </main>
     </>

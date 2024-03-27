@@ -14,6 +14,7 @@ const PolarArea = () => {
       className={classes.wrapper}
       sx={{ width: { xs: "100%", md: "49%" } }}
     >
+      <p>Soft skills</p>
       <DataChart type={"polarArea"} data={polarData} options={options} />
     </Paper>
   );

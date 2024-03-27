@@ -12,6 +12,7 @@ const BarData = () => {
 
   return (
     <Paper className={classes.wrapper}>
+      <p>Statistics</p>
       <DataChart type={"bar"} data={barData} options={options} />
     </Paper>
   );
