@@ -105,18 +105,18 @@ export const doughnutChartData4 = {
 
 export const radarData = {
   labels: [
-    "Eating",
-    "Drinking",
-    "Sleeping",
-    "Designing",
+    "Focusing",
+    "Meetings",
+    "Raports",
+    "Assignments",
     "Coding",
-    "Cycling",
-    "Running",
+    "Debbuging",
+    "Design",
   ],
   datasets: [
     {
-      label: "My First Dataset",
-      data: [65, 59, 90, 81, 56, 55, 40],
+      label: "Programmers",
+      data: [65, 59, 90, 11, 156, 155, 40],
       fill: true,
       backgroundColor: "rgba(255, 99, 132, 0.2)",
       borderColor: "rgb(255, 99, 132)",
@@ -126,8 +126,8 @@ export const radarData = {
       pointHoverBorderColor: "rgb(255, 99, 132)",
     },
     {
-      label: "My Second Dataset",
-      data: [28, 48, 40, 19, 96, 27, 100],
+      label: "Sales",
+      data: [128, 48, 40, 19, 96, 27, 100],
       fill: true,
       backgroundColor: "rgba(54, 162, 235, 0.2)",
       borderColor: "rgb(54, 162, 235)",
@@ -135,6 +135,17 @@ export const radarData = {
       pointBorderColor: "#fff",
       pointHoverBackgroundColor: "#fff",
       pointHoverBorderColor: "rgb(54, 162, 235)",
+    },
+    {
+      label: "Marketing",
+      data: [15, 139, 8, 70, 26, 75, 60],
+      fill: true,
+      backgroundColor: "rgba(102, 255, 99, 0.2)",
+      borderColor: "rgb(99, 255, 102)",
+      pointBackgroundColor: "rgb(109, 255, 99)",
+      pointBorderColor: "#fff",
+      pointHoverBackgroundColor: "#fff",
+      pointHoverBorderColor: "rgb(102, 255, 99)",
     },
   ],
 };
