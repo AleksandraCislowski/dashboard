@@ -6,6 +6,7 @@ import TransactionBottomRow from "@/components/Dashboard/TransactionBottomRow";
 import Radar from "@/components/Dashboard/Radar";
 import PolarArea from "@/components/Dashboard/PolarArea";
 import BarData from "@/components/Dashboard/BarData";
+import classes from "@/styles/UnitData.module.scss";
 
 const Dashboard = () => {
   return (
@@ -17,7 +18,7 @@ const Dashboard = () => {
         </Grid>
         <TransactionBottomRow />
       </Box>
-      <Box>
+      <Box className={classes.double_wrapper}>
         <Radar />
         <PolarArea />
       </Box>
