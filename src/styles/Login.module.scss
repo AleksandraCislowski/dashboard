@@ -1,0 +1,21 @@
+.videoContainer {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; // Aspect ratio for 16:9 video
+  overflow: hidden;
+}
+.video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+}
+
+.playButton {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
