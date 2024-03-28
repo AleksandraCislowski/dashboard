@@ -8,9 +8,12 @@ import {
   Checkbox,
   FormControlLabel,
   Grid,
+  IconButton,
+  InputAdornment,
   TextField,
   Typography,
 } from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 import Login from "@/components/Login";
 
 const Profile = () => {
@@ -24,6 +27,11 @@ const Profile = () => {
     confirmPassword: "",
     receiveEmails: false,
   });
+
+  const [passwordMatch, setPasswordMatch] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   useEffect(() => {
     if (session) {
@@ -43,27 +51,57 @@ const Profile = () => {
     }
   }, [session]);
 
-  const handleFormChange = (event: any) => {
+  const handleFormChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, checked } = event.target;
     setFormData((prevState) => ({
       ...prevState,
       [name]: name === "receiveEmails" ? checked : value,
     }));
+
+    if (name === "confirmPassword") {
+      setPasswordMatch(value === formData.password);
+    }
   };
 
-  const handleSubmit = (event: any) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(formData); // Submit form data to server here
+    setFormSubmitted(true);
+    if (passwordMatch) {
+      setFormData((prevState) => ({
+        ...prevState,
+        password: "",
+        confirmPassword: "",
+        receiveEmails: false,
+      }));
+      setFormSubmitted(false);
+      setPasswordMatch(false);
+    }
   };
+
+  const toggleShowPassword = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
+
+  const toggleShowConfirmPassword = () => {
+    setShowConfirmPassword(
+      (prevShowConfirmPassword) => !prevShowConfirmPassword
+    );
+  };
+
   return (
     <>
       {session ? (
         <>
-          <h2>Profile</h2>
+          <h2>Your Profile</h2>
           <Box>
-            <Typography variant={"h4"} sx={{ paddingBottom: 4 }}>
-              Hey {session ? session?.user?.name : "User"}, welcome to your
-              profile 👋
+            <Typography variant={"h6"} sx={{ paddingBottom: 4 }}>
+              Hello {session ? session?.user?.name : "User"}, thanks for loggin
+              in! 👋
+            </Typography>
+            <Typography variant='body1' sx={{ paddingBottom: 4 }}>
+              This is just an example form, you can pretend that you are
+              changing your password here. It's not connected to anywhere, so
+              those changes won't apply, don't worry!
             </Typography>
             <Paper sx={{ padding: "1rem 2rem" }}>
               <Grid container justifyContent='center'>
@@ -122,22 +160,60 @@ const Profile = () => {
                         <TextField
                           required
                           fullWidth
-                          type='password'
+                          type={showPassword ? "text" : "password"}
                           label='Password'
                           name='password'
                           value={formData.password}
                           onChange={handleFormChange}
+                          InputProps={{
+                            endAdornment: (
+                              <InputAdornment position='end'>
+                                <IconButton
+                                  onClick={toggleShowPassword}
+                                  edge='end'
+                                >
+                                  {showPassword ? (
+                                    <Visibility />
+                                  ) : (
+                                    <VisibilityOff />
+                                  )}
+                                </IconButton>
+                              </InputAdornment>
+                            ),
+                          }}
                         />
                       </Grid>
                       <Grid item xs={12}>
                         <TextField
                           required
                           fullWidth
-                          type='password'
+                          type={showConfirmPassword ? "text" : "password"}
                           label='Confirm Password'
                           name='confirmPassword'
                           value={formData.confirmPassword}
                           onChange={handleFormChange}
+                          error={!passwordMatch && formSubmitted}
+                          helperText={
+                            !passwordMatch &&
+                            formSubmitted &&
+                            "Passwords do not match"
+                          }
+                          InputProps={{
+                            endAdornment: (
+                              <InputAdornment position='end'>
+                                <IconButton
+                                  onClick={toggleShowConfirmPassword}
+                                  edge='end'
+                                >
+                                  {showConfirmPassword ? (
+                                    <Visibility />
+                                  ) : (
+                                    <VisibilityOff />
+                                  )}
+                                </IconButton>
+                              </InputAdornment>
+                            ),
+                          }}
                         />
                       </Grid>
                       <Grid item xs={12}>
@@ -158,6 +234,7 @@ const Profile = () => {
                           type='submit'
                           variant='contained'
                           color='primary'
+                          disabled={!passwordMatch}
                         >
                           Save Changes
                         </Button>
@@ -166,6 +243,15 @@ const Profile = () => {
                   </form>
                 </Grid>
               </Grid>
+              {passwordMatch && (
+                <Typography
+                  variant='body1'
+                  sx={{ padding: 4 }}
+                  textAlign='center'
+                >
+                  {`If this works, your changed password would be: ${formData.password}`}
+                </Typography>
+              )}
             </Paper>
           </Box>
         </>
