@@ -79,13 +79,13 @@ const Login: React.FC = () => {
         Check out how this looks without logging in by yourself!
       </Typography>
       <Box
-        className='videoContainer'
+        className={classes.videoContainer}
         position='relative'
         width='100%'
         paddingBottom='56.25%'
         overflow='hidden'
       >
-        <video ref={videoRef} className='video' controls>
+        <video ref={videoRef} className={classes.video} controls>
           <source src='/loginVideo.mp4' type='video/mp4' />
         </video>
         <Box className={classes.playButton} onClick={togglePlayPause}>

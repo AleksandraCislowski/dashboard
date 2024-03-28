@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import Paper from "@mui/material/Paper";
+import { signOut } from "next-auth/react";
 import {
   Avatar,
   Box,
@@ -229,7 +230,12 @@ const Profile = () => {
                           label='Receive sales analytics emails'
                         />
                       </Grid>
-                      <Grid item xs={12}>
+                      <Grid
+                        container
+                        justifyContent='flex-start'
+                        alignItems='center'
+                        sx={{ gap: 2, marginLeft: 3, marginTop: 2 }} // Add marginTop for spacing
+                      >
                         <Button
                           type='submit'
                           variant='contained'
@@ -237,6 +243,13 @@ const Profile = () => {
                           disabled={!passwordMatch}
                         >
                           Save Changes
+                        </Button>
+                        <Button
+                          variant='contained'
+                          color='error'
+                          onClick={() => signOut()}
+                        >
+                          Sign Out
                         </Button>
                       </Grid>
                     </Grid>
