@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import Paper from "@mui/material/Paper";
-import { signOut } from "next-auth/react";
 import {
   Avatar,
   Box,

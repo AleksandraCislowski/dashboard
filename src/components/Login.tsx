@@ -1,6 +1,4 @@
 import React, { useRef, useState } from "react";
-import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
-import PauseCircleOutlineIcon from "@mui/icons-material/PauseCircleOutline";
 import { Box, Button, Typography } from "@mui/material";
 import { useSession, signIn, signOut } from "next-auth/react";
 import classes from "@/styles/Login.module.scss";
@@ -9,18 +7,6 @@ const Login: React.FC = () => {
   const { data: session } = useSession();
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
-
-  const togglePlayPause = () => {
-    if (videoRef.current) {
-      if (videoRef.current.paused) {
-        videoRef.current.play();
-        setIsPlaying(true);
-      } else {
-        videoRef.current.pause();
-        setIsPlaying(false);
-      }
-    }
-  };
 
   if (session) {
     return (
@@ -71,30 +57,14 @@ const Login: React.FC = () => {
       <Typography variant='h4' gutterBottom mt={4}>
         Don't want to log in and share your data?
       </Typography>
-      <Typography variant='body1' gutterBottom>
+      <Typography variant='body1' gutterBottom mb={4}>
         No problem! Check out this video that will show you how it looks like
         after logging in!
       </Typography>
-      <Typography variant='body1' paragraph mb={4}>
-        Check out how this looks without logging in by yourself!
-      </Typography>
-      <Box
-        className={classes.videoContainer}
-        position='relative'
-        width='100%'
-        paddingBottom='56.25%'
-        overflow='hidden'
-      >
+      <Box className={classes.videoContainer}>
         <video ref={videoRef} className={classes.video} controls>
           <source src='/loginVideo.mp4' type='video/mp4' />
         </video>
-        <Box className={classes.playButton} onClick={togglePlayPause}>
-          {isPlaying ? (
-            <PauseCircleOutlineIcon fontSize='large' />
-          ) : (
-            <PlayCircleOutlineIcon fontSize='large' />
-          )}
-        </Box>
       </Box>
     </Box>
   );

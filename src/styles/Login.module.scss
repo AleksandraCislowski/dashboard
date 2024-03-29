@@ -14,20 +14,6 @@
     object-fit: cover;
   }
 
-  .playButton {
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    cursor: pointer;
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-
-  &:hover .playButton {
-    opacity: 1;
-  }
-
   @media (max-width: 768px) {
     height: 500px;
   }
