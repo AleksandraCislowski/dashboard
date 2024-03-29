@@ -132,6 +132,7 @@ const Header = (props: HeaderProps) => {
                 <Link
                   href={"/dashboard/profile"}
                   style={{
+                    // @ts-ignore
                     color: theme.palette.text.primary,
                     textDecoration: "none",
                   }}
