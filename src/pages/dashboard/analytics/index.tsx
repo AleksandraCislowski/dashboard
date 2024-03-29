@@ -71,27 +71,34 @@ const Analytics = () => {
           sx={{
             maxWidth: 1500,
             width: "100%",
+            // @ts-ignore
             border: `1px solid ${theme.palette.divider}`,
             "& .MuiDataGrid-row:hover": {
+              // @ts-ignore
               backgroundColor: theme.palette.secondary.light,
             },
             "& .MuiDataGrid-columnHeader": {
+              // @ts-ignore
               backgroundColor: theme.palette.primary.main,
               position: "sticky",
               color: "white",
             },
             "& .MuiDataGrid-row": {
               backgroundColor: "default",
+              // @ts-ignore
               borderBottom: `1px solid ${theme.palette.divider}`,
               "&:hover": {
+                // @ts-ignore
                 backgroundColor: theme.palette.secondary,
               },
             },
             "& .MuiSvgIcon-root": {
+              // @ts-ignore
               fill: theme.palette.secondary.main,
             },
           }}
           slots={{
+            // @ts-ignore
             loadingOverlay: LinearProgress,
           }}
           loading={!data}
