@@ -234,7 +234,7 @@ const Profile = () => {
                         container
                         justifyContent='flex-start'
                         alignItems='center'
-                        sx={{ gap: 2, marginLeft: 3, marginTop: 2 }} // Add marginTop for spacing
+                        sx={{ gap: 2, marginLeft: 3, marginTop: 2 }}
                       >
                         <Button
                           type='submit'
@@ -243,13 +243,6 @@ const Profile = () => {
                           disabled={!passwordMatch}
                         >
                           Save Changes
-                        </Button>
-                        <Button
-                          variant='contained'
-                          color='error'
-                          onClick={() => signOut()}
-                        >
-                          Sign Out
                         </Button>
                       </Grid>
                     </Grid>

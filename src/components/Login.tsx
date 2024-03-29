@@ -34,7 +34,7 @@ const Login: React.FC = () => {
 
   return (
     <Box py={4}>
-      <Typography variant='h3' gutterBottom>
+      <Typography variant='h4' gutterBottom>
         Wanna see more features?
       </Typography>
       <Typography variant='body1' paragraph>
@@ -68,14 +68,14 @@ const Login: React.FC = () => {
           Sign In
         </Button>
       </Box>
-      <Typography variant='h3' gutterBottom mt={4}>
+      <Typography variant='h4' gutterBottom mt={4}>
         Don't want to log in and share your data?
       </Typography>
-      <Typography variant='h5' gutterBottom>
+      <Typography variant='body1' gutterBottom>
         No problem! Check out this video that will show you how it looks like
         after logging in!
       </Typography>
-      <Typography variant='h5' paragraph>
+      <Typography variant='body1' paragraph mb={4}>
         Check out how this looks without logging in by yourself!
       </Typography>
       <Box
