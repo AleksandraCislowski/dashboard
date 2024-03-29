@@ -1,15 +1,5 @@
 import React from "react";
-import {
-  Box,
-  Button,
-  FormControl,
-  FormControlLabel,
-  FormGroup,
-  Grid,
-  Paper,
-  Switch,
-  Typography,
-} from "@mui/material";
+import { Box, Button, FormGroup, Grid, Paper, Typography } from "@mui/material";
 import ToggleSwitch from "@/components/settings/ToggleSwitch";
 import TextBox from "@/components/settings/TextBox";
 
@@ -24,53 +14,11 @@ const Settings = () => {
   const [showProfile, setShowProfile] = React.useState(false);
   const [showRead, setShowRead] = React.useState(false);
 
-  const handleShowRevenueChange = (
-    event: React.ChangeEvent<HTMLInputElement>
+  const toggler = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    callback: Function
   ) => {
-    setShowRevenue(event.target.checked);
-  };
-
-  const handleShowProfitChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setShowProfit(event.target.checked);
-  };
-
-  const handleShowOrdersChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setShowOrders(event.target.checked);
-  };
-
-  const handleShowCustomersChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setShowCustomers(event.target.checked);
-  };
-  const handleShowBillingChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setShowBilling(event.target.checked);
-  };
-
-  const handleShowAnnouncementChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setShowAnnouncements(event.target.checked);
-  };
-
-  const handleShowMeetupsChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setShowMeetups(event.target.checked);
-  };
-  const handleShowProfileChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setShowProfile(event.target.checked);
-  };
-  const handleShowReadChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setShowRead(event.target.checked);
+    callback(event.target.checked);
   };
 
   const handleSubmit1 = (event: any) => {
@@ -96,22 +44,22 @@ const Settings = () => {
               <FormGroup>
                 <ToggleSwitch
                   checked={showRevenue}
-                  onChange={handleShowRevenueChange}
+                  onChange={(event) => toggler(event, setShowRevenue)}
                   label='Revenue'
                 />
                 <ToggleSwitch
                   checked={showProfit}
-                  onChange={handleShowProfitChange}
+                  onChange={(event) => toggler(event, setShowProfit)}
                   label='Profit'
                 />
                 <ToggleSwitch
                   checked={showOrders}
-                  onChange={handleShowOrdersChange}
+                  onChange={(event) => toggler(event, setShowOrders)}
                   label='Orders'
                 />
                 <ToggleSwitch
                   checked={showCustomers}
-                  onChange={handleShowCustomersChange}
+                  onChange={(event) => toggler(event, setShowCustomers)}
                   label='Customers'
                 />
               </FormGroup>
@@ -155,7 +103,7 @@ const Settings = () => {
             />
             <ToggleSwitch
               checked={showBilling}
-              onChange={handleShowBillingChange}
+              onChange={(event) => toggler(event, setShowBilling)}
               label=''
             />
           </Paper>
@@ -173,7 +121,7 @@ const Settings = () => {
             />
             <ToggleSwitch
               checked={showAnnouncements}
-              onChange={handleShowAnnouncementChange}
+              onChange={(event) => toggler(event, setShowAnnouncements)}
               label=''
             />
           </Paper>
@@ -191,7 +139,7 @@ const Settings = () => {
             />
             <ToggleSwitch
               checked={showMeetups}
-              onChange={handleShowMeetupsChange}
+              onChange={(event) => toggler(event, setShowMeetups)}
               label=''
             />
           </Paper>
@@ -209,7 +157,7 @@ const Settings = () => {
             />
             <ToggleSwitch
               checked={showProfile}
-              onChange={handleShowProfileChange}
+              onChange={(event) => toggler(event, setShowProfile)}
               label=''
             />
           </Paper>
@@ -227,7 +175,7 @@ const Settings = () => {
             />
             <ToggleSwitch
               checked={showRead}
-              onChange={handleShowReadChange}
+              onChange={(event) => toggler(event, setShowRead)}
               label=''
             />
           </Paper>
