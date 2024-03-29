@@ -18,6 +18,7 @@ const DataChart = (props: ChartConfiguration) => {
   const labels = months({ count: 7 });
   const assignedOptions = () => {
     if (
+      // @ts-ignore
       theme.palette.mode === "dark" &&
       (props.type === "doughnut" ||
         props.type === "radar" ||
@@ -25,6 +26,7 @@ const DataChart = (props: ChartConfiguration) => {
     )
       return { ...darkOptionsDoughnut };
     if (
+      // @ts-ignore
       theme.palette.mode === "light" &&
       (props.type === "doughnut" ||
         props.type === "radar" ||
@@ -32,6 +34,7 @@ const DataChart = (props: ChartConfiguration) => {
     )
       return { ...lightOptionsDoughnut };
     if (
+      // @ts-ignore
       theme.palette.mode === "dark" &&
       !(
         props.type === "doughnut" ||
@@ -41,6 +44,7 @@ const DataChart = (props: ChartConfiguration) => {
     )
       return { ...darkOptions };
     if (
+      // @ts-ignore
       theme.palette.mode === "light" &&
       !(
         props.type === "doughnut" ||
