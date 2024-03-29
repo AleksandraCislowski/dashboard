@@ -138,11 +138,7 @@ const Settings = () => {
       </Button>
       <Box>
         <form onSubmit={handleSubmit2}>
-          <Typography
-            variant='h6'
-            gutterBottom
-            sx={{ textDecoration: "underline" }}
-          >
+          <Typography variant='h6' gutterBottom>
             Alerts
           </Typography>
           <Paper
