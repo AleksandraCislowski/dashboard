@@ -25,24 +25,22 @@ const Login: React.FC = () => {
       </Typography>
       <Typography variant='body1' paragraph>
         If you wish to see more details on this profile example page, you need
-        to login. By clicking on "Sign In" button you will be logging in with
-        help of the Google service. You will be using your own, real e-mail
-        address and your own password. I will not have access to your password.
+        to login. By clicking on Sign In button you will be logging in with help
+        of the Google service. You will be using your own, real e-mail address
+        and your own password. I will not have access to your password.
       </Typography>
       <Typography variant='h5' gutterBottom>
         If you want to log in, please follow those steps:
       </Typography>
       <Typography variant='body1' component='ol' paragraph>
-        <li>Click the green "Sign In" button.</li>
-        <li>Click the "Sign In with Google".</li>
+        <li>Click the green Sign In button.</li>
+        <li>Click the Sign In with Google.</li>
         <li>
-          Choose the account that you want to use for logging in to "Dashboard"
+          Choose the account that you want to use for logging in to Dashboard
           application.
         </li>
         <li>Type in your password.</li>
-        <li>
-          Read the terms if you want, click "Next" if you agree to proceed.
-        </li>
+        <li>Read the terms if you want, click Next if you agree to proceed.</li>
       </Typography>
       <Box textAlign='left' mt={4}>
         <Button
@@ -55,7 +53,7 @@ const Login: React.FC = () => {
         </Button>
       </Box>
       <Typography variant='h4' gutterBottom mt={4}>
-        Don't want to log in and share your data?
+        Do not want to log in and share your data?
       </Typography>
       <Typography variant='body1' gutterBottom mb={4}>
         No problem! Check out this video that will show you how it looks like

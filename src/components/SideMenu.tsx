@@ -100,7 +100,11 @@ const SideMenu = () => {
       <Divider />
       <List>
         {menuListTranslations.map((text, index) => (
-          <ListItem key={text} disablePadding sx={{ display: "block" }}>
+          <ListItem
+            key={`${text}-${index}`}
+            disablePadding
+            sx={{ display: "block" }}
+          >
             <Link
               className={classes.link}
               href={`/dashboard/${menuRouteList[index]}`}

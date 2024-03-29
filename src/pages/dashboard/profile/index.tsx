@@ -100,8 +100,8 @@ const Profile = () => {
             </Typography>
             <Typography variant='body1' sx={{ paddingBottom: 4 }}>
               This is just an example form, you can pretend that you are
-              changing your password here. It's not connected to anywhere, so
-              those changes won't apply, don't worry!
+              changing your password here. It is not connected to anywhere, so
+              those changes would not apply, do not worry!
             </Typography>
             <Paper sx={{ padding: "1rem 2rem" }}>
               <Grid container justifyContent='center'>
