@@ -6,7 +6,6 @@ export const lightOptions: ChartConfiguration["options"] = {
       beginAtZero: true,
       grid: {
         color: "rgba(41, 92, 133, 0.12)",
-        drawBorder: false,
       },
       ticks: {
         color: "#5f6b7a",
@@ -15,7 +14,6 @@ export const lightOptions: ChartConfiguration["options"] = {
     x: {
       grid: {
         color: "rgba(41, 92, 133, 0.08)",
-        drawBorder: false,
       },
       ticks: {
         color: "#5f6b7a",
@@ -41,7 +39,6 @@ export const darkOptions: ChartConfiguration["options"] = {
       beginAtZero: true,
       grid: {
         color: "rgba(255, 255, 255, 0.12)",
-        drawBorder: false,
       },
       ticks: {
         color: "rgba(255, 255, 255, 0.82)",
@@ -50,7 +47,6 @@ export const darkOptions: ChartConfiguration["options"] = {
     x: {
       grid: {
         color: "rgba(255, 255, 255, 0.08)",
-        drawBorder: false,
       },
       ticks: {
         color: "rgba(255, 255, 255, 0.82)",

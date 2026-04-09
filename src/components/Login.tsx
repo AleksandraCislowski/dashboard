@@ -1,12 +1,9 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import { Box, Button, Typography } from "@mui/material";
 import { useSession, signIn, signOut } from "next-auth/react";
-import classes from "@/styles/Login.module.scss";
 
 const Login: React.FC = () => {
   const { data: session } = useSession();
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
 
   if (session) {
     return (
@@ -42,22 +39,9 @@ const Login: React.FC = () => {
           variant='contained'
           color='success'
           onClick={() => signIn()}
-          disabled={isPlaying}
         >
           Sign in
         </Button>
-      </Box>
-      <Typography variant='h4' gutterBottom mt={4}>
-        Prefer not to sign in?
-      </Typography>
-      <Typography variant='body1' gutterBottom mb={4}>
-        No problem. You can still preview the authenticated experience in the
-        walkthrough video below.
-      </Typography>
-      <Box className={classes.videoContainer}>
-        <video ref={videoRef} className={classes.video} controls>
-          <source src='/loginVideo.mp4' type='video/mp4' />
-        </video>
       </Box>
     </Box>
   );
