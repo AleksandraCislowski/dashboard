@@ -148,7 +148,7 @@ const SideMenu = () => {
               px: 2.5,
             }}
           >
-            <Tooltip title={session ? "Logout" : "Login"}>
+            <Tooltip title={session ? "Sign out" : "Sign in"}>
               <ListItemIcon
                 sx={{
                   minWidth: 0,
@@ -176,7 +176,7 @@ const SideMenu = () => {
                 opacity: open ? 1 : 0,
               }}
             >
-              {session ? "Logout" : "Login"}
+              {session ? "Sign out" : "Sign in"}
             </ListItemText>
           </ListItemButton>
         </ListItem>

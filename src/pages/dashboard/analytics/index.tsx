@@ -55,16 +55,15 @@ const Analytics = () => {
           <SearchIcon />
         </SearchIconWrapper>
         <StyledInputBase
-          placeholder='Search...'
-          inputProps={{ "aria-label": "search" }}
+          placeholder='Search the dataset...'
+          inputProps={{ "aria-label": "search the analytics table" }}
         />
       </Search>
 
-      <h2>Analytics</h2>
+      <h2>Analytics Workspace</h2>
       <p>
-        The best of data available here at your finger tips in table form. This
-        could be a whole section of data that is available for users to deep
-        dive further into the numbers/stats.
+        Explore the raw dataset behind the dashboard, scan for outliers, and
+        dig into individual records without leaving the workspace.
       </p>
       <div style={{ height: "900px", width: "100%" }}>
         <DataGrid

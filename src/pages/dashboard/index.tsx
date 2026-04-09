@@ -12,7 +12,7 @@ const Dashboard = () => {
   return (
     <>
       <Box>
-        <h1>Welcome to the DataSoft Dashboard!</h1>
+        <h1>Operational Dashboard Overview</h1>
         <Grid container gap={4} marginTop={2}>
           <DataRibbon />
           <TransactionsPerDay />

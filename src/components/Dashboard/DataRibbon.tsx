@@ -8,34 +8,34 @@ const DataRibbon = () => {
     <Grid container gap={2} className={classes.dataRibbon}>
       <Grid>
         <DataCard
-          title={"Total Sales"}
+          title={"Orders Processed"}
           value={"462"}
           description={
-            "The totals of all DataSoft products in the current financial year"
+            "Completed orders recorded across the current reporting period."
           }
         />
       </Grid>
       <Grid>
         <DataCard
-          title={"Total Value"}
+          title={"Revenue"}
           value={"$25,732.53"}
-          description={"The total sales of the current financial year"}
+          description={"Gross revenue generated during the current reporting period."}
         />
       </Grid>
       <Grid>
         <DataCard
-          title={"Avg. Order Value"}
+          title={"Average Order Value"}
           value={"$159.30"}
           description={
-            "The average order value for all sales this current financial year"
+            "Average basket size across completed orders."
           }
         />
       </Grid>
       <Grid>
         <DataCard
-          title={"Conversion rate"}
+          title={"Conversion Rate"}
           value={"0.61%"}
-          description={"How many pitches become sales"}
+          description={"Share of opportunities that turned into completed orders."}
         />
       </Grid>
     </Grid>

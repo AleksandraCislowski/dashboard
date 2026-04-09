@@ -5,19 +5,31 @@ export const lightOptions: ChartConfiguration["options"] = {
     y: {
       beginAtZero: true,
       grid: {
-        color: "#d3d3d3",
+        color: "rgba(41, 92, 133, 0.12)",
+        drawBorder: false,
+      },
+      ticks: {
+        color: "#5f6b7a",
       },
     },
     x: {
       grid: {
-        color: "#d3d3d3",
+        color: "rgba(41, 92, 133, 0.08)",
+        drawBorder: false,
+      },
+      ticks: {
+        color: "#5f6b7a",
       },
     },
   },
   plugins: {
     legend: {
       labels: {
-        color: "#4f4f4f",
+        color: "#3d4752",
+        boxWidth: 12,
+        boxHeight: 12,
+        usePointStyle: true,
+        pointStyle: "circle",
       },
     },
   },
@@ -28,18 +40,20 @@ export const darkOptions: ChartConfiguration["options"] = {
     y: {
       beginAtZero: true,
       grid: {
-        color: "#4f4f4f",
+        color: "rgba(255, 255, 255, 0.12)",
+        drawBorder: false,
       },
       ticks: {
-        color: "#fff",
+        color: "rgba(255, 255, 255, 0.82)",
       },
     },
     x: {
       grid: {
-        color: "#4f4f4f",
+        color: "rgba(255, 255, 255, 0.08)",
+        drawBorder: false,
       },
       ticks: {
-        color: "#fff",
+        color: "rgba(255, 255, 255, 0.82)",
       },
     },
   },
@@ -47,6 +61,10 @@ export const darkOptions: ChartConfiguration["options"] = {
     legend: {
       labels: {
         color: "#ffffff",
+        boxWidth: 12,
+        boxHeight: 12,
+        usePointStyle: true,
+        pointStyle: "circle",
       },
     },
   },
@@ -69,7 +87,11 @@ export const lightOptionsDoughnut: ChartConfiguration["options"] = {
   plugins: {
     legend: {
       labels: {
-        color: "#4f4f4f",
+        color: "#3d4752",
+        boxWidth: 12,
+        boxHeight: 12,
+        usePointStyle: true,
+        pointStyle: "circle",
       },
     },
   },
@@ -93,6 +115,10 @@ export const darkOptionsDoughnut: ChartConfiguration["options"] = {
     legend: {
       labels: {
         color: "#ffffff",
+        boxWidth: 12,
+        boxHeight: 12,
+        usePointStyle: true,
+        pointStyle: "circle",
       },
     },
   },

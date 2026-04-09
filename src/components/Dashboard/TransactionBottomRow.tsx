@@ -23,7 +23,7 @@ const TransactionBottomRow = () => {
           width: { xs: "49%", md: "24%" },
         }}
       >
-        <p>TransActions per user type</p>
+        <p>Transactions by Customer Segment</p>
         <DataChart
           type={"doughnut"}
           data={doughnutChartData1}
@@ -36,7 +36,7 @@ const TransactionBottomRow = () => {
           width: { xs: "49%", md: "24%" },
         }}
       >
-        <p>Social-media marketing</p>
+        <p>Social Channel Performance</p>
         <DataChart
           type={"doughnut"}
           data={doughnutChartData2}
@@ -49,7 +49,7 @@ const TransactionBottomRow = () => {
           width: { xs: "49%", md: "24%" },
         }}
       >
-        <p>Departments size</p>
+        <p>Team Capacity by Function</p>
         <DataChart
           type={"doughnut"}
           data={doughnutChartData3}
@@ -62,7 +62,7 @@ const TransactionBottomRow = () => {
           width: { xs: "49%", md: "24%" },
         }}
       >
-        <p>Customer database</p>
+        <p>Customer Age Mix</p>
         <DataChart
           type={"doughnut"}
           data={doughnutChartData4}

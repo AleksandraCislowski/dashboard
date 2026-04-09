@@ -19,13 +19,13 @@ const TransactionsPerMonth = () => {
     <Grid container gap={2} className={classes.wrapper}>
       <Paper className={classes.transactions}>
         <div className={classes.chart}>
-          <Typography>TransActions per month</Typography>
+          <Typography>Monthly Transaction Volume</Typography>
           <DataChart type={"line"} data={lineChartData} />
         </div>
         <div className={classes.cardWrapper}>
           <Card className={classes.card} variant={"outlined"}>
             <div className={classes.cardTitle}>
-              <Typography>Total Products</Typography>
+              <Typography>Active Products</Typography>
             </div>
             <div className={classes.cardValue}>
               <Typography>1.275</Typography>
@@ -34,7 +34,7 @@ const TransactionsPerMonth = () => {
           </Card>
           <Card className={classes.card} variant={"outlined"}>
             <div className={classes.cardTitle}>
-              <Typography>Buy-to-detail</Typography>
+              <Typography>Browse-to-Order</Typography>
             </div>
             <div className={classes.cardValue}>
               <Typography>4.40%</Typography>
@@ -43,7 +43,7 @@ const TransactionsPerMonth = () => {
           </Card>
           <Card className={classes.card} variant={"outlined"}>
             <div className={classes.cardTitle}>
-              <Typography>Refunds</Typography>
+              <Typography>Refund Requests</Typography>
             </div>
             <div className={classes.cardValue}>
               <Typography>0</Typography>

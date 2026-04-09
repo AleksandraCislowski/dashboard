@@ -32,11 +32,12 @@ const Settings = () => {
   return (
     <>
       <Typography variant='h4' gutterBottom>
-        Settings: Notifications
+        Notification Preferences
       </Typography>
       <Paper sx={{ p: 2, mb: 2 }}>
         <Typography paragraph gutterBottom>
-          Check out all the features, that you want to add to your profile:
+          Choose which business metrics should appear more prominently across
+          your workspace.
         </Typography>
         <form onSubmit={handleSubmit1}>
           <Grid container spacing={2}>
@@ -74,7 +75,7 @@ const Settings = () => {
         color='primary'
         sx={{ p: 1, mb: 2, mr: 2 }}
       >
-        Save Settings
+        Save preferences
       </Button>
       <Button
         type='submit'
@@ -87,7 +88,7 @@ const Settings = () => {
       <Box>
         <form onSubmit={handleSubmit2}>
           <Typography variant='h6' gutterBottom>
-            Alerts
+            Communication Preferences
           </Typography>
           <Paper
             sx={{
@@ -99,7 +100,7 @@ const Settings = () => {
           >
             <TextBox
               subtitle='Billing and account'
-              paragraph='Transactional emails and account notifications.'
+              paragraph='Essential account activity, billing updates, and security notices.'
             />
             <ToggleSwitch
               checked={showBilling}
@@ -117,7 +118,7 @@ const Settings = () => {
           >
             <TextBox
               subtitle='Announcements'
-              paragraph='Occasional announcements of new features.'
+              paragraph='Product news, feature launches, and occasional platform updates.'
             />
             <ToggleSwitch
               checked={showAnnouncements}
@@ -135,7 +136,7 @@ const Settings = () => {
           >
             <TextBox
               subtitle='Meetups'
-              paragraph='Get an email when a Meetup is posted close to my location.'
+              paragraph='Receive invites to local events, webinars, and community sessions.'
             />
             <ToggleSwitch
               checked={showMeetups}
@@ -153,7 +154,7 @@ const Settings = () => {
           >
             <TextBox
               subtitle='Public profile'
-              paragraph='When this is on, people on this platform can find and view your profile globally.'
+              paragraph='Let other users discover and view your profile across the platform.'
             />
             <ToggleSwitch
               checked={showProfile}
@@ -170,8 +171,8 @@ const Settings = () => {
             }}
           >
             <TextBox
-              subtitle='Read Receipt'
-              paragraph='When this is on, people are notified when you have read this message.'
+              subtitle='Read receipts'
+              paragraph='Notify collaborators when you have opened and read a message.'
             />
             <ToggleSwitch
               checked={showRead}
@@ -185,7 +186,7 @@ const Settings = () => {
             color='primary'
             sx={{ p: 1, mb: 2, mr: 2 }}
           >
-            Save Settings
+            Save preferences
           </Button>
           <Button
             type='submit'

@@ -104,7 +104,7 @@ const Header = (props: HeaderProps) => {
 
           <ThemeToggleButton ColorModeContext={ColorModeContext} />
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title='Open profile settings'>
+            <Tooltip title='Open account menu'>
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar
                   alt={session?.user?.name as string}
@@ -138,13 +138,13 @@ const Header = (props: HeaderProps) => {
                   }}
                 >
                   {session && (
-                    <Typography textAlign='center'>Profile</Typography>
+                    <Typography textAlign='center'>Profile settings</Typography>
                   )}
                 </Link>
               </MenuItem>
               <MenuItem onClick={() => (session ? signOut() : signIn())}>
                 <Typography textAlign='center'>
-                  {session ? "Logout" : "Login"}
+                  {session ? "Sign out" : "Sign in"}
                 </Typography>
               </MenuItem>
             </Menu>

@@ -24,7 +24,7 @@ const DataCard = (props: DataCardProps) => {
           title={
             <Typography
               fontSize={16}
-            >{`${description} which is ${value}`}</Typography>
+            >{`${description} Current value: ${value}.`}</Typography>
           }
         >
           <IconButton>

@@ -39,7 +39,7 @@ const Footer = () => {
               color={session ? "error" : "success"}
               onClick={() => (session ? signOut() : signIn())}
             >
-              {session ? "Sign Out" : "Sign In"}
+              {session ? "Sign out" : "Sign in"}
             </Button>
           </li>
         </ul>

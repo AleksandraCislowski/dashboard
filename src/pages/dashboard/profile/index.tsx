@@ -92,16 +92,15 @@ const Profile = () => {
     <>
       {session ? (
         <>
-          <h2>Your Profile</h2>
+          <h2>Profile Settings</h2>
           <Box>
             <Typography variant={"h6"} sx={{ paddingBottom: 4 }}>
-              Hello {session ? session?.user?.name : "User"}, thanks for loggin
-              in! 👋
+              Welcome back, {session ? session?.user?.name : "there"}.
             </Typography>
             <Typography variant='body1' sx={{ paddingBottom: 4 }}>
-              This is just an example form, you can pretend that you are
-              changing your password here. It is not connected to anywhere, so
-              those changes would not apply, do not worry!
+              This demo profile view simulates a lightweight account settings
+              flow. Changes are not persisted, so feel free to explore the
+              interface safely.
             </Typography>
             <Paper sx={{ padding: "1rem 2rem" }}>
               <Grid container justifyContent='center'>
@@ -129,7 +128,7 @@ const Profile = () => {
                         <TextField
                           required
                           fullWidth
-                          label='First Name'
+                          label='First name'
                           name='firstName'
                           value={formData.firstName}
                           onChange={handleFormChange}
@@ -139,7 +138,7 @@ const Profile = () => {
                         <TextField
                           required
                           fullWidth
-                          label='Last Name'
+                          label='Last name'
                           name='lastName'
                           value={formData.lastName}
                           onChange={handleFormChange}
@@ -150,7 +149,7 @@ const Profile = () => {
                           required
                           fullWidth
                           type='email'
-                          label='Email'
+                          label='Email address'
                           name='email'
                           value={formData.email}
                           onChange={handleFormChange}
@@ -161,7 +160,7 @@ const Profile = () => {
                           required
                           fullWidth
                           type={showPassword ? "text" : "password"}
-                          label='Password'
+                          label='New password'
                           name='password'
                           value={formData.password}
                           onChange={handleFormChange}
@@ -188,7 +187,7 @@ const Profile = () => {
                           required
                           fullWidth
                           type={showConfirmPassword ? "text" : "password"}
-                          label='Confirm Password'
+                          label='Confirm new password'
                           name='confirmPassword'
                           value={formData.confirmPassword}
                           onChange={handleFormChange}
@@ -196,7 +195,7 @@ const Profile = () => {
                           helperText={
                             !passwordMatch &&
                             formSubmitted &&
-                            "Passwords do not match"
+                            "Passwords must match"
                           }
                           InputProps={{
                             endAdornment: (
@@ -226,7 +225,7 @@ const Profile = () => {
                               color='primary'
                             />
                           }
-                          label='Receive sales analytics emails'
+                          label='Send me product updates and reporting highlights'
                         />
                       </Grid>
                       <Grid
@@ -241,7 +240,7 @@ const Profile = () => {
                           color='primary'
                           disabled={!passwordMatch}
                         >
-                          Save Changes
+                          Save changes
                         </Button>
                       </Grid>
                     </Grid>
@@ -254,7 +253,7 @@ const Profile = () => {
                   sx={{ padding: 4 }}
                   textAlign='center'
                 >
-                  {`If this works, your changed password would be: ${formData.password}`}
+                  {`Demo preview: your updated password would be ${formData.password}.`}
                 </Typography>
               )}
             </Paper>
