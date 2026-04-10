@@ -15,7 +15,7 @@ const Radar = () => {
       className={classes.wrapper}
       sx={{ width: { xs: "100%", md: "49%" } }}
     >
-      <p>Team Activity Distribution</p>
+      <p>Channel Efficiency Snapshot</p>
       <DataChart type={"radar"} data={radarData} options={options} />
     </Paper>
   );
