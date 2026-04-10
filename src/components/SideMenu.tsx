@@ -19,6 +19,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import LoginIcon from "@mui/icons-material/Login";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { signIn, signOut, useSession } from "next-auth/react";
 
 const drawerWidth = 240;
@@ -60,6 +61,7 @@ const menuListIcons = [
 
 const SideMenu = () => {
   const theme = useTheme();
+  const router = useRouter();
   const { data: session } = useSession();
   const [open, setOpen] = React.useState(false);
   const mobileCheck = useMediaQuery("(min-width: 600px)");
@@ -70,6 +72,15 @@ const SideMenu = () => {
 
   const handleListItemButtonClick = () => {
     setOpen(false);
+  };
+
+  const isRouteActive = (route: string) => {
+    const href = `/dashboard/${route}`;
+    if (route === "") {
+      return router.pathname === "/dashboard";
+    }
+
+    return router.pathname.startsWith(href);
   };
 
   return (
@@ -104,46 +115,77 @@ const SideMenu = () => {
       <Divider />
       <Divider />
       <List>
-        {menuListTranslations.map((text, index) => (
-          <ListItem
-            key={`${text}-${index}`}
-            disablePadding
-            sx={{ display: "block" }}
-          >
-            <Link
-              className={classes.link}
-              href={`/dashboard/${menuRouteList[index]}`}
-            >
-              <ListItemButton
-                onClick={handleListItemButtonClick}
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
-                  px: 2.5,
-                }}
+        {menuListTranslations.map((text, index) => {
+          const isActive = isRouteActive(menuRouteList[index]);
+
+          return (
+            <ListItem key={`${text}-${index}`} disablePadding sx={{ display: "block" }}>
+              <Link
+                className={classes.link}
+                href={`/dashboard/${menuRouteList[index]}`}
               >
-                <Tooltip title={menuListTranslations[index]}>
-                  <ListItemIcon
-                    sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : "auto",
-                      justifyContent: "center",
-                    }}
-                  >
-                    {menuListIcons[index]}
-                  </ListItemIcon>
-                </Tooltip>
-                <ListItemText
-                  primary={text}
+                <ListItemButton
+                  onClick={handleListItemButtonClick}
                   sx={{
-                    color: theme.palette.text.primary,
-                    opacity: open ? 1 : 0,
+                    minHeight: 48,
+                    justifyContent: open ? "initial" : "center",
+                    px: 2.5,
+                    mx: 1,
+                    my: 0.35,
+                    borderRadius: "16px",
+                    border: isActive
+                      ? `1px solid ${theme.palette.primary.main}`
+                      : "1px solid transparent",
+                    backgroundColor: isActive
+                      ? theme.palette.mode === "dark"
+                        ? "rgba(41, 92, 133, 0.3)"
+                        : "rgba(41, 92, 133, 0.12)"
+                      : "transparent",
+                    color: isActive
+                      ? theme.palette.text.primary
+                      : theme.palette.text.secondary,
+                    "&:hover": {
+                      backgroundColor: isActive
+                        ? theme.palette.mode === "dark"
+                          ? "rgba(41, 92, 133, 0.36)"
+                          : "rgba(41, 92, 133, 0.16)"
+                        : theme.palette.mode === "dark"
+                          ? "rgba(255, 255, 255, 0.04)"
+                          : "rgba(31, 42, 54, 0.04)",
+                    },
                   }}
-                />
-              </ListItemButton>
-            </Link>
-          </ListItem>
-        ))}
+                >
+                  <Tooltip title={menuListTranslations[index]}>
+                    <ListItemIcon
+                      sx={{
+                        minWidth: 0,
+                        mr: open ? 3 : "auto",
+                        justifyContent: "center",
+                        color: isActive
+                          ? theme.palette.primary.main
+                          : theme.palette.text.secondary,
+                      }}
+                    >
+                      {menuListIcons[index]}
+                    </ListItemIcon>
+                  </Tooltip>
+                  <ListItemText
+                    primary={text}
+                    sx={{
+                      color: isActive
+                        ? theme.palette.text.primary
+                        : theme.palette.text.secondary,
+                      opacity: open ? 1 : 0,
+                      "& .MuiTypography-root": {
+                        fontWeight: isActive ? 700 : 500,
+                      },
+                    }}
+                  />
+                </ListItemButton>
+              </Link>
+            </ListItem>
+          );
+        })}
         <ListItem disablePadding sx={{ display: "block" }}>
           <ListItemButton
             onClick={handleListItemButtonClick}

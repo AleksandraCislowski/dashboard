@@ -17,7 +17,13 @@ const Footer = () => {
   return (
     <footer className={classes.footer}>
       <Paper
-        sx={{ width: "100%", backgroundColor: "default" }}
+        sx={{
+          width: "100%",
+          backgroundColor: "background.paper",
+          borderTop: `1px solid ${theme.palette.divider}`,
+          boxShadow: "0 -18px 38px rgba(15, 23, 42, 0.08)",
+          backdropFilter: "blur(16px)",
+        }}
         color={"#262626"}
       >
         <ul role='menu'>

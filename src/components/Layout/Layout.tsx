@@ -20,10 +20,10 @@ const Layout = (props: any) => {
         <link rel='icon' type='image/png' href='/favicon.png' />
         <link rel='apple-touch-icon' href='/favicon.png' />
       </Head>
-      <main className={classes.layout} style={{ padding: "0 24px 0 80px" }}>
+      <main className={classes.layout} style={{ padding: "0 24px 176px 80px" }}>
         <SideMenu />
         {props.children}
-        <Box sx={{ height: "140px" }} />
+        <Box sx={{ height: "32px" }} />
         {tabletCheck && <Footer />}
       </main>
     </>

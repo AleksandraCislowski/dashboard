@@ -4,6 +4,7 @@
   left: 0;
   right: 0;
   width: 100%;
+  z-index: 1400;
 
   ul {
     display: flex;
@@ -13,10 +14,12 @@
     list-style-type: none;
     margin: auto;
     width: 100%;
+    min-height: 72px;
+    padding: 0.25rem 1rem;
   }
 
   li {
-    padding: 1rem;
+    padding: 0.5rem 1rem;
 
     a {
       text-decoration: none;
