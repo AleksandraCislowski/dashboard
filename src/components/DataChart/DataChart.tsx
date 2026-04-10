@@ -5,8 +5,9 @@ import {
   lightOptions,
   darkOptionsDoughnut,
   lightOptionsDoughnut,
+  darkOptionsRadial,
+  lightOptionsRadial,
 } from "@/components/DataChart/Themes";
-import { months } from "@/helpers/Util";
 import { ChartConfiguration } from "chart.js";
 import { useTheme } from "@emotion/react";
 
@@ -15,42 +16,37 @@ const DataChart = (props: ChartConfiguration) => {
   const { data, options } = props;
   const chartRef = useRef<HTMLCanvasElement>(null);
 
-  const labels = months({ count: 7 });
   const assignedOptions = () => {
-    if (
+    const isDarkMode =
       // @ts-ignore
-      theme.palette.mode === "dark" &&
-      (props.type === "doughnut" ||
-        props.type === "radar" ||
-        props.type === "polarArea")
-    )
+      theme.palette.mode === "dark";
+    const isDoughnut = props.type === "doughnut";
+    const isRadial = props.type === "radar" || props.type === "polarArea";
+
+    if (isDarkMode && isDoughnut) {
       return { ...darkOptionsDoughnut };
-    if (
-      // @ts-ignore
-      theme.palette.mode === "light" &&
-      (props.type === "doughnut" ||
-        props.type === "radar" ||
-        props.type === "polarArea")
-    )
+    }
+
+    if (!isDarkMode && isDoughnut) {
       return { ...lightOptionsDoughnut };
+    }
+
+    if (isDarkMode && isRadial) {
+      return { ...darkOptionsRadial };
+    }
+
+    if (!isDarkMode && isRadial) {
+      return { ...lightOptionsRadial };
+    }
+
     if (
-      // @ts-ignore
-      theme.palette.mode === "dark" &&
-      !(
-        props.type === "doughnut" ||
-        props.type === "radar" ||
-        props.type === "polarArea"
-      )
+      isDarkMode &&
+      !(isDoughnut || isRadial)
     )
       return { ...darkOptions };
     if (
-      // @ts-ignore
-      theme.palette.mode === "light" &&
-      !(
-        props.type === "doughnut" ||
-        props.type === "radar" ||
-        props.type === "polarArea"
-      )
+      !isDarkMode &&
+      !(isDoughnut || isRadial)
     )
       return { ...lightOptions };
   };
