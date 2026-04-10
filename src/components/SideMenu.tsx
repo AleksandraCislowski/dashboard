@@ -81,7 +81,7 @@ const SideMenu = () => {
         width: drawerWidth,
         [`& .MuiDrawer-paper`]: {
           left: 0,
-          top: mobileCheck ? 64 : 57,
+          top: mobileCheck ? 68 : 64,
           flexShrink: 0,
           whiteSpace: "nowrap",
           boxSizing: "border-box",

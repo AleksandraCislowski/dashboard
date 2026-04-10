@@ -19,8 +19,31 @@
 .heroIntro,
 .heroPanel,
 .insightCard {
+  position: relative;
+  overflow: hidden;
   border-radius: 24px;
   padding: 1.5rem;
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.heroIntro::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -24%;
+  width: min(92%, 680px);
+  height: min(165%, 680px);
+  transform: translateY(-50%);
+  background-image: url("/compas-mark.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: 0.12;
+  pointer-events: none;
 }
 
 .heroIntro {

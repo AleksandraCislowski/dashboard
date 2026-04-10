@@ -1,19 +1,18 @@
-import React from "react";
-import { Avatar, useMediaQuery } from "@mui/material";
-import { signIn, signOut, useSession } from "next-auth/react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
-import Container from "@mui/material/Container";
-import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
-import QueryStatsIcon from "@mui/icons-material/QueryStats";
-import ThemeToggleButton from "./ThemeToggleButton";
-import { useTheme } from "@emotion/react";
-import Link from "next/link";
+import React from 'react';
+import { Avatar, useMediaQuery } from '@mui/material';
+import { signIn, signOut, useSession } from 'next-auth/react';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import Menu from '@mui/material/Menu';
+import Container from '@mui/material/Container';
+import Tooltip from '@mui/material/Tooltip';
+import MenuItem from '@mui/material/MenuItem';
+import ThemeToggleButton from './ThemeToggleButton';
+import { useTheme } from '@emotion/react';
+import Link from 'next/link';
 
 export type HeaderProps = {
   ColorModeContext: React.Context<{ toggleColorMode: () => void }>;
@@ -26,7 +25,7 @@ const Header = (props: HeaderProps) => {
   const userProfileImg = session?.user?.image as string;
 
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
-    null
+    null,
   );
 
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -37,32 +36,49 @@ const Header = (props: HeaderProps) => {
     setAnchorElUser(null);
   };
 
-  const tabletCheck = useMediaQuery("(min-width: 768px)");
+  const tabletCheck = useMediaQuery('(min-width: 768px)');
 
   return (
-    <AppBar position='sticky' sx={{ marginBottom: "40px" }}>
+    <AppBar position='sticky' sx={{ marginBottom: '32px' }}>
       <Container maxWidth='xl'>
-        <Toolbar disableGutters>
+        <Toolbar
+          disableGutters
+          sx={{ minHeight: { xs: 64, md: 68 }, alignItems: 'center' }}
+        >
           <Link
             href='/dashboard'
             style={{
-              color: "inherit",
-              textDecoration: "none",
-              display: "flex",
+              color: 'inherit',
+              textDecoration: 'none',
+              display: 'flex',
+              alignItems: 'center',
             }}
           >
-            <QueryStatsIcon
-              sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
+            <Box
+              component='img'
+              src='/compas-mark.png'
+              alt='Northstar Commerce logo'
+              sx={{
+                display: { xs: 'none', md: 'block' },
+                mr: 1,
+                width: 48,
+                height: 48,
+                objectFit: 'contain',
+                flexShrink: 0,
+                transform: 'translateY(1px)',
+              }}
             />
             <Typography
               variant='h6'
               noWrap
               sx={{
                 mr: 2,
-                display: { xs: "none", md: "flex" },
-                fontFamily: "monospace",
+                display: { xs: 'none', md: 'flex' },
+                alignItems: 'center',
+                fontFamily: 'monospace',
                 fontWeight: 700,
-                letterSpacing: ".3rem",
+                letterSpacing: '.24rem',
+                lineHeight: 1,
               }}
             >
               Northstar Commerce
@@ -71,30 +87,44 @@ const Header = (props: HeaderProps) => {
           <Link
             href='/dashboard'
             style={{
-              color: "inherit",
-              textDecoration: "none",
-              display: "flex",
+              color: 'inherit',
+              textDecoration: 'none',
+              display: 'flex',
+              alignItems: 'center',
             }}
           >
-            <QueryStatsIcon
-              sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
+            <Box
+              component='img'
+              src='/compas-mark.png'
+              alt='Northstar Commerce logo'
+              sx={{
+                display: { xs: 'block', md: 'none' },
+                mr: 0.85,
+                width: 40,
+                height: 40,
+                objectFit: 'contain',
+                flexShrink: 0,
+                transform: 'translateY(1px)',
+              }}
             />
             <Typography
               variant='h5'
               noWrap
               sx={{
                 mr: 2,
-                display: { xs: "flex", md: "none" },
+                display: { xs: 'flex', md: 'none' },
+                alignItems: 'center',
                 flexGrow: 1,
-                fontFamily: "monospace",
+                fontFamily: 'monospace',
                 fontWeight: 700,
-                letterSpacing: ".3rem",
+                letterSpacing: '.18rem',
+                lineHeight: 1,
               }}
             >
               Northstar
             </Typography>
           </Link>
-          <Box sx={{ paddingRight: 5, marginLeft: "auto" }}>
+          <Box sx={{ paddingRight: { xs: 2, md: 4 }, marginLeft: 'auto' }}>
             {tabletCheck && (
               <Typography>
                 {session && `Northstar workspace: ${session?.user?.name}`}
@@ -113,28 +143,28 @@ const Header = (props: HeaderProps) => {
               </IconButton>
             </Tooltip>
             <Menu
-              sx={{ mt: "45px" }}
+              sx={{ mt: '45px' }}
               id='menu-appbar'
               anchorEl={anchorElUser}
               anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
+                vertical: 'top',
+                horizontal: 'right',
               }}
               keepMounted
               transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
+                vertical: 'top',
+                horizontal: 'right',
               }}
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
               <MenuItem>
                 <Link
-                  href={"/dashboard/profile"}
+                  href={'/dashboard/profile'}
                   style={{
                     // @ts-ignore
                     color: theme.palette.text.primary,
-                    textDecoration: "none",
+                    textDecoration: 'none',
                   }}
                 >
                   {session && (
@@ -144,7 +174,7 @@ const Header = (props: HeaderProps) => {
               </MenuItem>
               <MenuItem onClick={() => (session ? signOut() : signIn())}>
                 <Typography textAlign='center'>
-                  {session ? "Sign out" : "Sign in"}
+                  {session ? 'Sign out' : 'Sign in'}
                 </Typography>
               </MenuItem>
             </Menu>
