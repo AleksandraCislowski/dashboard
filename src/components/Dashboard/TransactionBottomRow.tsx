@@ -23,7 +23,7 @@ const TransactionBottomRow = () => {
           width: { xs: "49%", md: "24%" },
         }}
       >
-        <p>Transactions by Customer Segment</p>
+        <p>Customer Mix by Lifecycle Stage</p>
         <DataChart
           type={"doughnut"}
           data={doughnutChartData1}
@@ -36,7 +36,7 @@ const TransactionBottomRow = () => {
           width: { xs: "49%", md: "24%" },
         }}
       >
-        <p>Social Channel Performance</p>
+        <p>Acquisition Channel Mix</p>
         <DataChart
           type={"doughnut"}
           data={doughnutChartData2}
@@ -49,7 +49,7 @@ const TransactionBottomRow = () => {
           width: { xs: "49%", md: "24%" },
         }}
       >
-        <p>Team Capacity by Function</p>
+        <p>Order Risk Breakdown</p>
         <DataChart
           type={"doughnut"}
           data={doughnutChartData3}
@@ -62,7 +62,7 @@ const TransactionBottomRow = () => {
           width: { xs: "49%", md: "24%" },
         }}
       >
-        <p>Customer Age Mix</p>
+        <p>Loyalty Tier Distribution</p>
         <DataChart
           type={"doughnut"}
           data={doughnutChartData4}
