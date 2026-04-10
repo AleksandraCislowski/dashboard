@@ -8,18 +8,18 @@ const DataRibbon = () => {
     <Grid container gap={2} className={classes.dataRibbon}>
       <Grid>
         <DataCard
-          title={"Orders Processed"}
-          value={"462"}
+          title={"Net Revenue"}
+          value={"$25,732.53"}
           description={
-            "Completed orders recorded across the current reporting period."
+            "Recognized revenue after discounts and refunds for the active reporting window."
           }
         />
       </Grid>
       <Grid>
         <DataCard
-          title={"Revenue"}
-          value={"$25,732.53"}
-          description={"Gross revenue generated during the current reporting period."}
+          title={"Orders"}
+          value={"462"}
+          description={"Completed customer orders captured across all active storefronts."}
         />
       </Grid>
       <Grid>
@@ -27,7 +27,7 @@ const DataRibbon = () => {
           title={"Average Order Value"}
           value={"$159.30"}
           description={
-            "Average basket size across completed orders."
+            "Average basket size across every completed checkout."
           }
         />
       </Grid>
@@ -35,7 +35,7 @@ const DataRibbon = () => {
         <DataCard
           title={"Conversion Rate"}
           value={"0.61%"}
-          description={"Share of opportunities that turned into completed orders."}
+          description={"Share of sessions that converted into successful purchases."}
         />
       </Grid>
     </Grid>
