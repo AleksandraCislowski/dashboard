@@ -23,9 +23,11 @@
 
     a {
       text-decoration: none;
+      opacity: 0.82;
+      transition: opacity 180ms ease;
 
       &:hover {
-        text-decoration: underline;
+        opacity: 1;
       }
     }
   }

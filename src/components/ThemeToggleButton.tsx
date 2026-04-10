@@ -3,6 +3,7 @@ import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 import IconButton from "@mui/material/IconButton";
 import { Typography, useMediaQuery, useTheme } from "@mui/material";
+import { alpha } from "@mui/material/styles";
 
 export type ThemeToggleButtonProps = {
   ColorModeContext: React.Context<{ toggleColorMode: () => void }>;
@@ -18,13 +19,39 @@ const ThemeToggleButton = (props: ThemeToggleButtonProps) => {
 
   return (
     <>
-      {mobileCheck && <Typography>{theme.palette.mode}</Typography>}
+      {mobileCheck && (
+        <Typography
+          sx={{
+            color: theme.palette.text.secondary,
+            fontSize: "0.92rem",
+            textTransform: "capitalize",
+          }}
+        >
+          {theme.palette.mode}
+        </Typography>
+      )}
       <IconButton
-        sx={{ mr: 2 }}
-        title={theme.palette.mode + "mode"}
-        aria-label={theme.palette.mode + "mode button"}
+        sx={{
+          mr: 2,
+          ml: 0.5,
+          color:
+            theme.palette.mode === "dark"
+              ? theme.palette.secondary.light
+              : theme.palette.primary.main,
+          backgroundColor:
+            theme.palette.mode === "dark"
+              ? alpha(theme.palette.secondary.light, 0.14)
+              : alpha(theme.palette.primary.main, 0.1),
+          "&:hover": {
+            backgroundColor:
+              theme.palette.mode === "dark"
+                ? alpha(theme.palette.secondary.light, 0.22)
+                : alpha(theme.palette.primary.main, 0.16),
+          },
+        }}
+        title={`${theme.palette.mode} mode`}
+        aria-label={`${theme.palette.mode} mode button`}
         onClick={colorMode.toggleColorMode}
-        color='inherit'
       >
         {theme.palette.mode === "dark" ? (
           <Brightness7Icon />

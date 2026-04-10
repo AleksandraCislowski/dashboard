@@ -11,8 +11,8 @@ import Container from '@mui/material/Container';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import ThemeToggleButton from './ThemeToggleButton';
-import { useTheme } from '@emotion/react';
 import Link from 'next/link';
+import { alpha, useTheme } from '@mui/material/styles';
 
 export type HeaderProps = {
   ColorModeContext: React.Context<{ toggleColorMode: () => void }>;
@@ -39,7 +39,18 @@ const Header = (props: HeaderProps) => {
   const tabletCheck = useMediaQuery('(min-width: 768px)');
 
   return (
-    <AppBar position='sticky' sx={{ marginBottom: '32px' }}>
+    <AppBar
+      position='sticky'
+      elevation={0}
+      sx={{
+        marginBottom: '32px',
+        backgroundColor:
+          theme.palette.mode === 'dark'
+            ? alpha(theme.palette.background.paper, 0.82)
+            : alpha(theme.palette.background.paper, 0.9),
+        backdropFilter: 'blur(16px)',
+      }}
+    >
       <Container maxWidth='xl'>
         <Toolbar
           disableGutters
@@ -79,6 +90,7 @@ const Header = (props: HeaderProps) => {
                 fontWeight: 700,
                 letterSpacing: '.24rem',
                 lineHeight: 1,
+                color: theme.palette.text.primary,
               }}
             >
               Northstar Commerce
@@ -119,14 +131,21 @@ const Header = (props: HeaderProps) => {
                 fontWeight: 700,
                 letterSpacing: '.18rem',
                 lineHeight: 1,
+                color: theme.palette.text.primary,
               }}
             >
               Northstar
             </Typography>
           </Link>
-          <Box sx={{ paddingRight: { xs: 2, md: 4 }, marginLeft: 'auto' }}>
+          <Box sx={{ paddingRight: { xs: 1, md: 3 }, marginLeft: 'auto' }}>
             {tabletCheck && (
-              <Typography>
+              <Typography
+                sx={{
+                  color: theme.palette.text.secondary,
+                  fontSize: '0.92rem',
+                  letterSpacing: '0.01em',
+                }}
+              >
                 {session && `Northstar workspace: ${session?.user?.name}`}
               </Typography>
             )}
@@ -135,7 +154,13 @@ const Header = (props: HeaderProps) => {
           <ThemeToggleButton ColorModeContext={ColorModeContext} />
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title='Open account menu'>
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+              <IconButton
+                onClick={handleOpenUserMenu}
+                sx={{
+                  p: 0,
+                  ml: 0.5,
+                }}
+              >
                 <Avatar
                   alt={session?.user?.name as string}
                   src={userProfileImg}
@@ -143,7 +168,16 @@ const Header = (props: HeaderProps) => {
               </IconButton>
             </Tooltip>
             <Menu
-              sx={{ mt: '45px' }}
+              sx={{
+                mt: '45px',
+                '& .MuiPaper-root': {
+                  borderRadius: '16px',
+                  boxShadow:
+                    theme.palette.mode === 'dark'
+                      ? '0 18px 40px rgba(2, 6, 23, 0.42)'
+                      : '0 18px 40px rgba(15, 23, 42, 0.12)',
+                },
+              }}
               id='menu-appbar'
               anchorEl={anchorElUser}
               anchorOrigin={{

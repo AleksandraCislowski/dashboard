@@ -30,6 +30,11 @@
     position: relative;
     z-index: 1;
   }
+
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease;
 }
 
 .heroIntro,
@@ -146,6 +151,11 @@
     font-size: 1.7rem;
     line-height: 1;
   }
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: rgba(41, 92, 133, 0.26);
+  }
 }
 
 .cardLabel,
@@ -203,6 +213,11 @@
     margin: 0;
     line-height: 1.7;
     opacity: 0.84;
+  }
+
+  &:first-child {
+    padding-top: 0;
+    border-top: 0;
   }
 }
 

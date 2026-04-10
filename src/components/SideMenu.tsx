@@ -1,5 +1,5 @@
 import React from "react";
-import { useTheme, Theme, CSSObject } from "@mui/material/styles";
+import { useTheme, Theme, CSSObject, alpha } from "@mui/material/styles";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
@@ -96,6 +96,11 @@ const SideMenu = () => {
           flexShrink: 0,
           whiteSpace: "nowrap",
           boxSizing: "border-box",
+          backgroundColor:
+            theme.palette.mode === "dark"
+              ? alpha(theme.palette.background.paper, 0.84)
+              : alpha(theme.palette.background.paper, 0.9),
+          backdropFilter: "blur(16px)",
           ...(open && {
             ...openedMixin(theme),
             "& .MuiDrawer-paper": openedMixin(theme),
@@ -153,6 +158,11 @@ const SideMenu = () => {
                           ? "rgba(255, 255, 255, 0.04)"
                           : "rgba(31, 42, 54, 0.04)",
                     },
+                    transition:
+                      "background-color 180ms ease, border-color 180ms ease, color 180ms ease",
+                    boxShadow: isActive
+                      ? `inset 3px 0 0 ${theme.palette.primary.main}`
+                      : "none",
                   }}
                 >
                   <Tooltip title={menuListTranslations[index]}>
@@ -193,6 +203,16 @@ const SideMenu = () => {
               minHeight: 48,
               justifyContent: open ? "initial" : "center",
               px: 2.5,
+              mx: 1,
+              my: 0.35,
+              borderRadius: "16px",
+              color: theme.palette.text.secondary,
+              "&:hover": {
+                backgroundColor:
+                  theme.palette.mode === "dark"
+                    ? "rgba(255, 255, 255, 0.04)"
+                    : "rgba(31, 42, 54, 0.04)",
+              },
             }}
           >
             <Tooltip title={session ? "Sign out" : "Sign in"}>
@@ -201,6 +221,7 @@ const SideMenu = () => {
                   minWidth: 0,
                   mr: open ? 3 : "auto",
                   justifyContent: "center",
+                  color: theme.palette.text.secondary,
                 }}
               >
                 {session ? (
@@ -219,8 +240,11 @@ const SideMenu = () => {
                 }
               }}
               sx={{
-                color: theme.palette.text.primary,
+                color: theme.palette.text.secondary,
                 opacity: open ? 1 : 0,
+                "& .MuiTypography-root": {
+                  fontWeight: 500,
+                },
               }}
             >
               {session ? "Sign out" : "Sign in"}

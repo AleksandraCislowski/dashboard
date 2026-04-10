@@ -2,7 +2,7 @@ import React from "react";
 import classes from "@/styles/Footer.module.scss";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Button from "@mui/material/Button";
-import { Paper, useTheme } from "@mui/material";
+import { Paper, useTheme, alpha } from "@mui/material";
 import Link from "next/link";
 import styled from "@emotion/styled";
 
@@ -20,8 +20,10 @@ const Footer = () => {
         sx={{
           width: "100%",
           backgroundColor: "background.paper",
-          borderTop: `1px solid ${theme.palette.divider}`,
-          boxShadow: "0 -18px 38px rgba(15, 23, 42, 0.08)",
+          boxShadow:
+            theme.palette.mode === "dark"
+              ? "0 -18px 38px rgba(2, 6, 23, 0.24)"
+              : "0 -18px 38px rgba(15, 23, 42, 0.08)",
           backdropFilter: "blur(16px)",
         }}
         color={"#262626"}
