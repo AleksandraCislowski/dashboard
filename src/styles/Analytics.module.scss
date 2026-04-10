@@ -1,0 +1,271 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 1500px;
+}
+
+.hero {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+
+  @media screen and (min-width: 1100px) {
+    grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.8fr);
+  }
+}
+
+.heroIntro,
+.heroPanel,
+.summaryCard,
+.tablePanel,
+.notesPanel,
+.filterSection {
+  border-radius: 24px;
+  border: 1px solid rgba(122, 135, 152, 0.18);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.heroIntro,
+.heroPanel,
+.filterSection,
+.tablePanel,
+.notesPanel {
+  padding: 1.4rem;
+}
+
+.heroIntro {
+  background:
+    radial-gradient(circle at top left, rgba(47, 127, 144, 0.18), transparent 32%),
+    linear-gradient(140deg, rgba(41, 92, 133, 0.18), rgba(110, 143, 114, 0.1));
+
+  h2 {
+    margin: 0.45rem 0 0.9rem;
+    font-size: clamp(1.9rem, 3vw, 3rem);
+    line-height: 1.05;
+    max-width: 12ch;
+  }
+
+  p {
+    margin: 0;
+    max-width: 62ch;
+    line-height: 1.7;
+  }
+}
+
+.heroPanel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.kicker,
+.panelEyebrow,
+.sectionKicker {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  border-radius: 999px;
+  padding: 0.3rem 0.65rem;
+  background: rgba(41, 92, 133, 0.14);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.statusRow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+
+  strong {
+    font-size: 1.35rem;
+  }
+
+  span {
+    opacity: 0.78;
+  }
+}
+
+.actionRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.summaryGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+
+  @media screen and (min-width: 900px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.summaryCard {
+  padding: 1.2rem 1.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+
+  strong {
+    font-size: 1.8rem;
+    line-height: 1;
+  }
+}
+
+.cardLabel,
+.cardContext,
+.subtleText {
+  opacity: 0.76;
+}
+
+.filterSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.filterHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+
+  p {
+    margin: 0;
+    max-width: 50ch;
+    line-height: 1.7;
+    opacity: 0.8;
+  }
+
+  @media screen and (min-width: 1000px) {
+    align-items: flex-end;
+    flex-direction: row;
+    justify-content: space-between;
+
+    > div {
+      flex: 1;
+    }
+
+    p {
+      max-width: 34ch;
+      text-align: right;
+    }
+  }
+}
+
+.filterRow,
+.quickViewRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.filterPill,
+.quickView {
+  border-radius: 999px;
+  padding: 0.7rem 1rem;
+  border: 1px solid rgba(122, 135, 152, 0.22);
+  background: rgba(255, 255, 255, 0.04);
+  font: inherit;
+}
+
+.quickView {
+  cursor: pointer;
+  color: inherit;
+}
+
+.quickViewActive {
+  background: rgba(41, 92, 133, 0.18);
+  border-color: rgba(41, 92, 133, 0.34);
+}
+
+.workspaceGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+
+  @media screen and (min-width: 1150px) {
+    grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.75fr);
+  }
+}
+
+.tablePanel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.tableHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  @media screen and (min-width: 1100px) {
+    align-items: flex-end;
+    flex-direction: row;
+    justify-content: space-between;
+
+    > div:first-child {
+      flex: 1;
+    }
+  }
+}
+
+.searchWrap {
+  width: 100%;
+
+  @media screen and (min-width: 1100px) {
+    width: min(360px, 100%);
+  }
+}
+
+.tableWrap {
+  height: 860px;
+  width: 100%;
+}
+
+.notesPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.notesHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.noteList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.noteItem {
+  display: flex;
+  gap: 0.8rem;
+  align-items: flex-start;
+  padding-top: 0.8rem;
+  border-top: 1px solid rgba(122, 135, 152, 0.16);
+
+  p {
+    margin: 0;
+    line-height: 1.7;
+  }
+}
+
+.noteIndex {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  background: rgba(41, 92, 133, 0.14);
+  font-weight: 700;
+}
