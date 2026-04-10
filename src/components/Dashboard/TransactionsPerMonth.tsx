@@ -19,35 +19,35 @@ const TransactionsPerMonth = () => {
     <Grid container gap={2} className={classes.wrapper}>
       <Paper className={classes.transactions}>
         <div className={classes.chart}>
-          <Typography>Monthly Transaction Volume</Typography>
+          <Typography>Revenue Trend by Channel</Typography>
           <DataChart type={"line"} data={lineChartData} />
         </div>
         <div className={classes.cardWrapper}>
           <Card className={classes.card} variant={"outlined"}>
             <div className={classes.cardTitle}>
-              <Typography>Active Products</Typography>
+              <Typography>Returning Customer Share</Typography>
             </div>
             <div className={classes.cardValue}>
-              <Typography>1.275</Typography>
-              <Typography color={theme.palette.success.main}>428.7%</Typography>
+              <Typography>38.4%</Typography>
+              <Typography color={theme.palette.success.main}>+6.8%</Typography>
             </div>
           </Card>
           <Card className={classes.card} variant={"outlined"}>
             <div className={classes.cardTitle}>
-              <Typography>Browse-to-Order</Typography>
+              <Typography>Checkout Completion</Typography>
             </div>
             <div className={classes.cardValue}>
-              <Typography>4.40%</Typography>
-              <Typography color={theme.palette.success.main}>899.4%</Typography>
+              <Typography>71.2%</Typography>
+              <Typography color={theme.palette.success.main}>+3.1%</Typography>
             </div>
           </Card>
           <Card className={classes.card} variant={"outlined"}>
             <div className={classes.cardTitle}>
-              <Typography>Refund Requests</Typography>
+              <Typography>Refund Rate</Typography>
             </div>
             <div className={classes.cardValue}>
-              <Typography>0</Typography>
-              <Typography color={theme.palette.success.main}>0</Typography>
+              <Typography>1.9%</Typography>
+              <Typography color={theme.palette.success.main}>-0.4%</Typography>
             </div>
           </Card>
         </div>
