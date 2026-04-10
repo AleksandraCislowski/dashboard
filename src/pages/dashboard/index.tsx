@@ -12,7 +12,11 @@ const Dashboard = () => {
   return (
     <>
       <Box>
-        <h1>Operational Dashboard Overview</h1>
+        <h1>Northstar Commerce Overview</h1>
+        <p>
+          Monitor revenue, conversion, channel performance, and customer health
+          from one operational workspace built for e-commerce teams.
+        </p>
         <Grid container gap={4} marginTop={2}>
           <DataRibbon />
           <TransactionsPerDay />

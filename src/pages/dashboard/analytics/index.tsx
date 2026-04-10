@@ -55,15 +55,16 @@ const Analytics = () => {
           <SearchIcon />
         </SearchIconWrapper>
         <StyledInputBase
-          placeholder='Search the dataset...'
-          inputProps={{ "aria-label": "search the analytics table" }}
+          placeholder='Search orders, channels, or customers...'
+          inputProps={{ "aria-label": "search the order intelligence table" }}
         />
       </Search>
 
-      <h2>Analytics Workspace</h2>
+      <h2>Order Intelligence</h2>
       <p>
-        Explore the raw dataset behind the dashboard, scan for outliers, and
-        dig into individual records without leaving the workspace.
+        Investigate the records behind the headline metrics, scan for anomalies,
+        and move from top-line KPIs to operational detail without leaving the
+        workspace.
       </p>
       <div style={{ height: "900px", width: "100%" }}>
         <DataGrid

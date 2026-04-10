@@ -92,15 +92,15 @@ const Profile = () => {
     <>
       {session ? (
         <>
-          <h2>Profile Settings</h2>
+          <h2>Account Settings</h2>
           <Box>
             <Typography variant={"h6"} sx={{ paddingBottom: 4 }}>
               Welcome back, {session ? session?.user?.name : "there"}.
             </Typography>
             <Typography variant='body1' sx={{ paddingBottom: 4 }}>
               This demo profile view simulates a lightweight account settings
-              flow. Changes are not persisted, so feel free to explore the
-              interface safely.
+              flow for Northstar Commerce. Changes are not persisted, so feel
+              free to explore the workspace safely.
             </Typography>
             <Paper sx={{ padding: "1rem 2rem" }}>
               <Grid container justifyContent='center'>
@@ -225,7 +225,7 @@ const Profile = () => {
                               color='primary'
                             />
                           }
-                          label='Send me product updates and reporting highlights'
+                          label='Send me weekly storefront performance highlights'
                         />
                       </Grid>
                       <Grid
@@ -253,7 +253,7 @@ const Profile = () => {
                   sx={{ padding: 4 }}
                   textAlign='center'
                 >
-                  {`Demo preview: your updated password would be ${formData.password}.`}
+                  {`Preview only: your updated Northstar password would be ${formData.password}.`}
                 </Typography>
               )}
             </Paper>

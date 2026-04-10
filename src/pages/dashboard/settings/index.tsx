@@ -32,12 +32,12 @@ const Settings = () => {
   return (
     <>
       <Typography variant='h4' gutterBottom>
-        Notification Preferences
+        Workspace Preferences
       </Typography>
       <Paper sx={{ p: 2, mb: 2 }}>
         <Typography paragraph gutterBottom>
-          Choose which business metrics should appear more prominently across
-          your workspace.
+          Control which Northstar Commerce metrics and notifications should stay
+          most visible across your daily workspace.
         </Typography>
         <form onSubmit={handleSubmit1}>
           <Grid container spacing={2}>
@@ -51,7 +51,7 @@ const Settings = () => {
                 <ToggleSwitch
                   checked={showProfit}
                   onChange={(event) => toggler(event, setShowProfit)}
-                  label='Profit'
+                  label='Conversion'
                 />
                 <ToggleSwitch
                   checked={showOrders}
@@ -61,7 +61,7 @@ const Settings = () => {
                 <ToggleSwitch
                   checked={showCustomers}
                   onChange={(event) => toggler(event, setShowCustomers)}
-                  label='Customers'
+                  label='Returning customers'
                 />
               </FormGroup>
             </Grid>
@@ -88,7 +88,7 @@ const Settings = () => {
       <Box>
         <form onSubmit={handleSubmit2}>
           <Typography variant='h6' gutterBottom>
-            Communication Preferences
+            Team Notifications
           </Typography>
           <Paper
             sx={{
@@ -99,8 +99,8 @@ const Settings = () => {
             }}
           >
             <TextBox
-              subtitle='Billing and account'
-              paragraph='Essential account activity, billing updates, and security notices.'
+              subtitle='Billing and workspace'
+              paragraph='Essential workspace activity, billing updates, and account security notices.'
             />
             <ToggleSwitch
               checked={showBilling}
@@ -117,8 +117,8 @@ const Settings = () => {
             }}
           >
             <TextBox
-              subtitle='Announcements'
-              paragraph='Product news, feature launches, and occasional platform updates.'
+              subtitle='Product updates'
+              paragraph='Feature launches, reporting improvements, and occasional Northstar product news.'
             />
             <ToggleSwitch
               checked={showAnnouncements}
@@ -135,8 +135,8 @@ const Settings = () => {
             }}
           >
             <TextBox
-              subtitle='Meetups'
-              paragraph='Receive invites to local events, webinars, and community sessions.'
+              subtitle='Performance alerts'
+              paragraph='Get notified when conversion, revenue, or refund signals drift outside expected ranges.'
             />
             <ToggleSwitch
               checked={showMeetups}
@@ -153,8 +153,8 @@ const Settings = () => {
             }}
           >
             <TextBox
-              subtitle='Public profile'
-              paragraph='Let other users discover and view your profile across the platform.'
+              subtitle='Shared dashboards'
+              paragraph='Allow teammates to view your saved dashboard setup and workspace defaults.'
             />
             <ToggleSwitch
               checked={showProfile}
@@ -171,8 +171,8 @@ const Settings = () => {
             }}
           >
             <TextBox
-              subtitle='Read receipts'
-              paragraph='Notify collaborators when you have opened and read a message.'
+              subtitle='Digest emails'
+              paragraph='Receive a recurring summary of key storefront metrics and notable changes.'
             />
             <ToggleSwitch
               checked={showRead}
