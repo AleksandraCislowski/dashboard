@@ -37,16 +37,16 @@ const ThemeToggleButton = (props: ThemeToggleButtonProps) => {
           color:
             theme.palette.mode === "dark"
               ? theme.palette.secondary.light
-              : theme.palette.primary.main,
+              : theme.palette.secondary.dark,
           backgroundColor:
             theme.palette.mode === "dark"
               ? alpha(theme.palette.secondary.light, 0.14)
-              : alpha(theme.palette.primary.main, 0.1),
+              : alpha(theme.palette.secondary.main, 0.12),
           "&:hover": {
             backgroundColor:
               theme.palette.mode === "dark"
                 ? alpha(theme.palette.secondary.light, 0.22)
-                : alpha(theme.palette.primary.main, 0.16),
+                : alpha(theme.palette.secondary.main, 0.18),
           },
         }}
         title={`${theme.palette.mode} mode`}
