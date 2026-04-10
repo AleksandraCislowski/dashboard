@@ -25,7 +25,7 @@ export const lineChartData = {
   labels: months({ count: 12 }),
   datasets: [
     {
-      label: "Product",
+      label: "Paid Search",
       data: [65, 59, 80, 81, 56, 55, 60, 49, 112, 72, 52, 43],
       fill: false,
       borderColor: chartPalette.navy,
@@ -39,8 +39,8 @@ export const lineChartData = {
       tension: 0.35,
     },
     {
-      label: "Operations",
-      data: [1, 23, 35, 110, 100, 90, 87, 92, 100, 76, 55, 98],
+      label: "Email",
+      data: [21, 23, 35, 48, 61, 68, 87, 92, 100, 76, 55, 98],
       fill: false,
       borderColor: chartPalette.teal,
       backgroundColor: withOpacity(chartPalette.teal, 0.18),
@@ -53,8 +53,8 @@ export const lineChartData = {
       tension: 0.35,
     },
     {
-      label: "People",
-      data: [44, 50, 67, 38, 39, 37, 34, 25, 24, 23, 18, 35],
+      label: "Organic",
+      data: [44, 50, 67, 58, 49, 57, 64, 55, 54, 53, 48, 65],
       fill: false,
       borderColor: chartPalette.amber,
       backgroundColor: withOpacity(chartPalette.amber, 0.18),
@@ -70,10 +70,10 @@ export const lineChartData = {
 };
 
 export const doughnutChartData1 = {
-  labels: ["Students", "Professionals", "Retirees"],
+  labels: ["New shoppers", "Returning customers", "VIP customers"],
   datasets: [
     {
-      label: "Transactions",
+      label: "Customer lifecycle mix",
       data: [150, 280, 20],
       backgroundColor: [
         chartPalette.navy,
@@ -87,10 +87,10 @@ export const doughnutChartData1 = {
 };
 
 export const doughnutChartData2 = {
-  labels: ["LinkedIn", "Facebook", "Twitter", "Instagram", "TikTok"],
+  labels: ["Paid Search", "Paid Social", "Email", "Direct", "Affiliates"],
   datasets: [
     {
-      label: "Channel mix",
+      label: "Acquisition mix",
       data: [120, 150, 80, 100, 8],
       backgroundColor: [
         chartPalette.navy,
@@ -107,16 +107,16 @@ export const doughnutChartData2 = {
 
 export const doughnutChartData3 = {
   labels: [
-    "Customer service",
-    "Marketing",
-    "Sales",
-    "Management",
-    "Refunds",
-    "HR",
+    "Refund risk",
+    "Delivery delay",
+    "Payment review",
+    "Stockout risk",
+    "Address issue",
+    "Fraud check",
   ],
   datasets: [
     {
-      label: "Department share",
+      label: "Order risk signals",
       data: [120, 10, 80, 10, 15, 15],
       backgroundColor: [
         chartPalette.amber,
@@ -133,10 +133,10 @@ export const doughnutChartData3 = {
 };
 
 export const doughnutChartData4 = {
-  labels: ["Ages 18-25", "Ages 26-45", "Ages 46+"],
+  labels: ["First order", "Repeat buyer", "Loyal customer"],
   datasets: [
     {
-      label: "Customer age groups",
+      label: "Loyalty tiers",
       data: [120, 150, 100],
       backgroundColor: [
         chartPalette.navy,
@@ -151,18 +151,18 @@ export const doughnutChartData4 = {
 
 export const radarData = {
   labels: [
-    "Deep work",
-    "Meetings",
-    "Reporting",
-    "Assignments",
-    "Coding",
-    "Debugging",
-    "Design",
+    "ROAS",
+    "Conversion",
+    "Retention",
+    "AOV",
+    "Revenue share",
+    "Repeat rate",
+    "Margin quality",
   ],
   datasets: [
     {
-      label: "Engineering",
-      data: [65, 59, 90, 11, 126, 125, 40],
+      label: "Paid Search",
+      data: [78, 62, 31, 64, 88, 28, 59],
       fill: true,
       backgroundColor: withOpacity(chartPalette.navy, 0.18),
       borderColor: chartPalette.navy,
@@ -172,8 +172,8 @@ export const radarData = {
       pointHoverBorderColor: chartPalette.navy,
     },
     {
-      label: "Sales",
-      data: [128, 48, 40, 19, 96, 27, 100],
+      label: "Email",
+      data: [61, 71, 84, 72, 56, 79, 68],
       fill: true,
       backgroundColor: withOpacity(chartPalette.teal, 0.18),
       borderColor: chartPalette.teal,
@@ -183,8 +183,8 @@ export const radarData = {
       pointHoverBorderColor: chartPalette.teal,
     },
     {
-      label: "Marketing",
-      data: [15, 139, 8, 70, 26, 75, 60],
+      label: "Organic",
+      data: [49, 58, 76, 63, 67, 82, 74],
       fill: true,
       backgroundColor: withOpacity(chartPalette.amber, 0.2),
       borderColor: chartPalette.amber,
@@ -198,15 +198,15 @@ export const radarData = {
 
 export const polarData = {
   labels: [
-    "Adaptability",
-    "Teamwork",
-    "Problem solving",
-    "Leadership",
-    "Creativity",
+    "Apparel",
+    "Home",
+    "Beauty",
+    "Accessories",
+    "Bundles",
   ],
   datasets: [
     {
-      label: "Employee profile",
+      label: "Revenue share",
       data: [11, 16, 7, 3, 14],
       backgroundColor: [
         chartPalette.navy,
@@ -224,7 +224,7 @@ export const barData = {
   labels: months({ count: 7 }),
   datasets: [
     {
-      label: "Sales",
+      label: "Gross orders",
       data: [5, 1, 18, 81, 46, 32, 42],
       backgroundColor: withOpacity(chartPalette.navy, 0.72),
       borderColor: chartPalette.navy,
@@ -232,7 +232,7 @@ export const barData = {
       borderRadius: 8,
     },
     {
-      label: "Qualified leads",
+      label: "Recovered carts",
       data: [12, 20, 25, 44, 56, 30, 10],
       backgroundColor: withOpacity(chartPalette.teal, 0.72),
       borderColor: chartPalette.teal,
