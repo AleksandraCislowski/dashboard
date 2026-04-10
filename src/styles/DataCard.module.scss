@@ -3,20 +3,47 @@
   top: 1rem;
   height: 100%;
   width: calc(100% - 0.1rem);
-  padding: 1rem 0.5rem;
+  padding: 1rem 0.75rem;
+  border-radius: 20px;
 
   p {
-    padding: 0.5rem 1rem;
+    padding: 0.35rem 1rem;
     margin: 0;
   }
 }
 
 .header {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: flex-start;
 
   button,
   p {
     padding: 0.25rem;
   }
+}
+
+.valueBlock {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0 1rem;
+}
+
+.trend {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.35rem 0.6rem;
+  background: rgba(47, 127, 144, 0.12);
+  color: #2f7f90;
+  font-size: 0.8rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.trendLabel {
+  opacity: 0.72;
+  font-size: 0.82rem;
 }

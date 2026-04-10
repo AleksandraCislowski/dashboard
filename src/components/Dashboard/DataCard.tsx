@@ -10,10 +10,12 @@ export type DataCardProps = {
   title: string;
   value: string;
   description: string;
+  trend?: string;
+  trendLabel?: string;
 };
 
 const DataCard = (props: DataCardProps) => {
-  const { title, value, description } = props;
+  const { title, value, description, trend, trendLabel } = props;
   return (
     <Paper className={classes.dataCard}>
       <div className={classes.header}>
@@ -32,7 +34,13 @@ const DataCard = (props: DataCardProps) => {
           </IconButton>
         </Tooltip>
       </div>
-      <Typography fontSize={"h4"}>{value}</Typography>
+      <div className={classes.valueBlock}>
+        <Typography fontSize={"h4"}>{value}</Typography>
+        {trend && <span className={classes.trend}>{trend}</span>}
+      </div>
+      {trendLabel && (
+        <Typography className={classes.trendLabel}>{trendLabel}</Typography>
+      )}
     </Paper>
   );
 };
