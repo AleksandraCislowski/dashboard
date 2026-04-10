@@ -11,10 +11,10 @@ const Layout = (props: any) => {
   return (
     <>
       <Head>
-        <title>DataSoft Dashboard Case Study</title>
+        <title>Northstar Commerce</title>
         <meta
           name='description'
-          content='A dashboard case study focused on analytics, reporting, and account management flows.'
+          content='Northstar Commerce is an e-commerce operations dashboard for tracking revenue, conversion, channel performance, and customer health.'
         />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='/favicon.ico' />
