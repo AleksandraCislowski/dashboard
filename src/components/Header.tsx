@@ -65,7 +65,7 @@ const Header = (props: HeaderProps) => {
                 letterSpacing: ".3rem",
               }}
             >
-              DataSoft
+              Northstar Commerce
             </Typography>
           </Link>
           <Link
@@ -91,13 +91,13 @@ const Header = (props: HeaderProps) => {
                 letterSpacing: ".3rem",
               }}
             >
-              DataSoft
+              Northstar
             </Typography>
           </Link>
           <Box sx={{ paddingRight: 5, marginLeft: "auto" }}>
             {tabletCheck && (
               <Typography>
-                {session && `Signed in as ${session?.user?.name}`}
+                {session && `Northstar workspace: ${session?.user?.name}`}
               </Typography>
             )}
           </Box>
@@ -138,7 +138,7 @@ const Header = (props: HeaderProps) => {
                   }}
                 >
                   {session && (
-                    <Typography textAlign='center'>Profile settings</Typography>
+                    <Typography textAlign='center'>Account settings</Typography>
                   )}
                 </Link>
               </MenuItem>
