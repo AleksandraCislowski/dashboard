@@ -22,11 +22,11 @@ const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
 
   const darkThemeChosen = React.useMemo(
     () => createTheme({ ...darkTheme }),
-    [mode]
+    []
   );
   const lightThemeChosen = React.useMemo(
     () => createTheme({ ...lightTheme }),
-    [mode]
+    []
   );
 
   return (

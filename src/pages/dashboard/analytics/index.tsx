@@ -206,7 +206,7 @@ const Analytics = () => {
                   color: "white",
                 },
                 "& .MuiDataGrid-row": {
-                  backgroundColor: "default",
+                  backgroundColor: theme.palette.background.paper,
                   borderBottom: `1px solid ${theme.palette.divider}`,
                   "&:hover": {
                     backgroundColor: alpha(theme.palette.secondary.main, 0.08),
