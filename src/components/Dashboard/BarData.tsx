@@ -12,7 +12,7 @@ const BarData = () => {
 
   return (
     <Paper className={classes.wrapper}>
-      <p>Sales Pipeline Snapshot</p>
+      <p>Weekly Demand Signals</p>
       <DataChart type={"bar"} data={barData} options={options} />
     </Paper>
   );
