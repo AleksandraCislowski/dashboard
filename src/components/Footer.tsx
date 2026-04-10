@@ -22,16 +22,16 @@ const Footer = () => {
       >
         <ul role='menu'>
           <li>
-            <FooterLink href={"/dashboard"}>Dashboard</FooterLink>
+            <FooterLink href={"/dashboard"}>Overview</FooterLink>
           </li>
           <li>
-            <FooterLink href={"/dashboard/analytics"}>Analytics</FooterLink>
+            <FooterLink href={"/dashboard/analytics"}>Order Intelligence</FooterLink>
           </li>
           <li>
-            <FooterLink href={"/dashboard/profile"}>Profile</FooterLink>
+            <FooterLink href={"/dashboard/profile"}>Account</FooterLink>
           </li>
           <li>
-            <FooterLink href={"/dashboard/settings"}>Settings</FooterLink>
+            <FooterLink href={"/dashboard/settings"}>Preferences</FooterLink>
           </li>
           <li>
             <Button
