@@ -45,7 +45,12 @@ const closedMixin = (theme: Theme): CSSObject => ({
 });
 
 const menuRouteList = ["", "analytics", "profile", "settings"];
-const menuListTranslations = ["Dashboard", "Analytics", "Profile", "Settings"];
+const menuListTranslations = [
+  "Overview",
+  "Order Intelligence",
+  "Account",
+  "Preferences",
+];
 const menuListIcons = [
   <DashboardIcon key='icon1' />,
   <EqualizerIcon key='icon2' />,
