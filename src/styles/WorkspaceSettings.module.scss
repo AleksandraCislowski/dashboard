@@ -1,0 +1,168 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 1500px;
+}
+
+.hero {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+
+  @media screen and (min-width: 1100px) {
+    grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.8fr);
+  }
+}
+
+.heroIntro,
+.heroPanel,
+.summaryCard,
+.sectionPanel {
+  border-radius: 24px;
+  border: 1px solid rgba(122, 135, 152, 0.18);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.heroIntro,
+.heroPanel,
+.sectionPanel {
+  padding: 1.4rem;
+}
+
+.heroIntro {
+  background:
+    radial-gradient(circle at top left, rgba(47, 127, 144, 0.18), transparent 32%),
+    linear-gradient(140deg, rgba(41, 92, 133, 0.18), rgba(110, 143, 114, 0.1));
+
+  h2 {
+    margin: 0.45rem 0 0.9rem;
+    font-size: clamp(1.9rem, 3vw, 3rem);
+    line-height: 1.05;
+    max-width: 13ch;
+  }
+
+  p {
+    margin: 0;
+    max-width: 62ch;
+    line-height: 1.7;
+  }
+}
+
+.heroPanel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.kicker,
+.panelEyebrow,
+.sectionKicker {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  border-radius: 999px;
+  padding: 0.3rem 0.65rem;
+  background: rgba(41, 92, 133, 0.14);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.heroMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid rgba(122, 135, 152, 0.18);
+  }
+
+  span {
+    opacity: 0.76;
+  }
+}
+
+.summaryGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+
+  @media screen and (min-width: 900px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.summaryCard {
+  padding: 1.2rem 1.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+
+  strong {
+    font-size: 1.75rem;
+    line-height: 1;
+  }
+}
+
+.cardLabel,
+.cardContext,
+.subtleText {
+  opacity: 0.76;
+}
+
+.formLayout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.sectionPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sectionHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.preferenceList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.preferenceCard {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1rem;
+  border-radius: 18px;
+  border: 1px solid rgba(122, 135, 152, 0.16);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.actionRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.successCard {
+  border-radius: 18px;
+  padding: 1rem;
+  background: rgba(47, 127, 144, 0.12);
+  border: 1px solid rgba(47, 127, 144, 0.24);
+  line-height: 1.7;
+}
