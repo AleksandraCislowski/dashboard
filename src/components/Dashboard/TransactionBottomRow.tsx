@@ -8,7 +8,7 @@ import {
   doughnutChartData4,
 } from "@/helpers/mockData";
 import classes from "@/styles/TransactionBottomRow.module.scss";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 const TransactionBottomRow = () => {
   const options = {
@@ -23,7 +23,13 @@ const TransactionBottomRow = () => {
           width: { xs: "49%", md: "24%" },
         }}
       >
-        <p>Customer Mix by Lifecycle Stage</p>
+        <div className={classes.header}>
+          <span className={classes.eyebrow}>Customers</span>
+          <Typography variant='h6'>Customer Mix by Lifecycle Stage</Typography>
+          <Typography className={classes.subtitle}>
+            Track how much of the order base comes from new, repeat, and VIP shoppers.
+          </Typography>
+        </div>
         <DataChart
           type={"doughnut"}
           data={doughnutChartData1}
@@ -36,7 +42,13 @@ const TransactionBottomRow = () => {
           width: { xs: "49%", md: "24%" },
         }}
       >
-        <p>Acquisition Channel Mix</p>
+        <div className={classes.header}>
+          <span className={classes.eyebrow}>Acquisition</span>
+          <Typography variant='h6'>Acquisition Channel Mix</Typography>
+          <Typography className={classes.subtitle}>
+            See which channels are generating the strongest share of storefront demand.
+          </Typography>
+        </div>
         <DataChart
           type={"doughnut"}
           data={doughnutChartData2}
@@ -49,7 +61,13 @@ const TransactionBottomRow = () => {
           width: { xs: "49%", md: "24%" },
         }}
       >
-        <p>Order Risk Breakdown</p>
+        <div className={classes.header}>
+          <span className={classes.eyebrow}>Risk</span>
+          <Typography variant='h6'>Order Risk Breakdown</Typography>
+          <Typography className={classes.subtitle}>
+            Surface the operational issues most likely to slow order fulfillment.
+          </Typography>
+        </div>
         <DataChart
           type={"doughnut"}
           data={doughnutChartData3}
@@ -62,7 +80,13 @@ const TransactionBottomRow = () => {
           width: { xs: "49%", md: "24%" },
         }}
       >
-        <p>Loyalty Tier Distribution</p>
+        <div className={classes.header}>
+          <span className={classes.eyebrow}>Retention</span>
+          <Typography variant='h6'>Loyalty Tier Distribution</Typography>
+          <Typography className={classes.subtitle}>
+            Measure how many customers are moving from first purchase to loyalty.
+          </Typography>
+        </div>
         <DataChart
           type={"doughnut"}
           data={doughnutChartData4}

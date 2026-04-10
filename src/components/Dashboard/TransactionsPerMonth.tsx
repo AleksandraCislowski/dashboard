@@ -19,7 +19,14 @@ const TransactionsPerMonth = () => {
     <Grid container gap={2} className={classes.wrapper}>
       <Paper className={classes.transactions}>
         <div className={classes.chart}>
-          <Typography>Revenue Trend by Channel</Typography>
+          <div className={classes.chartHeader}>
+            <span className={classes.eyebrow}>Trend</span>
+            <Typography variant='h5'>Revenue Trend by Channel</Typography>
+            <Typography className={classes.subtitle}>
+              Compare how Paid Search, Email, and Organic are contributing to
+              weekly revenue momentum.
+            </Typography>
+          </div>
           <DataChart type={"line"} data={lineChartData} />
         </div>
         <div className={classes.cardWrapper}>
@@ -31,6 +38,9 @@ const TransactionsPerMonth = () => {
               <Typography>38.4%</Typography>
               <Typography color={theme.palette.success.main}>+6.8%</Typography>
             </div>
+            <Typography className={classes.cardHint}>
+              Repeat shoppers are lifting revenue stability.
+            </Typography>
           </Card>
           <Card className={classes.card} variant={"outlined"}>
             <div className={classes.cardTitle}>
@@ -40,6 +50,9 @@ const TransactionsPerMonth = () => {
               <Typography>71.2%</Typography>
               <Typography color={theme.palette.success.main}>+3.1%</Typography>
             </div>
+            <Typography className={classes.cardHint}>
+              Funnel friction dropped after the cart update.
+            </Typography>
           </Card>
           <Card className={classes.card} variant={"outlined"}>
             <div className={classes.cardTitle}>
@@ -49,6 +62,9 @@ const TransactionsPerMonth = () => {
               <Typography>1.9%</Typography>
               <Typography color={theme.palette.success.main}>-0.4%</Typography>
             </div>
+            <Typography className={classes.cardHint}>
+              Refund pressure is contained despite shipping delays.
+            </Typography>
           </Card>
         </div>
       </Paper>
