@@ -1,5 +1,8 @@
 # Northstar Commerce
 
+Portfolio case study: an e-commerce operations dashboard for revenue,
+conversion, orders, and customer insights.
+
 Northstar Commerce is a portfolio project for an e-commerce operations
 dashboard. The product is designed for teams that need one workspace for
 monitoring revenue, order flow, conversion health, acquisition performance,
@@ -7,6 +10,7 @@ and operational risk.
 
 ## At a Glance
 
+- Live demo: https://northstar-commerce.vercel.app/
 - Product concept: e-commerce operations dashboard
 - Primary user: E-commerce Operations Manager
 - Main promise: one workspace for monitoring storefront performance and acting
