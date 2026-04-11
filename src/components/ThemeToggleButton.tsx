@@ -16,6 +16,7 @@ const ThemeToggleButton = (props: ThemeToggleButtonProps) => {
   } = props;
   const theme = useTheme();
   const colorMode = React.useContext(ColorModeContext);
+  const nextMode = theme.palette.mode === "dark" ? "light" : "dark";
 
   return (
     <>
@@ -49,8 +50,8 @@ const ThemeToggleButton = (props: ThemeToggleButtonProps) => {
                 : alpha(theme.palette.secondary.main, 0.18),
           },
         }}
-        title={`${theme.palette.mode} mode`}
-        aria-label={`${theme.palette.mode} mode button`}
+        title={`Switch to ${nextMode} mode`}
+        aria-label={`Switch to ${nextMode} mode`}
         onClick={colorMode.toggleColorMode}
       >
         {theme.palette.mode === "dark" ? (

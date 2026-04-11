@@ -13,6 +13,7 @@ import MenuItem from '@mui/material/MenuItem';
 import ThemeToggleButton from './ThemeToggleButton';
 import Link from 'next/link';
 import { alpha, useTheme } from '@mui/material/styles';
+import layoutClasses from "@/styles/Layout.module.scss";
 
 export type HeaderProps = {
   ColorModeContext: React.Context<{ toggleColorMode: () => void }>;
@@ -40,6 +41,7 @@ const Header = (props: HeaderProps) => {
 
   return (
     <AppBar
+      component='header'
       position='sticky'
       elevation={0}
       sx={{
@@ -51,6 +53,9 @@ const Header = (props: HeaderProps) => {
         backdropFilter: 'blur(16px)',
       }}
     >
+      <a className={layoutClasses.skipLink} href='#main-content'>
+        Skip to main content
+      </a>
       <Container maxWidth='xl'>
         <Toolbar
           disableGutters
@@ -58,6 +63,7 @@ const Header = (props: HeaderProps) => {
         >
           <Link
             href='/dashboard'
+            aria-label='Go to Northstar Commerce dashboard'
             style={{
               color: 'inherit',
               textDecoration: 'none',
@@ -98,6 +104,7 @@ const Header = (props: HeaderProps) => {
           </Link>
           <Link
             href='/dashboard'
+            aria-label='Go to Northstar Commerce dashboard'
             style={{
               color: 'inherit',
               textDecoration: 'none',
@@ -155,7 +162,12 @@ const Header = (props: HeaderProps) => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title='Open account menu'>
               <IconButton
+                id='account-menu-button'
                 onClick={handleOpenUserMenu}
+                aria-label={session ? 'Open account menu' : 'Open sign in menu'}
+                aria-controls={anchorElUser ? 'account-menu' : undefined}
+                aria-haspopup='menu'
+                aria-expanded={anchorElUser ? 'true' : undefined}
                 sx={{
                   p: 0,
                   ml: 0.5,
@@ -178,7 +190,7 @@ const Header = (props: HeaderProps) => {
                       : '0 18px 40px rgba(15, 23, 42, 0.12)',
                 },
               }}
-              id='menu-appbar'
+              id='account-menu'
               anchorEl={anchorElUser}
               anchorOrigin={{
                 vertical: 'top',
@@ -191,18 +203,21 @@ const Header = (props: HeaderProps) => {
               }}
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
+              MenuListProps={{
+                'aria-labelledby': 'account-menu-button',
+              }}
             >
               {session && (
-                <MenuItem onClick={handleCloseUserMenu}>
-                  <Link
-                    href={'/dashboard/profile'}
-                    style={{
-                      color: theme.palette.text.primary,
-                      textDecoration: 'none',
-                    }}
-                  >
-                    <Typography textAlign='center'>Account settings</Typography>
-                  </Link>
+                <MenuItem
+                  component={Link}
+                  href='/dashboard/profile'
+                  onClick={handleCloseUserMenu}
+                  sx={{
+                    color: theme.palette.text.primary,
+                    textDecoration: 'none',
+                  }}
+                >
+                  <Typography textAlign='center'>Account settings</Typography>
                 </MenuItem>
               )}
               <MenuItem onClick={() => (session ? signOut() : signIn())}>

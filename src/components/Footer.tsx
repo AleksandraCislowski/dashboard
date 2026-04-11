@@ -2,7 +2,7 @@ import React from "react";
 import classes from "@/styles/Footer.module.scss";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Button from "@mui/material/Button";
-import { Paper, useTheme, alpha } from "@mui/material";
+import { Paper, useTheme } from "@mui/material";
 import Link from "next/link";
 import styled from "@emotion/styled";
 
@@ -28,29 +28,31 @@ const Footer = () => {
         }}
         color={"#262626"}
       >
-        <ul role='menu'>
-          <li>
-            <FooterLink href={"/dashboard"}>Overview</FooterLink>
-          </li>
-          <li>
-            <FooterLink href={"/dashboard/analytics"}>Order Intelligence</FooterLink>
-          </li>
-          <li>
-            <FooterLink href={"/dashboard/profile"}>Account</FooterLink>
-          </li>
-          <li>
-            <FooterLink href={"/dashboard/settings"}>Preferences</FooterLink>
-          </li>
-          <li>
-            <Button
-              variant={"text"}
-              color={session ? "error" : "success"}
-              onClick={() => (session ? signOut() : signIn())}
-            >
-              {session ? "Sign out" : "Sign in"}
-            </Button>
-          </li>
-        </ul>
+        <nav aria-label='Footer navigation'>
+          <ul>
+            <li>
+              <FooterLink href={"/dashboard"}>Overview</FooterLink>
+            </li>
+            <li>
+              <FooterLink href={"/dashboard/analytics"}>Order Intelligence</FooterLink>
+            </li>
+            <li>
+              <FooterLink href={"/dashboard/profile"}>Account</FooterLink>
+            </li>
+            <li>
+              <FooterLink href={"/dashboard/settings"}>Preferences</FooterLink>
+            </li>
+            <li>
+              <Button
+                variant={"text"}
+                color={session ? "error" : "success"}
+                onClick={() => (session ? signOut() : signIn())}
+              >
+                {session ? "Sign out" : "Sign in"}
+              </Button>
+            </li>
+          </ul>
+        </nav>
       </Paper>
     </footer>
   );

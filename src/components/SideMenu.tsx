@@ -74,6 +74,16 @@ const SideMenu = () => {
     setOpen(false);
   };
 
+  const handleAuthAction = () => {
+    setOpen(false);
+    if (session) {
+      signOut();
+      return;
+    }
+
+    signIn();
+  };
+
   const isRouteActive = (route: string) => {
     const href = `/dashboard/${route}`;
     if (route === "") {
@@ -85,6 +95,8 @@ const SideMenu = () => {
 
   return (
     <Drawer
+      component='nav'
+      aria-label='Primary navigation'
       variant='permanent'
       anchor='left'
       open={open}
@@ -113,7 +125,11 @@ const SideMenu = () => {
       }}
     >
       <Box className={classes.drawerHeader}>
-        <IconButton onClick={handleDrawerToggle}>
+        <IconButton
+          onClick={handleDrawerToggle}
+          aria-label={open ? "Collapse navigation menu" : "Expand navigation menu"}
+          aria-expanded={open}
+        >
           {open ? <ChevronLeftIcon /> : <ChevronRightIcon />}
         </IconButton>
       </Box>
@@ -128,6 +144,7 @@ const SideMenu = () => {
               <Link
                 className={classes.link}
                 href={`/dashboard/${menuRouteList[index]}`}
+                aria-current={isActive ? "page" : undefined}
               >
                 <ListItemButton
                   onClick={handleListItemButtonClick}
@@ -198,7 +215,7 @@ const SideMenu = () => {
         })}
         <ListItem disablePadding sx={{ display: "block" }}>
           <ListItemButton
-            onClick={handleListItemButtonClick}
+            onClick={handleAuthAction}
             sx={{
               minHeight: 48,
               justifyContent: open ? "initial" : "center",
@@ -224,21 +241,10 @@ const SideMenu = () => {
                   color: theme.palette.text.secondary,
                 }}
               >
-                {session ? (
-                  <LogoutIcon onClick={() => signOut()} />
-                ) : (
-                  <LoginIcon onClick={() => signIn()} />
-                )}
+                {session ? <LogoutIcon /> : <LoginIcon />}
               </ListItemIcon>
             </Tooltip>
             <ListItemText
-              onClick={() => {
-                if (session) {
-                  return signOut();
-                } else {
-                  return signIn();
-                }
-              }}
               sx={{
                 color: theme.palette.text.secondary,
                 opacity: open ? 1 : 0,

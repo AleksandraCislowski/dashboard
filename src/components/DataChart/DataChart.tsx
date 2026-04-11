@@ -80,7 +80,13 @@ const DataChart = (props: ChartConfiguration) => {
       };
     }
   }, [data, modeOptions, options, props]);
-  return <canvas ref={chartRef} />;
+  return (
+    <canvas
+      ref={chartRef}
+      role='img'
+      aria-label={`${props.type} chart showing Northstar Commerce analytics data`}
+    />
+  );
 };
 
 export default DataChart;
