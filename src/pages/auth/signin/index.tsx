@@ -2,6 +2,7 @@ import React from "react";
 import { useSession } from "next-auth/react";
 import Box from "@mui/material/Box";
 import Profile from "@/pages/dashboard/profile/index";
+import Login from "@/components/Login";
 
 const SignIn = () => {
   const { data: session } = useSession();
@@ -15,7 +16,7 @@ const SignIn = () => {
         alignItems: "center",
       }}
     >
-      {session && <Profile />}
+      {session ? <Profile /> : <Login />}
     </Box>
   );
 };

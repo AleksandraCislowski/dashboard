@@ -57,7 +57,7 @@ performance. It includes:
 
 The analytics view extends the dashboard into a record-level workspace. It includes:
 
-- Saved views and filter pills
+- Saved views, explicit filter controls, and quick view presets
 - Summary cards for tracked orders and risk exposure
 - A searchable operational data table
 - A watchlist panel for current issues and follow-up notes
@@ -86,6 +86,7 @@ This version of the project includes:
 - A redesigned dashboard home
 - An `Order Intelligence` analytics workspace
 - Product-style account and preference screens
+- Interactive filters, search, quick views, and preview-only workspace actions
 - Clean production build and lint pass
 
 ## Design Decisions

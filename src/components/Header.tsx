@@ -12,7 +12,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import ThemeToggleButton from './ThemeToggleButton';
 import Link from 'next/link';
-import { alpha, useTheme } from '@mui/material/styles';
+import { useTheme } from '@mui/material/styles';
 import layoutClasses from "@/styles/Layout.module.scss";
 
 export type HeaderProps = {
@@ -46,11 +46,12 @@ const Header = (props: HeaderProps) => {
       elevation={0}
       sx={{
         marginBottom: '32px',
-        backgroundColor:
-          theme.palette.mode === 'dark'
-            ? alpha(theme.palette.background.paper, 0.82)
-            : alpha(theme.palette.background.paper, 0.9),
+        backgroundColor: 'background.paper',
         backdropFilter: 'blur(16px)',
+        boxShadow:
+          theme.palette.mode === 'dark'
+            ? '0 18px 38px rgba(2, 6, 23, 0.24)'
+            : '0 18px 38px rgba(15, 23, 42, 0.08)',
       }}
     >
       <a className={layoutClasses.skipLink} href='#main-content'>

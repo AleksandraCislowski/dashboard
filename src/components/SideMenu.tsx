@@ -77,7 +77,7 @@ const SideMenu = () => {
   const handleAuthAction = () => {
     setOpen(false);
     if (session) {
-      signOut();
+      signOut({ callbackUrl: "/dashboard" });
       return;
     }
 
@@ -92,6 +92,9 @@ const SideMenu = () => {
 
     return router.pathname.startsWith(href);
   };
+  const isAuthRouteActive =
+    router.pathname.startsWith("/auth/signin") ||
+    router.pathname.startsWith("/auth/signout");
 
   return (
     <Drawer
@@ -216,6 +219,7 @@ const SideMenu = () => {
         <ListItem disablePadding sx={{ display: "block" }}>
           <ListItemButton
             onClick={handleAuthAction}
+            aria-current={isAuthRouteActive ? "page" : undefined}
             sx={{
               minHeight: 48,
               justifyContent: open ? "initial" : "center",
@@ -223,13 +227,31 @@ const SideMenu = () => {
               mx: 1,
               my: 0.35,
               borderRadius: "16px",
-              color: theme.palette.text.secondary,
+              border: isAuthRouteActive
+                ? `1px solid ${theme.palette.primary.main}`
+                : "1px solid transparent",
+              backgroundColor: isAuthRouteActive
+                ? theme.palette.mode === "dark"
+                  ? "rgba(41, 92, 133, 0.3)"
+                  : "rgba(41, 92, 133, 0.12)"
+                : "transparent",
+              color: isAuthRouteActive
+                ? theme.palette.text.primary
+                : theme.palette.text.secondary,
               "&:hover": {
-                backgroundColor:
-                  theme.palette.mode === "dark"
+                backgroundColor: isAuthRouteActive
+                  ? theme.palette.mode === "dark"
+                    ? "rgba(41, 92, 133, 0.36)"
+                    : "rgba(41, 92, 133, 0.16)"
+                  : theme.palette.mode === "dark"
                     ? "rgba(255, 255, 255, 0.04)"
                     : "rgba(31, 42, 54, 0.04)",
               },
+              transition:
+                "background-color 180ms ease, border-color 180ms ease, color 180ms ease",
+              boxShadow: isAuthRouteActive
+                ? `inset 3px 0 0 ${theme.palette.primary.main}`
+                : "none",
             }}
           >
             <Tooltip title={session ? "Sign out" : "Sign in"}>
@@ -238,7 +260,9 @@ const SideMenu = () => {
                   minWidth: 0,
                   mr: open ? 3 : "auto",
                   justifyContent: "center",
-                  color: theme.palette.text.secondary,
+                  color: isAuthRouteActive
+                    ? theme.palette.primary.main
+                    : theme.palette.text.secondary,
                 }}
               >
                 {session ? <LogoutIcon /> : <LoginIcon />}
@@ -246,10 +270,12 @@ const SideMenu = () => {
             </Tooltip>
             <ListItemText
               sx={{
-                color: theme.palette.text.secondary,
+                color: isAuthRouteActive
+                  ? theme.palette.text.primary
+                  : theme.palette.text.secondary,
                 opacity: open ? 1 : 0,
                 "& .MuiTypography-root": {
-                  fontWeight: 500,
+                  fontWeight: isAuthRouteActive ? 700 : 500,
                 },
               }}
             >

@@ -15,18 +15,21 @@ const Settings = () => {
   const [showSharedDashboards, setShowSharedDashboards] = React.useState(false);
   const [showDigest, setShowDigest] = React.useState(true);
   const [saved, setSaved] = React.useState(false);
+  const [hasUnsavedChanges, setHasUnsavedChanges] = React.useState(false);
 
   const toggler = (
     event: React.ChangeEvent<HTMLInputElement>,
     callback: React.Dispatch<React.SetStateAction<boolean>>
   ) => {
     setSaved(false);
+    setHasUnsavedChanges(true);
     callback(event.target.checked);
   };
 
   const handleSave = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setSaved(true);
+    setHasUnsavedChanges(false);
   };
 
   const visibleMetrics = [
@@ -98,6 +101,14 @@ const Settings = () => {
               <strong>Digest cadence</strong>
               <span>
                 {showDigest ? "Weekly, Friday morning" : "Digest disabled"}
+              </span>
+            </div>
+            <div>
+              <strong>Preference state</strong>
+              <span>
+                {hasUnsavedChanges
+                  ? "Unsaved changes ready to save"
+                  : "Workspace preferences are up to date"}
               </span>
             </div>
           </div>
@@ -173,6 +184,7 @@ const Settings = () => {
                 checked={showBilling}
                 onChange={(event) => toggler(event, setShowBilling)}
                 label=''
+                ariaLabel='Toggle billing and workspace notifications'
               />
             </div>
             <div className={classes.preferenceCard}>
@@ -184,6 +196,7 @@ const Settings = () => {
                 checked={showAnnouncements}
                 onChange={(event) => toggler(event, setShowAnnouncements)}
                 label=''
+                ariaLabel='Toggle product update notifications'
               />
             </div>
             <div className={classes.preferenceCard}>
@@ -195,6 +208,7 @@ const Settings = () => {
                 checked={showAlerts}
                 onChange={(event) => toggler(event, setShowAlerts)}
                 label=''
+                ariaLabel='Toggle performance alerts'
               />
             </div>
             <div className={classes.preferenceCard}>
@@ -206,6 +220,7 @@ const Settings = () => {
                 checked={showSharedDashboards}
                 onChange={(event) => toggler(event, setShowSharedDashboards)}
                 label=''
+                ariaLabel='Toggle shared dashboards'
               />
             </div>
             <div className={classes.preferenceCard}>
@@ -217,16 +232,28 @@ const Settings = () => {
                 checked={showDigest}
                 onChange={(event) => toggler(event, setShowDigest)}
                 label=''
+                ariaLabel='Toggle digest emails'
               />
             </div>
           </div>
 
           <div className={classes.actionRow}>
-            <Button type='submit' variant='contained' color='primary'>
+            <Button
+              type='submit'
+              variant='contained'
+              color='primary'
+              disabled={!hasUnsavedChanges}
+            >
               Save preferences
             </Button>
-            <Typography className={classes.subtleText}>
-              This portfolio build stores changes locally for preview only.
+            <Typography
+              className={classes.subtleText}
+              role='status'
+              aria-live='polite'
+            >
+              {hasUnsavedChanges
+                ? "Changes are previewed above. Save to confirm this demo workspace state."
+                : "This portfolio build stores changes locally for preview only."}
             </Typography>
           </div>
 

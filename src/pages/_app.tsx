@@ -1,5 +1,6 @@
 import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
 import { SessionProvider } from "next-auth/react";
+import Head from "next/head";
 import darkTheme from "@/styles/theme/darkTheme";
 import lightTheme from "@/styles/theme/lightTheme";
 import React from "react";
@@ -31,6 +32,14 @@ const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
 
   return (
     <ColorModeContext.Provider value={colorMode}>
+      <Head>
+        <title>Northstar Commerce | E-commerce Operations Dashboard</title>
+        <meta
+          name='description'
+          content='Northstar Commerce is an e-commerce operations dashboard for monitoring revenue, channels, customer health, and order risk from one workspace.'
+        />
+        <meta name='theme-color' content='#17324a' />
+      </Head>
       <ThemeProvider
         theme={mode === "dark" ? darkThemeChosen : lightThemeChosen}
       >
