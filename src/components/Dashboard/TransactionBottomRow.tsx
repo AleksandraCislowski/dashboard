@@ -20,7 +20,7 @@ const TransactionBottomRow = () => {
       <Paper
         className={classes.wrapper}
         sx={{
-          width: { xs: "49%", md: "24%" },
+          width: "100%",
         }}
       >
         <div className={classes.header}>
@@ -39,7 +39,7 @@ const TransactionBottomRow = () => {
       <Paper
         className={classes.wrapper}
         sx={{
-          width: { xs: "49%", md: "24%" },
+          width: "100%",
         }}
       >
         <div className={classes.header}>
@@ -58,7 +58,7 @@ const TransactionBottomRow = () => {
       <Paper
         className={classes.wrapper}
         sx={{
-          width: { xs: "49%", md: "24%" },
+          width: "100%",
         }}
       >
         <div className={classes.header}>
@@ -77,7 +77,7 @@ const TransactionBottomRow = () => {
       <Paper
         className={classes.wrapper}
         sx={{
-          width: { xs: "49%", md: "24%" },
+          width: "100%",
         }}
       >
         <div className={classes.header}>

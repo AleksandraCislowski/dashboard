@@ -12,7 +12,7 @@ const PolarArea = () => {
   return (
     <Paper
       className={classes.wrapper}
-      sx={{ width: { xs: "100%", md: "49%" } }}
+      sx={{ width: "100%" }}
     >
       <div className={classes.header}>
         <span className={classes.eyebrow}>Merchandising</span>
