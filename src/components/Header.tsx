@@ -192,20 +192,19 @@ const Header = (props: HeaderProps) => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              <MenuItem>
-                <Link
-                  href={'/dashboard/profile'}
-                  style={{
-                    // @ts-ignore
-                    color: theme.palette.text.primary,
-                    textDecoration: 'none',
-                  }}
-                >
-                  {session && (
+              {session && (
+                <MenuItem onClick={handleCloseUserMenu}>
+                  <Link
+                    href={'/dashboard/profile'}
+                    style={{
+                      color: theme.palette.text.primary,
+                      textDecoration: 'none',
+                    }}
+                  >
                     <Typography textAlign='center'>Account settings</Typography>
-                  )}
-                </Link>
-              </MenuItem>
+                  </Link>
+                </MenuItem>
+              )}
               <MenuItem onClick={() => (session ? signOut() : signIn())}>
                 <Typography textAlign='center'>
                   {session ? 'Sign out' : 'Sign in'}
