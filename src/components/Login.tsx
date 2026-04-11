@@ -1,7 +1,6 @@
 import React from "react";
 import { Box, Button, Typography } from "@mui/material";
 import { useSession, signIn, signOut } from "next-auth/react";
-import Image from "next/image";
 import Link from "next/link";
 
 const Login: React.FC = () => {
@@ -36,15 +35,14 @@ const Login: React.FC = () => {
   return (
     <Box
       sx={{
-        display: "grid",
-        gridTemplateColumns: { xs: "1fr", lg: "minmax(0, 0.78fr) minmax(420px, 1fr)" },
-        gap: { xs: 4, lg: 5 },
-        alignItems: "center",
-        maxWidth: 1280,
+        display: "flex",
+        flexDirection: "column",
+        gap: { xs: 3.5, lg: 4.5 },
+        maxWidth: 1226,
         py: 4,
       }}
     >
-      <Box>
+      <Box sx={{ maxWidth: 720 }}>
         <Typography variant='h4' sx={{ mb: 1 }}>
           Want to explore the full profile flow?
         </Typography>
@@ -86,20 +84,10 @@ const Login: React.FC = () => {
           borderRadius: "28px",
           border: "1px solid",
           borderColor: "divider",
-          p: { xs: 1, sm: 1.4 },
-          background:
-            "linear-gradient(145deg, rgba(44, 122, 123, 0.16), rgba(35, 78, 112, 0.08))",
-          boxShadow: "0 24px 80px rgba(15, 23, 32, 0.22)",
-          "&::before": {
-            content: '""',
-            position: "absolute",
-            inset: "auto -18% -28% auto",
-            width: "55%",
-            aspectRatio: "1",
-            borderRadius: "999px",
-            background: "rgba(44, 122, 123, 0.18)",
-            filter: "blur(20px)",
-          },
+          p: { xs: 0.75, sm: 1 },
+          backgroundColor: "background.paper",
+          boxShadow: "0 18px 52px rgba(15, 23, 32, 0.14)",
+          width: "100%",
         }}
       >
         <Box
@@ -111,18 +99,17 @@ const Login: React.FC = () => {
             backgroundColor: "background.paper",
           }}
         >
-          <Image
+          <Box
+            component='img'
             src='/settings.png'
             alt='Preview of the Northstar Commerce settings panel'
             width={1226}
             height={1014}
-            sizes='(min-width: 1200px) 620px, 92vw'
-            style={{
+            sx={{
               display: "block",
               height: "auto",
               width: "100%",
             }}
-            priority
           />
         </Box>
       </Box>
