@@ -39,9 +39,9 @@ const closedMixin = (theme: Theme): CSSObject => ({
     duration: theme.transitions.duration.leavingScreen,
   }),
   overflowX: "hidden",
-  width: `calc(${theme.spacing(7)} + 1px)`,
+  width: `calc(${theme.spacing(9)} + 1px)`,
   [theme.breakpoints.up("sm")]: {
-    width: `calc(${theme.spacing(8)} + 1px)`,
+    width: `calc(${theme.spacing(9)} + 1px)`,
   },
 });
 
@@ -152,11 +152,11 @@ const SideMenu = () => {
                 <ListItemButton
                   onClick={handleListItemButtonClick}
                   sx={{
-                    minHeight: 48,
+                    minHeight: 56,
                     justifyContent: open ? "initial" : "center",
                     px: 2.5,
-                    mx: 1,
-                    my: 0.35,
+                    mx: open ? 1 : 0,
+                    my: 0.75,
                     borderRadius: "16px",
                     border: isActive
                       ? `1px solid ${theme.palette.primary.main}`
@@ -221,11 +221,11 @@ const SideMenu = () => {
             onClick={handleAuthAction}
             aria-current={isAuthRouteActive ? "page" : undefined}
             sx={{
-              minHeight: 48,
+              minHeight: 56,
               justifyContent: open ? "initial" : "center",
               px: 2.5,
-              mx: 1,
-              my: 0.35,
+              mx: open ? 1 : 0,
+              my: 0.75,
               borderRadius: "16px",
               border: isAuthRouteActive
                 ? `1px solid ${theme.palette.primary.main}`

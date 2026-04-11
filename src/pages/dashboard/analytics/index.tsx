@@ -1,9 +1,5 @@
 import * as React from "react";
-import {
-  DataGrid,
-  type GridColDef,
-  type GridPaginationModel,
-} from "@mui/x-data-grid";
+import type { GridColDef, GridPaginationModel } from "@mui/x-data-grid";
 import {
   Box,
   Button,
@@ -12,12 +8,21 @@ import {
   Typography,
   alpha,
   styled,
+  useMediaQuery,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+import dynamic from "next/dynamic";
 import SearchIcon from "@mui/icons-material/Search";
 import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
 import TuneOutlinedIcon from "@mui/icons-material/TuneOutlined";
 import classes from "@/styles/Analytics.module.scss";
+
+const DataGrid = dynamic(
+  () => import("@mui/x-data-grid").then((module) => module.DataGrid),
+  {
+    ssr: false,
+  }
+);
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -425,6 +430,11 @@ const defaultActiveFilters: ActiveFilters = {
 
 const Analytics = () => {
   const theme = useTheme();
+  const matchesDesktopGrid = useMediaQuery("(min-width: 760px)", {
+    noSsr: true,
+  });
+  const [isMounted, setIsMounted] = React.useState(false);
+  const showDesktopGrid = isMounted && matchesDesktopGrid;
   const [searchQuery, setSearchQuery] = React.useState("");
   const [activeQuickView, setActiveQuickView] = React.useState(quickViews[0]);
   const [activeFilters, setActiveFilters] =
@@ -459,6 +469,10 @@ const Analytics = () => {
       pageSize: 50,
     });
   };
+
+  React.useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   React.useEffect(() => {
     setPaginationModel((currentModel) => ({
@@ -603,7 +617,9 @@ const Analytics = () => {
         <div className={classes.filterHeader}>
           <div>
             <span className={classes.sectionKicker}>Filters</span>
-            <Typography variant='h5'>Saved views and active filters</Typography>
+            <Typography variant='h5' component='h3'>
+              Saved views and active filters
+            </Typography>
           </div>
           <p>
             Adjust the core filters directly, then use quick slices to switch
@@ -705,7 +721,9 @@ const Analytics = () => {
           <div className={classes.tableHeader}>
             <div>
               <span className={classes.sectionKicker}>Dataset</span>
-              <Typography variant='h5'>Operational order records</Typography>
+              <Typography variant='h5' component='h3'>
+                Operational order records
+              </Typography>
               <Typography className={classes.subtleText}>
                 Search by channel, customer, or metric label to narrow the
                 current table view.
@@ -734,88 +752,94 @@ const Analytics = () => {
               ? ` Active filters: ${activeFilterLabels.join(", ")}.`
               : ""}
           </div>
-          <div className={classes.mobileRecordList}>
-            <div className={classes.mobileRecordHeader}>
-              <span className={classes.sectionKicker}>Mobile summary</span>
-              <Typography variant='h6'>
-                Showing the first {mobilePreviewRows.length} matching records.
-              </Typography>
-              <Typography className={classes.subtleText}>
-                The full sortable grid is available on tablet and desktop,
-                where column actions and pagination have enough space to work
-                properly.
-              </Typography>
+          {!showDesktopGrid && (
+            <div className={classes.mobileRecordList}>
+              <div className={classes.mobileRecordHeader}>
+                <span className={classes.sectionKicker}>Mobile summary</span>
+                <Typography variant='h6' component='h4'>
+                  Showing the first {mobilePreviewRows.length} matching records.
+                </Typography>
+                <Typography className={classes.subtleText}>
+                  The full sortable grid is available on tablet and desktop,
+                  where column actions and pagination have enough space to work
+                  properly.
+                </Typography>
+              </div>
+              {mobilePreviewRows.map((row) => (
+                <article key={row.orderId} className={classes.mobileRecordCard}>
+                  <div>
+                    <strong>{row.orderId}</strong>
+                    <span>{row.customer}</span>
+                  </div>
+                  <div>
+                    <strong>{row.revenue}</strong>
+                    <span>{row.channel}</span>
+                  </div>
+                  <div className={classes.mobileRecordMeta}>
+                    <span>{row.segment}</span>
+                    <span>{row.region}</span>
+                    <span>{row.risk} risk</span>
+                  </div>
+                  <p>{row.status}</p>
+                </article>
+              ))}
             </div>
-            {mobilePreviewRows.map((row) => (
-              <article key={row.orderId} className={classes.mobileRecordCard}>
-                <div>
-                  <strong>{row.orderId}</strong>
-                  <span>{row.customer}</span>
-                </div>
-                <div>
-                  <strong>{row.revenue}</strong>
-                  <span>{row.channel}</span>
-                </div>
-                <div className={classes.mobileRecordMeta}>
-                  <span>{row.segment}</span>
-                  <span>{row.region}</span>
-                  <span>{row.risk} risk</span>
-                </div>
-                <p>{row.status}</p>
-              </article>
-            ))}
-          </div>
-          <div className={classes.tableWrap}>
-            <DataGrid
-              sx={{
-                maxWidth: 1500,
-                width: "100%",
-                border: `1px solid ${theme.palette.divider}`,
-                borderRadius: "18px",
-                "& .MuiDataGrid-row:hover": {
-                  backgroundColor: alpha(theme.palette.secondary.light, 0.12),
-                },
-                "& .MuiDataGrid-columnHeader": {
-                  backgroundColor: theme.palette.primary.main,
-                  position: "sticky",
-                  color: "white",
-                },
-                "& .MuiDataGrid-columnHeader .MuiDataGrid-iconButtonContainer, & .MuiDataGrid-columnHeader .MuiDataGrid-menuIcon":
-                  {
-                    opacity: 1,
+          )}
+          {showDesktopGrid && (
+            <div className={classes.tableWrap}>
+              <DataGrid
+                sx={{
+                  maxWidth: 1500,
+                  width: "100%",
+                  border: `1px solid ${theme.palette.divider}`,
+                  borderRadius: "18px",
+                  "& .MuiDataGrid-row:hover": {
+                    backgroundColor: alpha(theme.palette.secondary.light, 0.12),
                   },
-                "& .MuiDataGrid-columnHeader .MuiSvgIcon-root": {
-                  fill: "rgba(255, 255, 255, 0.92)",
-                },
-                "& .MuiDataGrid-columnHeader .MuiIconButton-root:hover .MuiSvgIcon-root, & .MuiDataGrid-columnHeader .MuiIconButton-root:focus-visible .MuiSvgIcon-root":
-                  {
-                    fill: "#ffffff",
+                  "& .MuiDataGrid-columnHeader": {
+                    backgroundColor: theme.palette.primary.main,
+                    position: "sticky",
+                    color: "white",
                   },
-                "& .MuiDataGrid-row": {
-                  backgroundColor: theme.palette.background.paper,
-                  borderBottom: `1px solid ${theme.palette.divider}`,
-                  "&:hover": {
-                    backgroundColor: alpha(theme.palette.secondary.main, 0.08),
+                  "& .MuiDataGrid-columnHeader .MuiDataGrid-iconButtonContainer, & .MuiDataGrid-columnHeader .MuiDataGrid-menuIcon":
+                    {
+                      opacity: 1,
+                    },
+                  "& .MuiDataGrid-columnHeader .MuiSvgIcon-root": {
+                    fill: "rgba(255, 255, 255, 0.92)",
                   },
-                },
-                "& .MuiSvgIcon-root": {
-                  fill: theme.palette.secondary.main,
-                },
-              }}
-              rows={filteredRows}
-              columns={orderColumns}
-              disableRowSelectionOnClick
-              paginationModel={paginationModel}
-              onPaginationModelChange={setPaginationModel}
-              pageSizeOptions={[10, 20, 50]}
-            />
-          </div>
+                  "& .MuiDataGrid-columnHeader .MuiIconButton-root:hover .MuiSvgIcon-root, & .MuiDataGrid-columnHeader .MuiIconButton-root:focus-visible .MuiSvgIcon-root":
+                    {
+                      fill: "#ffffff",
+                    },
+                  "& .MuiDataGrid-row": {
+                    backgroundColor: theme.palette.background.paper,
+                    borderBottom: `1px solid ${theme.palette.divider}`,
+                    "&:hover": {
+                      backgroundColor: alpha(theme.palette.secondary.main, 0.08),
+                    },
+                  },
+                  "& .MuiSvgIcon-root": {
+                    fill: theme.palette.secondary.main,
+                  },
+                }}
+                rows={filteredRows}
+                columns={orderColumns}
+                disableRowSelectionOnClick
+                paginationModel={paginationModel}
+                onPaginationModelChange={setPaginationModel}
+                pageSizeOptions={[10, 20, 50]}
+              />
+            </div>
+          )}
         </Paper>
 
         <Paper className={classes.notesPanel}>
           <div className={classes.notesHeader}>
             <span className={classes.sectionKicker}>Watchlist</span>
-            <Typography variant='h6'>Operational notes</Typography>
+            <Typography variant='h6' component='h3'>
+              Operational notes
+            </Typography>
             <Typography className={classes.subtleText}>
               Keep a running view of the issues most likely to impact revenue,
               customer satisfaction, or fulfillment speed.

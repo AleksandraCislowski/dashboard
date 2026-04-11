@@ -64,7 +64,6 @@ const Header = (props: HeaderProps) => {
         >
           <Link
             href='/dashboard'
-            aria-label='Go to Northstar Commerce dashboard'
             style={{
               color: 'inherit',
               textDecoration: 'none',
@@ -75,7 +74,7 @@ const Header = (props: HeaderProps) => {
             <Box
               component='img'
               src='/compas-mark-compact.png'
-              alt='Northstar Commerce logo'
+              alt=''
               sx={{
                 display: { xs: 'none', md: 'block' },
                 mr: 1,
@@ -105,7 +104,6 @@ const Header = (props: HeaderProps) => {
           </Link>
           <Link
             href='/dashboard'
-            aria-label='Go to Northstar Commerce dashboard'
             style={{
               color: 'inherit',
               textDecoration: 'none',
@@ -116,7 +114,7 @@ const Header = (props: HeaderProps) => {
             <Box
               component='img'
               src='/compas-mark-compact.png'
-              alt='Northstar Commerce logo'
+              alt=''
               sx={{
                 display: { xs: 'block', md: 'none' },
                 mr: 0.85,

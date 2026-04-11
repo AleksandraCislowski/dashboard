@@ -29,7 +29,7 @@ const DataCard = (props: DataCardProps) => {
             >{`${description} Current value: ${value}.`}</Typography>
           }
         >
-          <IconButton>
+          <IconButton aria-label={`View details for ${title}`}>
             <InfoOutlinedIcon />
           </IconButton>
         </Tooltip>

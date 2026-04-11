@@ -1,4 +1,4 @@
-import { Box, Paper } from "@mui/material";
+import { Box, Paper, useMediaQuery } from "@mui/material";
 import React from "react";
 import DataRibbon from "@/components/Dashboard/DataRibbon";
 import classes from "@/styles/UnitData.module.scss";
@@ -37,12 +37,21 @@ const BarData = dynamic(() => import("@/components/Dashboard/BarData"), {
 });
 
 const Dashboard = () => {
+  const matchesDesktopVisuals = useMediaQuery("(min-width: 760px)", {
+    noSsr: true,
+  });
+  const [isMounted, setIsMounted] = React.useState(false);
+  const showDesktopVisuals = isMounted && matchesDesktopVisuals;
   const filters = ["Last 30 days", "All channels", "EU + North America", "Returning customers"];
   const highlights = [
     "Paid Search revenue is up 12.4% month over month.",
     "Checkout completion improved after the cart UX update.",
     "Refund risk remains concentrated in delayed shipments.",
   ];
+
+  React.useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   return (
     <Box className={homeClasses.page}>
@@ -98,39 +107,45 @@ const Dashboard = () => {
         <DataRibbon />
       </section>
 
-      <Paper className={homeClasses.mobileDashboardNote}>
-        <span className={homeClasses.sectionKicker}>Mobile view</span>
-        <h2>Chart-heavy analysis is optimized for tablet and desktop.</h2>
-        <p>
-          On smaller screens, Northstar keeps the daily KPI summary and action
-          highlights visible. Open the dashboard on a wider screen to inspect
-          revenue trends, channel mix, category share, and demand charts.
-        </p>
-      </Paper>
+      {!showDesktopVisuals && (
+        <Paper className={homeClasses.mobileDashboardNote}>
+          <span className={homeClasses.sectionKicker}>Mobile view</span>
+          <h2>Chart-heavy analysis is optimized for tablet and desktop.</h2>
+          <p>
+            On smaller screens, Northstar keeps the daily KPI summary and action
+            highlights visible. Open the dashboard on a wider screen to inspect
+            revenue trends, channel mix, category share, and demand charts.
+          </p>
+        </Paper>
+      )}
 
-      <section className={`${homeClasses.section} ${homeClasses.desktopVisuals}`}>
-        <div className={homeClasses.sectionHeader}>
-          <div>
-            <span className={homeClasses.sectionKicker}>Trend</span>
-            <h2>Revenue and retention momentum</h2>
-          </div>
-          <p>See which channels are driving growth and whether returning customers are holding steady.</p>
-        </div>
-        <div className={homeClasses.mainGrid}>
-          <TransactionsPerDay />
-        </div>
-      </section>
+      {showDesktopVisuals && (
+        <>
+          <section className={`${homeClasses.section} ${homeClasses.desktopVisuals}`}>
+            <div className={homeClasses.sectionHeader}>
+              <div>
+                <span className={homeClasses.sectionKicker}>Trend</span>
+                <h2>Revenue and retention momentum</h2>
+              </div>
+              <p>See which channels are driving growth and whether returning customers are holding steady.</p>
+            </div>
+            <div className={homeClasses.mainGrid}>
+              <TransactionsPerDay />
+            </div>
+          </section>
 
-      <section className={`${homeClasses.section} ${homeClasses.desktopVisuals}`}>
-        <div className={homeClasses.sectionHeader}>
-          <div>
-            <span className={homeClasses.sectionKicker}>Insights</span>
-            <h2>Acquisition, risk, and customer composition</h2>
-          </div>
-          <p>Quick-read widgets for lifecycle mix, acquisition health, order risk, and loyalty distribution.</p>
-        </div>
-        <TransactionBottomRow />
-      </section>
+          <section className={`${homeClasses.section} ${homeClasses.desktopVisuals}`}>
+            <div className={homeClasses.sectionHeader}>
+              <div>
+                <span className={homeClasses.sectionKicker}>Insights</span>
+                <h2>Acquisition, risk, and customer composition</h2>
+              </div>
+              <p>Quick-read widgets for lifecycle mix, acquisition health, order risk, and loyalty distribution.</p>
+            </div>
+            <TransactionBottomRow />
+          </section>
+        </>
+      )}
 
       <section className={homeClasses.section}>
         <div className={homeClasses.sectionHeader}>
@@ -149,13 +164,17 @@ const Dashboard = () => {
         </div>
       </section>
 
-      <Box className={`${classes.double_wrapper} ${homeClasses.desktopVisuals}`}>
-        <Radar />
-        <PolarArea />
-      </Box>
-      <section className={`${homeClasses.section} ${homeClasses.desktopVisuals}`}>
-        <BarData />
-      </section>
+      {showDesktopVisuals && (
+        <>
+          <Box className={`${classes.double_wrapper} ${homeClasses.desktopVisuals}`}>
+            <Radar />
+            <PolarArea />
+          </Box>
+          <section className={`${homeClasses.section} ${homeClasses.desktopVisuals}`}>
+            <BarData />
+          </section>
+        </>
+      )}
     </Box>
   );
 };
