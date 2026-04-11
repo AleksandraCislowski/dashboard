@@ -416,21 +416,23 @@ const targetMarketRegions = new Set([
   "North America",
   "CEE",
 ]);
+const defaultActiveFilters: ActiveFilters = {
+  last30Days: false,
+  channel: "All channels",
+  highValueCustomers: false,
+  targetMarkets: false,
+};
 
 const Analytics = () => {
   const theme = useTheme();
   const [searchQuery, setSearchQuery] = React.useState("");
   const [activeQuickView, setActiveQuickView] = React.useState(quickViews[0]);
-  const [activeFilters, setActiveFilters] = React.useState<ActiveFilters>({
-    last30Days: true,
-    channel: "All channels",
-    highValueCustomers: true,
-    targetMarkets: true,
-  });
+  const [activeFilters, setActiveFilters] =
+    React.useState<ActiveFilters>(defaultActiveFilters);
   const [paginationModel, setPaginationModel] =
     React.useState<GridPaginationModel>({
       page: 0,
-      pageSize: 10,
+      pageSize: 50,
     });
   const [actionMessage, setActionMessage] = React.useState(
     "Ready to export or customize this workspace view."
@@ -448,65 +450,20 @@ const Analytics = () => {
     );
   };
 
-  const cycleChannelFilter = () => {
-    setActiveFilters((currentFilters) => {
-      const currentIndex = channelFilters.indexOf(currentFilters.channel);
-      const nextChannel =
-        channelFilters[(currentIndex + 1) % channelFilters.length];
-
-      return {
-        ...currentFilters,
-        channel: nextChannel,
-      };
+  const handleResetFilters = () => {
+    setActiveFilters(defaultActiveFilters);
+    setActiveQuickView(quickViews[0]);
+    setSearchQuery("");
+    setPaginationModel({
+      page: 0,
+      pageSize: 50,
     });
   };
-
-  const filterPills = [
-    {
-      key: "last30Days",
-      label: activeFilters.last30Days ? "Last 30 days" : "All dates",
-      pressed: activeFilters.last30Days,
-      onClick: () =>
-        setActiveFilters((currentFilters) => ({
-          ...currentFilters,
-          last30Days: !currentFilters.last30Days,
-        })),
-    },
-    {
-      key: "channel",
-      label: activeFilters.channel,
-      pressed: activeFilters.channel !== "All channels",
-      onClick: cycleChannelFilter,
-    },
-    {
-      key: "highValueCustomers",
-      label: activeFilters.highValueCustomers
-        ? "High-value customers"
-        : "All customer values",
-      pressed: activeFilters.highValueCustomers,
-      onClick: () =>
-        setActiveFilters((currentFilters) => ({
-          ...currentFilters,
-          highValueCustomers: !currentFilters.highValueCustomers,
-        })),
-    },
-    {
-      key: "targetMarkets",
-      label: activeFilters.targetMarkets ? "EU + North America" : "All regions",
-      pressed: activeFilters.targetMarkets,
-      onClick: () =>
-        setActiveFilters((currentFilters) => ({
-          ...currentFilters,
-          targetMarkets: !currentFilters.targetMarkets,
-        })),
-    },
-  ];
 
   React.useEffect(() => {
     setPaginationModel((currentModel) => ({
       ...currentModel,
       page: 0,
-      pageSize: currentModel.pageSize === 20 ? 20 : 10,
     }));
   }, [activeFilters, activeQuickView, searchQuery]);
 
@@ -555,9 +512,19 @@ const Analytics = () => {
     filteredRows.find((row) => row.channel === "Paid Search")?.channel ??
     filteredRows[0]?.channel ??
     "No source";
-  const activeFilterLabels = filterPills
-    .filter((filter) => filter.pressed)
-    .map((filter) => filter.label);
+  const activeFilterLabels = [
+    activeFilters.last30Days ? "Last 30 days" : null,
+    activeFilters.channel !== "All channels" ? activeFilters.channel : null,
+    activeFilters.highValueCustomers ? "High-value customers" : null,
+    activeFilters.targetMarkets ? "EU + North America" : null,
+  ].filter((label): label is string => Boolean(label));
+  const hasCustomFilters =
+    activeFilters.last30Days !== defaultActiveFilters.last30Days ||
+    activeFilters.channel !== defaultActiveFilters.channel ||
+    activeFilters.highValueCustomers !== defaultActiveFilters.highValueCustomers ||
+    activeFilters.targetMarkets !== defaultActiveFilters.targetMarkets ||
+    activeQuickView !== quickViews[0] ||
+    searchQuery.length > 0;
   const summaryCards = [
     {
       label: "Tracked orders",
@@ -638,24 +605,82 @@ const Analytics = () => {
             <Typography variant='h5'>Saved views and active filters</Typography>
           </div>
           <p>
-            Use quick slices to jump between broad order monitoring, risk
-            review, and customer-value analysis.
+            Adjust the core filters directly, then use quick slices to switch
+            between monitoring, risk review, and customer-value analysis.
           </p>
         </div>
-        <div className={classes.filterRow}>
-          {filterPills.map((filter) => (
-            <button
-              key={filter.key}
-              className={`${classes.filterPill} ${
-                filter.pressed ? classes.filterPillActive : ""
-              }`}
-              type='button'
-              onClick={filter.onClick}
-              aria-pressed={filter.pressed}
+        <div className={classes.filterGrid}>
+          <label className={classes.filterControl}>
+            <span>Date range</span>
+            <select
+              value={activeFilters.last30Days ? "last30" : "all"}
+              onChange={(event) =>
+                setActiveFilters((currentFilters) => ({
+                  ...currentFilters,
+                  last30Days: event.target.value === "last30",
+                }))
+              }
             >
-              {filter.label}
-            </button>
-          ))}
+              <option value='last30'>Last 30 days</option>
+              <option value='all'>All dates</option>
+            </select>
+          </label>
+          <label className={classes.filterControl}>
+            <span>Channel</span>
+            <select
+              value={activeFilters.channel}
+              onChange={(event) =>
+                setActiveFilters((currentFilters) => ({
+                  ...currentFilters,
+                  channel: event.target.value as ChannelFilter,
+                }))
+              }
+            >
+              {channelFilters.map((channel) => (
+                <option key={channel} value={channel}>
+                  {channel}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className={classes.filterControl}>
+            <span>Customer value</span>
+            <select
+              value={activeFilters.highValueCustomers ? "highValue" : "all"}
+              onChange={(event) =>
+                setActiveFilters((currentFilters) => ({
+                  ...currentFilters,
+                  highValueCustomers: event.target.value === "highValue",
+                }))
+              }
+            >
+              <option value='highValue'>High-value customers</option>
+              <option value='all'>All customer values</option>
+            </select>
+          </label>
+          <label className={classes.filterControl}>
+            <span>Region</span>
+            <select
+              value={activeFilters.targetMarkets ? "targetMarkets" : "all"}
+              onChange={(event) =>
+                setActiveFilters((currentFilters) => ({
+                  ...currentFilters,
+                  targetMarkets: event.target.value === "targetMarkets",
+                }))
+              }
+            >
+              <option value='targetMarkets'>EU + North America</option>
+              <option value='all'>All regions</option>
+            </select>
+          </label>
+          <Button
+            className={classes.resetFilters}
+            variant='text'
+            onClick={handleResetFilters}
+            disabled={!hasCustomFilters}
+          >
+            Reset filters
+          </Button>
         </div>
         <div className={classes.quickViewRow}>
           {quickViews.map((view) => (
@@ -723,6 +748,17 @@ const Analytics = () => {
                   position: "sticky",
                   color: "white",
                 },
+                "& .MuiDataGrid-columnHeader .MuiDataGrid-iconButtonContainer, & .MuiDataGrid-columnHeader .MuiDataGrid-menuIcon":
+                  {
+                    opacity: 1,
+                  },
+                "& .MuiDataGrid-columnHeader .MuiSvgIcon-root": {
+                  fill: "rgba(255, 255, 255, 0.92)",
+                },
+                "& .MuiDataGrid-columnHeader .MuiIconButton-root:hover .MuiSvgIcon-root, & .MuiDataGrid-columnHeader .MuiIconButton-root:focus-visible .MuiSvgIcon-root":
+                  {
+                    fill: "#ffffff",
+                  },
                 "& .MuiDataGrid-row": {
                   backgroundColor: theme.palette.background.paper,
                   borderBottom: `1px solid ${theme.palette.divider}`,
@@ -739,7 +775,7 @@ const Analytics = () => {
               disableRowSelectionOnClick
               paginationModel={paginationModel}
               onPaginationModelChange={setPaginationModel}
-              pageSizeOptions={[10, 20]}
+              pageSizeOptions={[10, 20, 50]}
             />
           </div>
         </Paper>
