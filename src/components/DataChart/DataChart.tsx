@@ -1,5 +1,23 @@
 import React, { useEffect, useRef } from "react";
-import { Chart, registerables } from "chart.js";
+import {
+  ArcElement,
+  BarController,
+  BarElement,
+  CategoryScale,
+  Chart,
+  DoughnutController,
+  Filler,
+  Legend,
+  LineController,
+  LineElement,
+  LinearScale,
+  PointElement,
+  PolarAreaController,
+  RadarController,
+  RadialLinearScale,
+  Tooltip,
+  type ChartConfiguration,
+} from "chart.js";
 import {
   darkOptions,
   lightOptions,
@@ -10,8 +28,25 @@ import {
   darkOptionsPolar,
   lightOptionsPolar,
 } from "@/components/DataChart/Themes";
-import { ChartConfiguration } from "chart.js";
 import { useTheme } from "@mui/material/styles";
+
+Chart.register(
+  ArcElement,
+  BarController,
+  BarElement,
+  CategoryScale,
+  DoughnutController,
+  Filler,
+  Legend,
+  LineController,
+  LineElement,
+  LinearScale,
+  PointElement,
+  PolarAreaController,
+  RadarController,
+  RadialLinearScale,
+  Tooltip
+);
 
 const DataChart = (props: ChartConfiguration) => {
   const theme = useTheme();
@@ -47,6 +82,5 @@ const DataChart = (props: ChartConfiguration) => {
   }, [data, modeOptions, options, props]);
   return <canvas ref={chartRef} />;
 };
-Chart.register(...registerables);
 
 export default DataChart;

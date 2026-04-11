@@ -1,13 +1,40 @@
 import { Box, Paper } from "@mui/material";
 import React from "react";
 import DataRibbon from "@/components/Dashboard/DataRibbon";
-import TransactionsPerDay from "@/components/Dashboard/TransactionsPerMonth";
-import TransactionBottomRow from "@/components/Dashboard/TransactionBottomRow";
-import Radar from "@/components/Dashboard/Radar";
-import PolarArea from "@/components/Dashboard/PolarArea";
-import BarData from "@/components/Dashboard/BarData";
 import classes from "@/styles/UnitData.module.scss";
 import homeClasses from "@/styles/DashboardHome.module.scss";
+import dynamic from "next/dynamic";
+
+const ChartPanelFallback = () => (
+  <Paper className={homeClasses.chartFallback} aria-hidden='true' />
+);
+
+const TransactionsPerDay = dynamic(
+  () => import("@/components/Dashboard/TransactionsPerMonth"),
+  {
+    ssr: false,
+    loading: ChartPanelFallback,
+  }
+);
+const TransactionBottomRow = dynamic(
+  () => import("@/components/Dashboard/TransactionBottomRow"),
+  {
+    ssr: false,
+    loading: ChartPanelFallback,
+  }
+);
+const Radar = dynamic(() => import("@/components/Dashboard/Radar"), {
+  ssr: false,
+  loading: ChartPanelFallback,
+});
+const PolarArea = dynamic(() => import("@/components/Dashboard/PolarArea"), {
+  ssr: false,
+  loading: ChartPanelFallback,
+});
+const BarData = dynamic(() => import("@/components/Dashboard/BarData"), {
+  ssr: false,
+  loading: ChartPanelFallback,
+});
 
 const Dashboard = () => {
   const filters = ["Last 30 days", "All channels", "EU + North America", "Returning customers"];

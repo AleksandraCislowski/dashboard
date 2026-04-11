@@ -67,7 +67,7 @@ const Header = (props: HeaderProps) => {
           >
             <Box
               component='img'
-              src='/compas-mark.png'
+              src='/compas-mark-compact.png'
               alt='Northstar Commerce logo'
               sx={{
                 display: { xs: 'none', md: 'block' },
@@ -107,7 +107,7 @@ const Header = (props: HeaderProps) => {
           >
             <Box
               component='img'
-              src='/compas-mark.png'
+              src='/compas-mark-compact.png'
               alt='Northstar Commerce logo'
               sx={{
                 display: { xs: 'block', md: 'none' },

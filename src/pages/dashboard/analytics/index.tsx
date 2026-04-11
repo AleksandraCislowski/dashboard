@@ -1,7 +1,5 @@
 import * as React from "react";
-import { DataGrid } from "@mui/x-data-grid";
-import LinearProgress from "@mui/material/LinearProgress";
-import { useDemoData } from "@mui/x-data-grid-generator";
+import { DataGrid, type GridColDef } from "@mui/x-data-grid";
 import {
   Box,
   Button,
@@ -45,8 +43,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-const LoadingOverlay = () => <LinearProgress />;
-
 const summaryCards = [
   {
     label: "Tracked orders",
@@ -85,13 +81,110 @@ const operationalNotes = [
   "VIP customer orders continue to show the lowest refund risk across the current window.",
 ];
 
+const orderColumns: GridColDef[] = [
+  { field: "orderId", headerName: "Order", minWidth: 120, flex: 0.7 },
+  { field: "channel", headerName: "Channel", minWidth: 140, flex: 1 },
+  { field: "customer", headerName: "Customer", minWidth: 170, flex: 1.1 },
+  { field: "segment", headerName: "Segment", minWidth: 150, flex: 1 },
+  { field: "region", headerName: "Region", minWidth: 140, flex: 0.9 },
+  { field: "revenue", headerName: "Revenue", minWidth: 120, flex: 0.8 },
+  { field: "risk", headerName: "Risk", minWidth: 140, flex: 0.9 },
+  { field: "status", headerName: "Status", minWidth: 160, flex: 1 },
+];
+
+const orderRows = [
+  {
+    id: 1,
+    orderId: "#NC-1048",
+    channel: "Paid Search",
+    customer: "Marta Jensen",
+    segment: "Returning",
+    region: "Nordics",
+    revenue: "$428",
+    risk: "Low",
+    status: "Fulfilled",
+  },
+  {
+    id: 2,
+    orderId: "#NC-1049",
+    channel: "Email",
+    customer: "Oliver Smith",
+    segment: "VIP",
+    region: "UK",
+    revenue: "$1,240",
+    risk: "Low",
+    status: "Priority shipped",
+  },
+  {
+    id: 3,
+    orderId: "#NC-1050",
+    channel: "Paid Social",
+    customer: "Ava Chen",
+    segment: "New shopper",
+    region: "North America",
+    revenue: "$286",
+    risk: "Medium",
+    status: "Payment review",
+  },
+  {
+    id: 4,
+    orderId: "#NC-1051",
+    channel: "Organic",
+    customer: "Jonas Berg",
+    segment: "Returning",
+    region: "DACH",
+    revenue: "$512",
+    risk: "Low",
+    status: "Packed",
+  },
+  {
+    id: 5,
+    orderId: "#NC-1052",
+    channel: "Direct",
+    customer: "Nora Garcia",
+    segment: "VIP",
+    region: "EU",
+    revenue: "$960",
+    risk: "High",
+    status: "Address issue",
+  },
+  {
+    id: 6,
+    orderId: "#NC-1053",
+    channel: "Affiliates",
+    customer: "Theo Martin",
+    segment: "New shopper",
+    region: "North America",
+    revenue: "$184",
+    risk: "Medium",
+    status: "Delayed shipment",
+  },
+  {
+    id: 7,
+    orderId: "#NC-1054",
+    channel: "Email",
+    customer: "Lina Novak",
+    segment: "Returning",
+    region: "CEE",
+    revenue: "$372",
+    risk: "Low",
+    status: "Fulfilled",
+  },
+  {
+    id: 8,
+    orderId: "#NC-1055",
+    channel: "Paid Search",
+    customer: "Elias Brown",
+    segment: "VIP",
+    region: "UK",
+    revenue: "$1,120",
+    risk: "Low",
+    status: "Fulfilled",
+  },
+];
+
 const Analytics = () => {
   const theme = useTheme();
-  const { data } = useDemoData({
-    dataSet: "Commodity",
-    rowLength: 500,
-    maxColumns: 12,
-  });
 
   return (
     <Box className={classes.page}>
@@ -216,11 +309,15 @@ const Analytics = () => {
                   fill: theme.palette.secondary.main,
                 },
               }}
-              slots={{
-                loadingOverlay: LoadingOverlay,
+              rows={orderRows}
+              columns={orderColumns}
+              disableRowSelectionOnClick
+              initialState={{
+                pagination: {
+                  paginationModel: { pageSize: 8 },
+                },
               }}
-              loading={!data}
-              {...data}
+              pageSizeOptions={[8]}
             />
           </div>
         </Paper>
