@@ -55,15 +55,13 @@ const Profile = () => {
 
   useEffect(() => {
     if (session) {
-      // @ts-ignore
-      const names = session.user.name.split(" ");
+      const names = session.user?.name?.split(" ") ?? ["Northstar"];
       const firstName = names[0];
       const lastName = names.length > 1 ? names[names.length - 1] : "";
       setFormData({
         firstName,
         lastName,
-        // @ts-ignore
-        email: session.user.email,
+        email: session.user?.email ?? "",
         password: "",
         confirmPassword: "",
         receiveEmails: false,

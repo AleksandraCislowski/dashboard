@@ -13,15 +13,19 @@ const MONTHS = [
   "December",
 ];
 
-export const months = (config: any) => {
+type MonthConfig = {
+  count?: number;
+  section?: number;
+};
+
+export const months = (config: MonthConfig = {}) => {
   const cfg = config || {};
   const count = cfg.count || 12;
   const section = cfg.section;
-  const values = [];
-  let i, value;
+  const values: string[] = [];
 
-  for (i = 0; i < count; ++i) {
-    value = MONTHS[Math.ceil(i) % 12];
+  for (let i = 0; i < count; ++i) {
+    const value = MONTHS[Math.ceil(i) % 12];
     values.push(value.substring(0, section));
   }
 

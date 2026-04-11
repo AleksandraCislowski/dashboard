@@ -5,7 +5,11 @@ import Head from "next/head";
 import Footer from "../Footer";
 import { Box, useMediaQuery } from "@mui/material";
 
-const Layout = (props: any) => {
+type LayoutProps = {
+  children: React.ReactNode;
+};
+
+const Layout = ({ children }: LayoutProps) => {
   const tabletCheck = useMediaQuery("(min-width: 768px)");
 
   return (
@@ -26,7 +30,7 @@ const Layout = (props: any) => {
         style={{ padding: "0 24px 176px 80px" }}
       >
         <SideMenu />
-        {props.children}
+        {children}
         <Box sx={{ height: "32px" }} />
         {tabletCheck && <Footer />}
       </main>
