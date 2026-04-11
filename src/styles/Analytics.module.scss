@@ -215,6 +215,25 @@
   font: inherit;
 }
 
+.filterPill {
+  cursor: pointer;
+  color: inherit;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    border-color: rgba(47, 127, 144, 0.34);
+  }
+}
+
+.filterPillActive {
+  background: rgba(47, 127, 144, 0.18);
+  border-color: rgba(47, 127, 144, 0.42);
+}
+
 .quickView {
   cursor: pointer;
   color: inherit;
@@ -273,8 +292,18 @@
   }
 }
 
+.resultMeta {
+  width: fit-content;
+  border-radius: 999px;
+  padding: 0.55rem 0.85rem;
+  background: rgba(41, 92, 133, 0.12);
+  color: inherit;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
 .tableWrap {
-  height: clamp(620px, 68vh, 860px);
+  height: clamp(520px, 58vh, 650px);
   width: 100%;
 }
 
