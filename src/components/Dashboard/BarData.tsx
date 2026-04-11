@@ -19,7 +19,9 @@ const BarData = () => {
           Balance gross orders, recovered carts, and churn risk to prioritize follow-up.
         </Typography>
       </div>
-      <DataChart type={"bar"} data={barData} options={options} />
+      <div className={classes.chartFrame}>
+        <DataChart type={"bar"} data={barData} options={options} />
+      </div>
     </Paper>
   );
 };
