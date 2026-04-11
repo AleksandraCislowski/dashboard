@@ -343,9 +343,69 @@
   line-height: 1.4;
 }
 
+.mobileRecordList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+
+  @media screen and (min-width: 760px) {
+    display: none;
+  }
+}
+
+.mobileRecordHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 0.25rem 0 0.4rem;
+}
+
+.mobileRecordCard {
+  display: grid;
+  gap: 0.75rem;
+  border-radius: 18px;
+  border: 1px solid rgba(122, 135, 152, 0.18);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 1rem;
+
+  > div:not(.mobileRecordMeta) {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+
+    span {
+      opacity: 0.76;
+      text-align: right;
+    }
+  }
+
+  p {
+    margin: 0;
+    line-height: 1.6;
+  }
+}
+
+.mobileRecordMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+
+  span {
+    border-radius: 999px;
+    padding: 0.35rem 0.6rem;
+    background: rgba(41, 92, 133, 0.12);
+    font-size: 0.82rem;
+  }
+}
+
 .tableWrap {
+  display: none;
   height: clamp(520px, 58vh, 650px);
   width: 100%;
+
+  @media screen and (min-width: 760px) {
+    display: block;
+  }
 }
 
 .notesPanel {

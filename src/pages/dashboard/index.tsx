@@ -98,7 +98,17 @@ const Dashboard = () => {
         <DataRibbon />
       </section>
 
-      <section className={homeClasses.section}>
+      <Paper className={homeClasses.mobileDashboardNote}>
+        <span className={homeClasses.sectionKicker}>Mobile view</span>
+        <h2>Chart-heavy analysis is optimized for tablet and desktop.</h2>
+        <p>
+          On smaller screens, Northstar keeps the daily KPI summary and action
+          highlights visible. Open the dashboard on a wider screen to inspect
+          revenue trends, channel mix, category share, and demand charts.
+        </p>
+      </Paper>
+
+      <section className={`${homeClasses.section} ${homeClasses.desktopVisuals}`}>
         <div className={homeClasses.sectionHeader}>
           <div>
             <span className={homeClasses.sectionKicker}>Trend</span>
@@ -111,7 +121,7 @@ const Dashboard = () => {
         </div>
       </section>
 
-      <section className={homeClasses.section}>
+      <section className={`${homeClasses.section} ${homeClasses.desktopVisuals}`}>
         <div className={homeClasses.sectionHeader}>
           <div>
             <span className={homeClasses.sectionKicker}>Insights</span>
@@ -139,11 +149,11 @@ const Dashboard = () => {
         </div>
       </section>
 
-      <Box className={classes.double_wrapper}>
+      <Box className={`${classes.double_wrapper} ${homeClasses.desktopVisuals}`}>
         <Radar />
         <PolarArea />
       </Box>
-      <section className={homeClasses.section}>
+      <section className={`${homeClasses.section} ${homeClasses.desktopVisuals}`}>
         <BarData />
       </section>
     </Box>

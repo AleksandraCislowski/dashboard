@@ -77,6 +77,7 @@ The product was restyled around a more focused visual system:
 - Improved chart readability in both light and dark themes
 - More intentional dashboard hierarchy through hero sections, section headers, and supporting context
 - Product-oriented copy and more realistic e-commerce terminology
+- Mobile summary views that keep KPIs and record previews readable while reserving dense charts and full data grids for tablet and desktop screens
 
 ## Current Scope
 

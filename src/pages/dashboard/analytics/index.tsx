@@ -518,6 +518,7 @@ const Analytics = () => {
     activeFilters.highValueCustomers ? "High-value customers" : null,
     activeFilters.targetMarkets ? "EU + North America" : null,
   ].filter((label): label is string => Boolean(label));
+  const mobilePreviewRows = filteredRows.slice(0, 5);
   const hasCustomFilters =
     activeFilters.last30Days !== defaultActiveFilters.last30Days ||
     activeFilters.channel !== defaultActiveFilters.channel ||
@@ -732,6 +733,37 @@ const Analytics = () => {
             {activeFilterLabels.length
               ? ` Active filters: ${activeFilterLabels.join(", ")}.`
               : ""}
+          </div>
+          <div className={classes.mobileRecordList}>
+            <div className={classes.mobileRecordHeader}>
+              <span className={classes.sectionKicker}>Mobile summary</span>
+              <Typography variant='h6'>
+                Showing the first {mobilePreviewRows.length} matching records.
+              </Typography>
+              <Typography className={classes.subtleText}>
+                The full sortable grid is available on tablet and desktop,
+                where column actions and pagination have enough space to work
+                properly.
+              </Typography>
+            </div>
+            {mobilePreviewRows.map((row) => (
+              <article key={row.orderId} className={classes.mobileRecordCard}>
+                <div>
+                  <strong>{row.orderId}</strong>
+                  <span>{row.customer}</span>
+                </div>
+                <div>
+                  <strong>{row.revenue}</strong>
+                  <span>{row.channel}</span>
+                </div>
+                <div className={classes.mobileRecordMeta}>
+                  <span>{row.segment}</span>
+                  <span>{row.region}</span>
+                  <span>{row.risk} risk</span>
+                </div>
+                <p>{row.status}</p>
+              </article>
+            ))}
           </div>
           <div className={classes.tableWrap}>
             <DataGrid
