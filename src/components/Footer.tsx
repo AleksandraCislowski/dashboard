@@ -1,18 +1,11 @@
 import React from "react";
 import classes from "@/styles/Footer.module.scss";
-import { signIn, signOut, useSession } from "next-auth/react";
-import Button from "@mui/material/Button";
 import { Paper, useTheme } from "@mui/material";
 import Link from "next/link";
-import styled from "@emotion/styled";
 
 const Footer = () => {
-  const { data: session } = useSession();
   const theme = useTheme();
-
-  const FooterLink = styled(Link)`
-    color: ${theme.palette.text.primary};
-  `;
+  const stackItems = ["Next.js", "MUI", "Chart.js", "TypeScript"];
 
   return (
     <footer className={classes.footer}>
@@ -28,31 +21,30 @@ const Footer = () => {
         }}
         color={"#262626"}
       >
-        <nav aria-label='Footer navigation'>
-          <ul>
-            <li>
-              <FooterLink href={"/dashboard"}>Overview</FooterLink>
-            </li>
-            <li>
-              <FooterLink href={"/dashboard/analytics"}>Order Intelligence</FooterLink>
-            </li>
-            <li>
-              <FooterLink href={"/dashboard/profile"}>Account</FooterLink>
-            </li>
-            <li>
-              <FooterLink href={"/dashboard/settings"}>Preferences</FooterLink>
-            </li>
-            <li>
-              <Button
-                variant={"text"}
-                color={session ? "error" : "success"}
-                onClick={() => (session ? signOut() : signIn())}
-              >
-                {session ? "Sign out" : "Sign in"}
-              </Button>
-            </li>
-          </ul>
-        </nav>
+        <div className={classes.footerInner}>
+          <div className={classes.footerCopy}>
+            <span className={classes.footerEyebrow}>Northstar Commerce</span>
+            <p>
+              Portfolio demo for e-commerce operations, order-risk monitoring,
+              and storefront performance review.
+            </p>
+            <div className={classes.stackList} aria-label='Project stack'>
+              {stackItems.map((item) => (
+                <span key={item}>{item}</span>
+              ))}
+            </div>
+          </div>
+          <Link
+            className={classes.authorCard}
+            href='https://aleksandracislowski.com/'
+            target='_blank'
+            rel='noreferrer'
+            aria-label='Open Aleksandra Cislowski portfolio website'
+          >
+            <span>Designed & built by</span>
+            <strong>Aleksandra Cislowski</strong>
+          </Link>
+        </div>
       </Paper>
     </footer>
   );
