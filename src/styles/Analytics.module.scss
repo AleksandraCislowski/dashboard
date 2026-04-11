@@ -123,6 +123,15 @@
   gap: 0.75rem;
 }
 
+.actionFeedback {
+  border-radius: 18px;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(47, 127, 144, 0.22);
+  background: rgba(47, 127, 144, 0.1);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
 .summaryGrid {
   display: grid;
   grid-template-columns: 1fr;

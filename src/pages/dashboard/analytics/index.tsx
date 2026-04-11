@@ -185,6 +185,21 @@ const orderRows = [
 
 const Analytics = () => {
   const theme = useTheme();
+  const [actionMessage, setActionMessage] = React.useState(
+    "Ready to export or customize this workspace view."
+  );
+
+  const handleExportReport = () => {
+    setActionMessage(
+      "Demo report prepared. In production, this would download the current Order Intelligence view as CSV."
+    );
+  };
+
+  const handleCustomizeView = () => {
+    setActionMessage(
+      "Customize mode preview enabled. Saved views and visible columns would open in a production workspace."
+    );
+  };
 
   return (
     <Box className={classes.page}>
@@ -205,12 +220,23 @@ const Analytics = () => {
             <span>3 watchlist alerts need follow-up</span>
           </div>
           <div className={classes.actionRow}>
-            <Button variant='contained' startIcon={<FileDownloadOutlinedIcon />}>
+            <Button
+              variant='contained'
+              startIcon={<FileDownloadOutlinedIcon />}
+              onClick={handleExportReport}
+            >
               Export report
             </Button>
-            <Button variant='outlined' startIcon={<TuneOutlinedIcon />}>
+            <Button
+              variant='outlined'
+              startIcon={<TuneOutlinedIcon />}
+              onClick={handleCustomizeView}
+            >
               Customize view
             </Button>
+          </div>
+          <div className={classes.actionFeedback} role='status' aria-live='polite'>
+            {actionMessage}
           </div>
         </Paper>
       </section>

@@ -4,24 +4,6 @@ import ToggleSwitch from "@/components/settings/ToggleSwitch";
 import TextBox from "@/components/settings/TextBox";
 import classes from "@/styles/WorkspaceSettings.module.scss";
 
-const summaryCards = [
-  {
-    label: "Visible metrics",
-    value: "4 enabled",
-    context: "overview cards shown on the home workspace",
-  },
-  {
-    label: "Alert channels",
-    value: "3 active",
-    context: "refund, conversion, and fulfillment notifications",
-  },
-  {
-    label: "Shared dashboards",
-    value: "2 teams",
-    context: "leadership and operations use the same saved view",
-  },
-];
-
 const Settings = () => {
   const [showRevenue, setShowRevenue] = React.useState(true);
   const [showConversion, setShowConversion] = React.useState(true);
@@ -47,6 +29,49 @@ const Settings = () => {
     setSaved(true);
   };
 
+  const visibleMetrics = [
+    showRevenue && "Revenue",
+    showOrders && "Orders",
+    showConversion && "Conversion",
+    showCustomers && "Returning customers",
+  ].filter(Boolean);
+  const activeAlerts = [
+    showBilling && "billing",
+    showAnnouncements && "product",
+    showAlerts && "performance",
+    showSharedDashboards && "shared dashboards",
+    showDigest && "digest",
+  ].filter(Boolean);
+  const sharedDashboardTeams = showSharedDashboards ? 2 : 0;
+  const summaryCards = [
+    {
+      label: "Visible metrics",
+      value: `${visibleMetrics.length} enabled`,
+      context:
+        visibleMetrics.length > 0
+          ? `${visibleMetrics.join(", ")} shown on the overview.`
+          : "No overview metrics are currently enabled.",
+    },
+    {
+      label: "Alert channels",
+      value: `${activeAlerts.length} active`,
+      context:
+        activeAlerts.length > 0
+          ? `${activeAlerts.join(", ")} updates enabled.`
+          : "No automatic alert channels are enabled.",
+    },
+    {
+      label: "Shared dashboards",
+      value:
+        sharedDashboardTeams > 0
+          ? `${sharedDashboardTeams} teams`
+          : "Off",
+      context: showSharedDashboards
+        ? "leadership and operations use the same saved view"
+        : "saved dashboard defaults stay private to this workspace",
+    },
+  ];
+
   return (
     <Box className={classes.page}>
       <section className={classes.hero}>
@@ -63,11 +88,17 @@ const Settings = () => {
           <div className={classes.heroMeta}>
             <div>
               <strong>Overview cards</strong>
-              <span>Revenue, orders, AOV, conversion</span>
+              <span>
+                {visibleMetrics.length > 0
+                  ? visibleMetrics.join(", ")
+                  : "No metrics selected"}
+              </span>
             </div>
             <div>
               <strong>Digest cadence</strong>
-              <span>Weekly, Friday morning</span>
+              <span>
+                {showDigest ? "Weekly, Friday morning" : "Digest disabled"}
+              </span>
             </div>
           </div>
         </Paper>
