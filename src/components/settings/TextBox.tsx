@@ -9,10 +9,10 @@ interface TextBoxProps {
 const TextBox: React.FC<TextBoxProps> = ({ subtitle, paragraph }) => {
   return (
     <Box>
-      <Typography paragraph gutterBottom sx={{ fontWeight: 600 }}>
+      <Typography component='p' sx={{ fontWeight: 600, mb: 1 }}>
         {subtitle}
       </Typography>
-      <Typography paragraph gutterBottom>
+      <Typography component='p' sx={{ mb: 1 }}>
         {paragraph}
       </Typography>
     </Box>

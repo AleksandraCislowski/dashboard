@@ -6,7 +6,6 @@ import {
   Button,
   Checkbox,
   FormControlLabel,
-  Grid,
   IconButton,
   InputAdornment,
   Paper,
@@ -58,6 +57,8 @@ const Profile = () => {
       const names = session.user?.name?.split(" ") ?? ["Northstar"];
       const firstName = names[0];
       const lastName = names.length > 1 ? names[names.length - 1] : "";
+      // Session data seeds this editable preview form after auth resolves.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setFormData({
         firstName,
         lastName,
@@ -182,8 +183,8 @@ const Profile = () => {
           </div>
 
           <form onSubmit={handleSubmit}>
-            <Grid container spacing={3}>
-              <Grid item xs={12} sm={6}>
+            <Box className={classes.profileFormGrid}>
+              <div>
                 <TextField
                   required
                   fullWidth
@@ -192,8 +193,8 @@ const Profile = () => {
                   value={formData.firstName}
                   onChange={handleFormChange}
                 />
-              </Grid>
-              <Grid item xs={12} sm={6}>
+              </div>
+              <div>
                 <TextField
                   required
                   fullWidth
@@ -202,8 +203,8 @@ const Profile = () => {
                   value={formData.lastName}
                   onChange={handleFormChange}
                 />
-              </Grid>
-              <Grid item xs={12}>
+              </div>
+              <div className={classes.formGridFull}>
                 <TextField
                   required
                   fullWidth
@@ -213,8 +214,8 @@ const Profile = () => {
                   value={formData.email}
                   onChange={handleFormChange}
                 />
-              </Grid>
-              <Grid item xs={12}>
+              </div>
+              <div className={classes.formGridFull}>
                 <TextField
                   fullWidth
                   type={showPassword ? "text" : "password"}
@@ -223,18 +224,20 @@ const Profile = () => {
                   value={formData.password}
                   onChange={handleFormChange}
                   helperText='Leave blank if you are only updating your workspace profile.'
-                  InputProps={{
-                    endAdornment: (
-                      <InputAdornment position='end'>
-                        <IconButton onClick={toggleShowPassword} edge='end'>
-                          {showPassword ? <Visibility /> : <VisibilityOff />}
-                        </IconButton>
-                      </InputAdornment>
-                    ),
+                  slotProps={{
+                    input: {
+                      endAdornment: (
+                        <InputAdornment position='end'>
+                          <IconButton onClick={toggleShowPassword} edge='end'>
+                            {showPassword ? <Visibility /> : <VisibilityOff />}
+                          </IconButton>
+                        </InputAdornment>
+                      ),
+                    },
                   }}
                 />
-              </Grid>
-              <Grid item xs={12}>
+              </div>
+              <div className={classes.formGridFull}>
                 <TextField
                   fullWidth
                   type={showConfirmPassword ? "text" : "password"}
@@ -254,25 +257,27 @@ const Profile = () => {
                       ? "Passwords must match"
                       : "Use confirmation to validate any password change."
                   }
-                  InputProps={{
-                    endAdornment: (
-                      <InputAdornment position='end'>
-                        <IconButton
-                          onClick={toggleShowConfirmPassword}
-                          edge='end'
-                        >
-                          {showConfirmPassword ? (
-                            <Visibility />
-                          ) : (
-                            <VisibilityOff />
-                          )}
-                        </IconButton>
-                      </InputAdornment>
-                    ),
+                  slotProps={{
+                    input: {
+                      endAdornment: (
+                        <InputAdornment position='end'>
+                          <IconButton
+                            onClick={toggleShowConfirmPassword}
+                            edge='end'
+                          >
+                            {showConfirmPassword ? (
+                              <Visibility />
+                            ) : (
+                              <VisibilityOff />
+                            )}
+                          </IconButton>
+                        </InputAdornment>
+                      ),
+                    },
                   }}
                 />
-              </Grid>
-              <Grid item xs={12}>
+              </div>
+              <div className={classes.formGridFull}>
                 <FormControlLabel
                   control={
                     <Checkbox
@@ -284,8 +289,8 @@ const Profile = () => {
                   }
                   label='Send me weekly storefront performance highlights'
                 />
-              </Grid>
-              <Grid item xs={12}>
+              </div>
+              <div className={classes.formGridFull}>
                 <div className={classes.actionRow}>
                   <Button type='submit' variant='contained' color='primary'>
                     Save changes
@@ -294,8 +299,8 @@ const Profile = () => {
                     Updates are preview-only in this portfolio build.
                   </Typography>
                 </div>
-              </Grid>
-            </Grid>
+              </div>
+            </Box>
           </form>
         </Paper>
 

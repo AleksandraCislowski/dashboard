@@ -8,8 +8,15 @@ const Login: React.FC = () => {
 
   if (session) {
     return (
-      <Box textAlign='center' mt={4}>
-        <Box display='flex' flexWrap='wrap' justifyContent='center' gap={1.5}>
+      <Box sx={{ mt: 4, textAlign: "center" }}>
+        <Box
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: 1.5,
+            justifyContent: "center",
+          }}
+        >
           <Button
             variant='contained'
             color='error'
@@ -27,29 +34,29 @@ const Login: React.FC = () => {
 
   return (
     <Box
-      py={4}
       sx={{
         maxWidth: 680,
+        py: 4,
       }}
     >
-      <Typography variant='h4' gutterBottom>
+      <Typography variant='h4' sx={{ mb: 1 }}>
         Want to explore the full profile flow?
       </Typography>
-      <Typography variant='body1' paragraph>
+      <Typography variant='body1' component='p' sx={{ mb: 2 }}>
         Sign in with Google to unlock the complete profile experience. The app
         uses your own Google account for authentication, and your password is
         never exposed inside this demo.
       </Typography>
-      <Typography variant='h5' gutterBottom>
+      <Typography variant='h5' sx={{ mb: 1 }}>
         To sign in:
       </Typography>
-      <Typography variant='body1' component='ol' paragraph>
+      <Typography variant='body1' component='ol' sx={{ mb: 2 }}>
         <li>Click the green Sign in button below.</li>
         <li>Choose Sign in with Google.</li>
         <li>Select the Google account you want to use for this demo.</li>
         <li>Approve the sign-in flow to continue.</li>
       </Typography>
-      <Box display='flex' flexWrap='wrap' gap={1.5} mt={4}>
+      <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1.5, mt: 4 }}>
         <Button
           variant='contained'
           color='success'

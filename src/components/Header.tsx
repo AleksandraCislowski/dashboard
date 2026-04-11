@@ -202,8 +202,10 @@ const Header = (props: HeaderProps) => {
               }}
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
-              MenuListProps={{
-                'aria-labelledby': 'account-menu-button',
+              slotProps={{
+                list: {
+                  'aria-labelledby': 'account-menu-button',
+                },
               }}
             >
               {session && (
@@ -216,11 +218,11 @@ const Header = (props: HeaderProps) => {
                     textDecoration: 'none',
                   }}
                 >
-                  <Typography textAlign='center'>Account settings</Typography>
+                  <Typography sx={{ textAlign: 'center' }}>Account settings</Typography>
                 </MenuItem>
               )}
               <MenuItem onClick={() => (session ? signOut() : signIn())}>
-                <Typography textAlign='center'>
+                <Typography sx={{ textAlign: 'center' }}>
                   {session ? 'Sign out' : 'Sign in'}
                 </Typography>
               </MenuItem>

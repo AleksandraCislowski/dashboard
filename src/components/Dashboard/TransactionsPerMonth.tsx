@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "@/styles/TransactionsPerMonth.module.scss";
-import { Card, Grid, Paper } from "@mui/material";
+import { Card, Paper } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import { useTheme } from "@mui/system";
 import DataChart from "@/components/DataChart/DataChart";
@@ -16,7 +16,7 @@ const TransactionsPerMonth = () => {
   const theme = useTheme();
 
   return (
-    <Grid container gap={2} className={classes.wrapper}>
+    <div className={classes.wrapper}>
       <Paper className={classes.transactions}>
         <div className={classes.chart}>
           <div className={classes.chartHeader}>
@@ -68,7 +68,7 @@ const TransactionsPerMonth = () => {
           </Card>
         </div>
       </Paper>
-    </Grid>
+    </div>
   );
 };
 

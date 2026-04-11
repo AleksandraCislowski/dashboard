@@ -20,7 +20,7 @@ const ToggleSwitch: React.FC<ToggleSwitchProps> = ({
         <Switch
           checked={checked}
           onChange={onChange}
-          inputProps={{ "aria-label": ariaLabel ?? label }}
+          slotProps={{ input: { "aria-label": ariaLabel ?? label } }}
         />
       }
       label={label}

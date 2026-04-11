@@ -19,10 +19,10 @@ const SignOut = () => {
           textAlign: "center",
         }}
       >
-        <Typography variant='h4' gutterBottom>
+        <Typography variant='h4' sx={{ mb: 1 }}>
           You have been signed out.
         </Typography>
-        <Typography paragraph>
+        <Typography component='p' sx={{ mb: 2 }}>
           Your Northstar Commerce session ended. You can return to the demo
           dashboard at any time.
         </Typography>

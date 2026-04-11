@@ -19,13 +19,13 @@ const DataCard = (props: DataCardProps) => {
   return (
     <Paper className={classes.dataCard}>
       <div className={classes.header}>
-        <Typography fontSize={"h6"} color={"lightslategrey"}>
+        <Typography sx={{ color: "lightslategrey", fontSize: "1rem" }}>
           {title}
         </Typography>
         <Tooltip
           title={
             <Typography
-              fontSize={16}
+              sx={{ fontSize: 16 }}
             >{`${description} Current value: ${value}.`}</Typography>
           }
         >
@@ -35,7 +35,7 @@ const DataCard = (props: DataCardProps) => {
         </Tooltip>
       </div>
       <div className={classes.valueBlock}>
-        <Typography fontSize={"h4"}>{value}</Typography>
+        <Typography sx={{ fontSize: "2.125rem" }}>{value}</Typography>
         {trend && <span className={classes.trend}>{trend}</span>}
       </div>
       {trendLabel && (

@@ -187,6 +187,22 @@
   gap: 0.6rem;
 }
 
+.profileFormGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+
+  @media screen and (min-width: 700px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.formGridFull {
+  @media screen and (min-width: 700px) {
+    grid-column: 1 / -1;
+  }
+}
+
 .actionRow {
   display: flex;
   flex-wrap: wrap;
