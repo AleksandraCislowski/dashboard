@@ -21,7 +21,9 @@ const PolarArea = () => {
           Spot which product categories are carrying the strongest contribution to revenue.
         </Typography>
       </div>
-      <DataChart type={"polarArea"} data={polarData} options={options} />
+      <div className={classes.chartFrame}>
+        <DataChart type={"polarArea"} data={polarData} options={options} />
+      </div>
     </Paper>
   );
 };

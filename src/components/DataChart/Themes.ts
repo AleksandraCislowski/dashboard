@@ -135,8 +135,9 @@ export const lightOptionsRadial: ChartConfiguration["options"] = {
         color: "#4c5968",
       },
       ticks: {
-        color: "#5f6b7a",
-        backdropColor: "transparent",
+        color: "#1F2933",
+        backdropColor: "rgba(255, 253, 249, 0.82)",
+        backdropPadding: 4,
       },
     },
   },
@@ -160,8 +161,51 @@ export const darkOptionsRadial: ChartConfiguration["options"] = {
         color: "rgba(255, 255, 255, 0.9)",
       },
       ticks: {
-        color: "rgba(255, 255, 255, 0.86)",
-        backdropColor: "transparent",
+        color: "rgba(255, 255, 255, 0.94)",
+        backdropColor: "rgba(15, 23, 32, 0.74)",
+        backdropPadding: 4,
+      },
+    },
+  },
+  plugins: {
+    legend: {
+      labels: darkLegendLabels,
+    },
+  },
+};
+
+export const lightOptionsPolar: ChartConfiguration["options"] = {
+  scales: {
+    r: {
+      angleLines: {
+        color: "rgba(41, 92, 133, 0.16)",
+      },
+      grid: {
+        color: "rgba(41, 92, 133, 0.14)",
+      },
+      ticks: {
+        display: false,
+      },
+    },
+  },
+  plugins: {
+    legend: {
+      labels: lightLegendLabels,
+    },
+  },
+};
+
+export const darkOptionsPolar: ChartConfiguration["options"] = {
+  scales: {
+    r: {
+      angleLines: {
+        color: "rgba(255, 255, 255, 0.22)",
+      },
+      grid: {
+        color: "rgba(255, 255, 255, 0.18)",
+      },
+      ticks: {
+        display: false,
       },
     },
   },

@@ -22,7 +22,9 @@ const Radar = () => {
           Compare ROAS, retention, AOV, and repeat rate across core channels.
         </Typography>
       </div>
-      <DataChart type={"radar"} data={radarData} options={options} />
+      <div className={classes.chartFrame}>
+        <DataChart type={"radar"} data={radarData} options={options} />
+      </div>
     </Paper>
   );
 };
