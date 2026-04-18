@@ -10,7 +10,7 @@ and operational risk.
 
 ## At a Glance
 
-- Live demo: https://northstar-commerce.vercel.app/
+- Live demo: https://northstar-commerce.vercel.app
 - Product concept: e-commerce operations dashboard
 - Primary user: E-commerce Operations Manager
 - Main promise: one workspace for monitoring storefront performance and acting
