@@ -170,7 +170,16 @@ const Header = (props: HeaderProps) => {
                   ml: 0.5,
                 }}
               >
-                <Avatar alt='Aleksandra Cislowski' src={profileAvatarSrc} />
+                <Avatar
+                  alt='Aleksandra Cislowski'
+                  src={profileAvatarSrc}
+                  sx={{
+                    backgroundColor: '#0b2740',
+                    '& img': {
+                      transform: 'scale(1.12)',
+                    },
+                  }}
+                />
               </IconButton>
             </Tooltip>
             <Menu

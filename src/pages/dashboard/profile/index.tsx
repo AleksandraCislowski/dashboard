@@ -120,7 +120,14 @@ const Profile = () => {
             <Avatar
               alt={demoProfile.name}
               src={demoProfile.avatar}
-              sx={{ height: 88, width: 88 }}
+              sx={{
+                backgroundColor: '#0b2740',
+                height: 88,
+                width: 88,
+                '& img': {
+                  transform: 'scale(1.12)',
+                },
+              }}
             />
             <div>
               <Typography variant='h6'>{demoProfile.name}</Typography>
