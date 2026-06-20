@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { useSession } from "next-auth/react";
+import React, { useState } from 'react';
 import {
   Avatar,
   Box,
@@ -11,38 +10,43 @@ import {
   Paper,
   TextField,
   Typography,
-} from "@mui/material";
-import { Visibility, VisibilityOff } from "@mui/icons-material";
-import Login from "@/components/Login";
-import classes from "@/styles/ProfileSettings.module.scss";
+} from '@mui/material';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
+import classes from '@/styles/ProfileSettings.module.scss';
 
 const workspaceStats = [
   {
-    label: "Workspace role",
-    value: "Operations lead",
-    context: "default owner for weekly performance reviews",
+    label: 'Workspace role',
+    value: 'Operations lead',
+    context: 'default owner for weekly performance reviews',
   },
   {
-    label: "Saved views",
-    value: "6",
-    context: "shared across Northstar dashboards",
+    label: 'Saved views',
+    value: '6',
+    context: 'shared across Northstar dashboards',
   },
   {
-    label: "Alert coverage",
-    value: "3 channels",
-    context: "conversion, refund, and fulfillment alerts enabled",
+    label: 'Alert coverage',
+    value: '3 channels',
+    context: 'conversion, refund, and fulfillment alerts enabled',
   },
 ];
 
-const Profile = () => {
-  const { data: session } = useSession();
+const demoProfile = {
+  firstName: 'Aleksandra',
+  lastName: 'Cislowski',
+  email: 'aleksandra@northstar.example',
+  name: 'Aleksandra Cislowski',
+  avatar: '/images/profile-avatar.png',
+};
 
+const Profile = () => {
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
+    firstName: demoProfile.firstName,
+    lastName: demoProfile.lastName,
+    email: demoProfile.email,
+    password: '',
+    confirmPassword: '',
     receiveEmails: false,
   });
 
@@ -52,37 +56,19 @@ const Profile = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  useEffect(() => {
-    if (session) {
-      const names = session.user?.name?.split(" ") ?? ["Northstar"];
-      const firstName = names[0];
-      const lastName = names.length > 1 ? names[names.length - 1] : "";
-      // Session data seeds this editable preview form after auth resolves.
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setFormData({
-        firstName,
-        lastName,
-        email: session.user?.email ?? "",
-        password: "",
-        confirmPassword: "",
-        receiveEmails: false,
-      });
-    }
-  }, [session]);
-
   const handleFormChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, checked } = event.target;
     setSaved(false);
     setFormData((prevState) => ({
       ...prevState,
-      [name]: name === "receiveEmails" ? checked : value,
+      [name]: name === 'receiveEmails' ? checked : value,
     }));
 
-    if (name === "password") {
+    if (name === 'password') {
       setPasswordMatch(formData.confirmPassword === value);
     }
 
-    if (name === "confirmPassword") {
+    if (name === 'confirmPassword') {
       setPasswordMatch(value === formData.password);
     }
   };
@@ -99,8 +85,8 @@ const Profile = () => {
     if (passwordMatch) {
       setFormData((prevState) => ({
         ...prevState,
-        password: "",
-        confirmPassword: "",
+        password: '',
+        confirmPassword: '',
       }));
       setFormSubmitted(false);
       setPasswordMatch(false);
@@ -114,13 +100,9 @@ const Profile = () => {
 
   const toggleShowConfirmPassword = () => {
     setShowConfirmPassword(
-      (prevShowConfirmPassword) => !prevShowConfirmPassword
+      (prevShowConfirmPassword) => !prevShowConfirmPassword,
     );
   };
-
-  if (!session) {
-    return <Login />;
-  }
 
   return (
     <Box className={classes.page}>
@@ -136,11 +118,12 @@ const Profile = () => {
         <Paper className={classes.heroPanel}>
           <div className={classes.avatarRow}>
             <Avatar
+              alt={demoProfile.name}
+              src={demoProfile.avatar}
               sx={{ height: 88, width: 88 }}
-              src={session?.user?.image as string}
             />
             <div>
-              <Typography variant='h6'>{session?.user?.name}</Typography>
+              <Typography variant='h6'>{demoProfile.name}</Typography>
               <Typography className={classes.subtleText}>
                 Northstar workspace owner
               </Typography>
@@ -218,7 +201,7 @@ const Profile = () => {
               <div className={classes.formGridFull}>
                 <TextField
                   fullWidth
-                  type={showPassword ? "text" : "password"}
+                  type={showPassword ? 'text' : 'password'}
                   label='New password'
                   name='password'
                   value={formData.password}
@@ -240,7 +223,7 @@ const Profile = () => {
               <div className={classes.formGridFull}>
                 <TextField
                   fullWidth
-                  type={showConfirmPassword ? "text" : "password"}
+                  type={showConfirmPassword ? 'text' : 'password'}
                   label='Confirm new password'
                   name='confirmPassword'
                   value={formData.confirmPassword}
@@ -254,8 +237,8 @@ const Profile = () => {
                     Boolean(formData.password || formData.confirmPassword) &&
                     !passwordMatch &&
                     formSubmitted
-                      ? "Passwords must match"
-                      : "Use confirmation to validate any password change."
+                      ? 'Passwords must match'
+                      : 'Use confirmation to validate any password change.'
                   }
                   slotProps={{
                     input: {
@@ -311,23 +294,31 @@ const Profile = () => {
               <Typography variant='h6'>Current setup</Typography>
             </div>
             <Typography className={classes.subtleText}>
-              A quick summary of how this account is configured inside
-              Northstar Commerce.
+              A quick summary of how this account is configured inside Northstar
+              Commerce.
             </Typography>
           </div>
 
           <div className={classes.noteList}>
             <div className={classes.noteItem}>
               <strong>Order alerts</strong>
-              <p>Refund spikes and shipping delays are routed to this account.</p>
+              <p>
+                Refund spikes and shipping delays are routed to this account.
+              </p>
             </div>
             <div className={classes.noteItem}>
               <strong>Shared views</strong>
-              <p>The weekly leadership dashboard is published from this workspace.</p>
+              <p>
+                The weekly leadership dashboard is published from this
+                workspace.
+              </p>
             </div>
             <div className={classes.noteItem}>
               <strong>Digest preference</strong>
-              <p>Friday summaries are enabled for channel, retention, and risk metrics.</p>
+              <p>
+                Friday summaries are enabled for channel, retention, and risk
+                metrics.
+              </p>
             </div>
           </div>
 

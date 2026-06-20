@@ -16,7 +16,7 @@ and operational risk.
 - Main promise: one workspace for monitoring storefront performance and acting
   on operational issues quickly
 - Core views: Overview Dashboard, Order Intelligence, Account, Preferences
-- Stack: Next.js, React, TypeScript, MUI, Chart.js, Sass modules, NextAuth
+- Stack: Next.js, React, TypeScript, MUI, Chart.js, Sass modules
 
 ## Portfolio Summary
 
@@ -130,7 +130,6 @@ like a template demo:
 - MUI
 - Chart.js
 - Sass modules
-- NextAuth
 
 
 ## Notes

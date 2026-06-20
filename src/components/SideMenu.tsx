@@ -15,12 +15,9 @@ import { Box, Tooltip, useMediaQuery } from "@mui/material";
 import EqualizerIcon from "@mui/icons-material/Equalizer";
 import PersonIcon from "@mui/icons-material/Person";
 import SettingsIcon from "@mui/icons-material/Settings";
-import LogoutIcon from "@mui/icons-material/Logout";
-import LoginIcon from "@mui/icons-material/Login";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { signIn, signOut, useSession } from "next-auth/react";
 
 const drawerWidth = 240;
 
@@ -62,7 +59,6 @@ const menuListIcons = [
 const SideMenu = () => {
   const theme = useTheme();
   const router = useRouter();
-  const { data: session } = useSession();
   const [open, setOpen] = React.useState(false);
   const mobileCheck = useMediaQuery("(min-width: 600px)");
 
@@ -74,16 +70,6 @@ const SideMenu = () => {
     setOpen(false);
   };
 
-  const handleAuthAction = () => {
-    setOpen(false);
-    if (session) {
-      signOut({ callbackUrl: "/dashboard" });
-      return;
-    }
-
-    signIn();
-  };
-
   const isRouteActive = (route: string) => {
     const href = `/dashboard/${route}`;
     if (route === "") {
@@ -92,9 +78,6 @@ const SideMenu = () => {
 
     return router.pathname.startsWith(href);
   };
-  const isAuthRouteActive =
-    router.pathname.startsWith("/auth/signin") ||
-    router.pathname.startsWith("/auth/signout");
 
   return (
     <Drawer
@@ -216,73 +199,6 @@ const SideMenu = () => {
             </ListItem>
           );
         })}
-        <ListItem disablePadding sx={{ display: "block" }}>
-          <ListItemButton
-            onClick={handleAuthAction}
-            aria-current={isAuthRouteActive ? "page" : undefined}
-            sx={{
-              minHeight: 56,
-              justifyContent: open ? "initial" : "center",
-              px: 2.5,
-              mx: open ? 1 : 0,
-              my: 0.75,
-              borderRadius: "16px",
-              border: isAuthRouteActive
-                ? `1px solid ${theme.palette.primary.main}`
-                : "1px solid transparent",
-              backgroundColor: isAuthRouteActive
-                ? theme.palette.mode === "dark"
-                  ? "rgba(41, 92, 133, 0.3)"
-                  : "rgba(41, 92, 133, 0.12)"
-                : "transparent",
-              color: isAuthRouteActive
-                ? theme.palette.text.primary
-                : theme.palette.text.secondary,
-              "&:hover": {
-                backgroundColor: isAuthRouteActive
-                  ? theme.palette.mode === "dark"
-                    ? "rgba(41, 92, 133, 0.36)"
-                    : "rgba(41, 92, 133, 0.16)"
-                  : theme.palette.mode === "dark"
-                    ? "rgba(255, 255, 255, 0.04)"
-                    : "rgba(31, 42, 54, 0.04)",
-              },
-              transition:
-                "background-color 180ms ease, border-color 180ms ease, color 180ms ease",
-              boxShadow: isAuthRouteActive
-                ? `inset 3px 0 0 ${theme.palette.primary.main}`
-                : "none",
-            }}
-          >
-            <Tooltip title={session ? "Sign out" : "Sign in"}>
-              <ListItemIcon
-                sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : "auto",
-                  justifyContent: "center",
-                  color: isAuthRouteActive
-                    ? theme.palette.primary.main
-                    : theme.palette.text.secondary,
-                }}
-              >
-                {session ? <LogoutIcon /> : <LoginIcon />}
-              </ListItemIcon>
-            </Tooltip>
-            <ListItemText
-              sx={{
-                color: isAuthRouteActive
-                  ? theme.palette.text.primary
-                  : theme.palette.text.secondary,
-                opacity: open ? 1 : 0,
-                "& .MuiTypography-root": {
-                  fontWeight: isAuthRouteActive ? 700 : 500,
-                },
-              }}
-            >
-              {session ? "Sign out" : "Sign in"}
-            </ListItemText>
-          </ListItemButton>
-        </ListItem>
       </List>
     </Drawer>
   );

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Avatar, useMediaQuery } from '@mui/material';
-import { signIn, signOut, useSession } from 'next-auth/react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -21,9 +20,8 @@ export type HeaderProps = {
 
 const Header = (props: HeaderProps) => {
   const { ColorModeContext } = props;
-  const { data: session } = useSession();
   const theme = useTheme();
-  const userProfileImg = session?.user?.image as string;
+  const profileAvatarSrc = '/images/profile-avatar.png';
 
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
     null,
@@ -152,7 +150,7 @@ const Header = (props: HeaderProps) => {
                   letterSpacing: '0.01em',
                 }}
               >
-                {session && `Northstar workspace: ${session?.user?.name}`}
+                Northstar workspace
               </Typography>
             )}
           </Box>
@@ -163,7 +161,7 @@ const Header = (props: HeaderProps) => {
               <IconButton
                 id='account-menu-button'
                 onClick={handleOpenUserMenu}
-                aria-label={session ? 'Open account menu' : 'Open sign in menu'}
+                aria-label='Open account menu'
                 aria-controls={anchorElUser ? 'account-menu' : undefined}
                 aria-haspopup='menu'
                 aria-expanded={anchorElUser ? 'true' : undefined}
@@ -172,10 +170,7 @@ const Header = (props: HeaderProps) => {
                   ml: 0.5,
                 }}
               >
-                <Avatar
-                  alt={session?.user?.name as string}
-                  src={userProfileImg}
-                />
+                <Avatar alt='Aleksandra Cislowski' src={profileAvatarSrc} />
               </IconButton>
             </Tooltip>
             <Menu
@@ -208,23 +203,16 @@ const Header = (props: HeaderProps) => {
                 },
               }}
             >
-              {session && (
-                <MenuItem
-                  component={Link}
-                  href='/dashboard/profile'
-                  onClick={handleCloseUserMenu}
-                  sx={{
-                    color: theme.palette.text.primary,
-                    textDecoration: 'none',
-                  }}
-                >
-                  <Typography sx={{ textAlign: 'center' }}>Account settings</Typography>
-                </MenuItem>
-              )}
-              <MenuItem onClick={() => (session ? signOut() : signIn())}>
-                <Typography sx={{ textAlign: 'center' }}>
-                  {session ? 'Sign out' : 'Sign in'}
-                </Typography>
+              <MenuItem
+                component={Link}
+                href='/dashboard/profile'
+                onClick={handleCloseUserMenu}
+                sx={{
+                  color: theme.palette.text.primary,
+                  textDecoration: 'none',
+                }}
+              >
+                <Typography sx={{ textAlign: 'center' }}>Account settings</Typography>
               </MenuItem>
             </Menu>
           </Box>
